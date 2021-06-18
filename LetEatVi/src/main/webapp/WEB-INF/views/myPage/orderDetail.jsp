@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Let Eat VI</title>
 
 <link rel="stylesheet"
@@ -66,7 +67,9 @@
 	<div class="container orderContext" style="width: 1000px;">
 		<div class="order-inner">
 			<div class="buyProductText">
-				<p class="detail-title">주문상세</p>
+				<img class="tracking-img"
+					src="${pageContext.request.contextPath}/resources/images/box.png">
+				<span class="detail-title">&nbsp;&nbsp;주문상세</span>
 				<p class="order_detail" style="font-size: 20px;">
 					<b>2021.06.23 주문</b> &nbsp;&nbsp; 주문번호 300000102683771
 				</p>
@@ -99,8 +102,8 @@
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
 								style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 30px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환,
-								반품 신청</button>
+								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환
+								· 반품 신청</button>
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
 								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">리뷰
 								작성하기</button>
@@ -135,8 +138,8 @@
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
 								style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 30px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환,
-								반품 신청</button>
+								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환
+								· 반품 신청</button>
 							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
 								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">리뷰
 								작성하기</button>
@@ -162,6 +165,10 @@
 					</tr>
 					<tr>
 						<th>받는주소</th>
+						<td>${member.address}</td>
+					</tr>
+					<tr>
+						<th>요청사항</th>
 						<td>${member.address}</td>
 					</tr>
 				</table>
@@ -211,7 +218,9 @@
 					</div>
 				</div>
 
-				<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
+				<button type="button"
+					onclick="location.href='${pageContext.request.contextPath}/myPage/orderList.do'"
+					class="btn btn-dark btn-lg" id="detail-btn"
 					style="border: 1px solid #D3D3D3; border-radius: 10px; margin-top: 20px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black; float: right;">&lt;
 					주문목록 돌아가기</button>
 

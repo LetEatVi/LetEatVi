@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">

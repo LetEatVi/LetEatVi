@@ -5,11 +5,87 @@ a {
 
 /* 상단 이미지 */
 .top-img {
-    background-image: url(../images/peppers-467270.jpg);
+    background-image: url(../images/lime.jpg);
     position: relative;
     height: 300px;
     background-size: cover;
 }
+
+
+b {
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 1px;
+}
+
+.buyProductText {
+	margin-top: 40px;
+}
+
+.tracking-img {
+	width: 7%;
+	padding-bottom: 20px;
+}
+
+.detail-title {
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 3px;
+	margin-top: 30px;
+	font-size: 30px;
+}
+
+.detail-box {
+	border: 2px solid #E5E5E5;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+
+.product_img {
+	width: 100%;
+}
+
+.detail-content {
+	width: 70%;
+}
+
+.detail-context col {
+	font-family: 'IBMPlexSansKR-Light';
+	letter-spacing: 1px;
+}
+
+.detail-btn {
+	border-left: 2px solid #E5E5E5;
+}
+
+th,td, .product-detail {
+	font-family: 'IBMPlexSansKR-Light';
+	letter-spacing: 1px;
+}
+
+th {
+	width: 200px;
+	padding-left: 10px;
+}
+
+.about-paytext {
+	font-size: 18px;
+}
+
+.col-th {
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
+.col-td {
+	font-family: 'IBMPlexSansKR-Light';
+	text-align: right;
+}
+
+.fix-btn {
+	border: 2px solid #44633F;
+	border-radius: 15px;
+	float: right;
+}
+
+
 
 /* 마이페이지 전체 적용 */
 .mypagev-view {

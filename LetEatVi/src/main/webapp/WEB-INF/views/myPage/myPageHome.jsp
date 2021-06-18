@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/favicon.ico">
+<title>Let Eat VI</title>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +34,7 @@
 	rel="stylesheet" />
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/myPageHome.css">
+	href="${pageContext.request.contextPath}/resources/css/myPage.css">
 
 
 <style>
@@ -92,48 +95,105 @@
 
 	<div class="top-img"></div>
 
+	<div class="container orderContext" style="width: 1000px;">
+		<div class="order-inner">
+			<p
+				style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; font-size: 25px;">회원정보
+				관리</p>
+			<hr style="border: 1px solid #B2B2B2">
+
+			<table style="border-collapse: separate; border-spacing: 0 10px;">
+				<tr>
+					<th>이름</th>
+					<td>${member.userName}</td>
+				</tr>
+				<tr>
+					<th>나이</th>
+					<td>${member.age}세</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>${member.phone}</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>${member.email}</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>${member.address}</td>
+
+					<td style="width: 600px;"><button class="fix-btn"
+							style="background-color: white; width: 20%;"
+							onclick="location.href='${pageContext.request.contextPath}/myPage/memberView.do?userId=${member.userId}'">수정하기</button></td>
+				</tr>
+			</table>
+			<hr style="border: 1px solid #E5E5E5;">
+
+			<!-- 주문내역 -->
+			<div
+				style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; padding-bottom: 10px; font-size: 25px; border-bottom: 2px solid #B2B2B2;">최근
+				주문내역</div>
+			<!-- 주문내역 박스 -->
+			<div class="row about-paytext"
+				style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
+				<div class="col">
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문번호</div>
+						<div class="col">300000102683771</div>
+					</div>
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문일자</div>
+						<div class="col">2021-06-18</div>
+					</div>
+				</div>
+				<div class="col" style="background-color: #F2F2F2; max-width: 45%;">
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th" style="font-weight: bolder;">총 결제 금액</div>
+						<div class="col col-td" style="font-weight: bolder;">84,000
+							원</div>
+					</div>
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th"></div>
+						<div class="col col-td"><button class="fix-btn"
+							style="background-color: rgba(0,0,0,0); width: 50%;"
+							onclick="location.href='${pageContext.request.contextPath}/myPage/orderList.do'">수정하기</button></div>
+					</div>
+				</div>
+			</div>
+			<div class="row about-paytext"
+				style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
+				<div class="col">
+					<div class="row"></div>
+					<div class="row"></div>
+				</div>
+				<div class="col" style="background-color: #F2F2F2; max-width: 45%">
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th">국민카드</div>
+						<div class="col col-td">84,000 원</div>
+					</div>
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th" style="font-weight: bolder;">총 결제 금액</div>
+						<div class="col col-td" style="font-weight: bolder;">84,000
+							원</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  -->
+
 
 	<div id="mypagev-home">
 		<div class="home-top-content">
 			<h2>
-				<b> ${member.userId} </b> 님의 <em class="light"> Let Eat Vi </em>
+				<b> ${member.userName} </b> 님의 <em class="light"> Let Eat Vi </em>
 			</h2>
 		</div>
-		<br>
-		<br>
+		<br> <br>
 
-		<h3>회원정보관리</h3>
-		<input type="submit" class="btn btn-outline-success"
-			onclick="location.href='${pageContext.request.contextPath}/myPage/memberView.do?userId=${member.userId}'"
-			value="수정">
-
-		<table border=0 width=100% cellpadding=10 cellspacing=10>
-			<tr>
-				<td>이름 :</td>
-				<td>${member.userName}</td>
-			</tr>
-			<tr>
-				<td>나이 :</td>
-				<td>${member.age}</td>
-			</tr>
-			<tr>
-				<td>성별 :</td>
-				<td>${member.gender}</td>
-			</tr>
-			<tr>
-				<td>전화번호 :</td>
-				<td>${member.phone}</td>
-			</tr>
-			<tr>
-				<td>이메일 :</td>
-				<td>${member.email}</td>
-			</tr>
-			<tr>
-				<td>주소:</td>
-				<td>${member.address}</td>
-			</tr>
-
-		</table>
 
 		<h3>최근주문내역</h3>
 		<table class="list_view">
@@ -234,8 +294,7 @@
 			</tr>
 		</table>
 
-		<br>
-		<br>
+		<br> <br>
 
 		<h3>건강설문관리</h3>
 		<div>
