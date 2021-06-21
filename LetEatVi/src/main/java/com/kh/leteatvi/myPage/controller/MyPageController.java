@@ -57,18 +57,6 @@ public class MyPageController {
 		
 	}
 	
-		
-	@RequestMapping("/myPage/myPageSurvey.do")
-	public String mySurvey() throws Exception {
-		
-		return "myPage/myPageSurvey";
-	}
-	
-	@RequestMapping("/myPage/myPageOrder.do")
-	public String myPageOrder() throws Exception {
-		
-		return "myPage/myPageOrder";
-	}
 
 	@RequestMapping(value = "/myPage/orderList.do")
 	public String myOrderList() throws Exception {

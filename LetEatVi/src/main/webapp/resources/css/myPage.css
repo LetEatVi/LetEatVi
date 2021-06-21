@@ -1,16 +1,22 @@
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 /* 상단 이미지 */
 .top-img {
-    background-image: url(../images/lime.jpg);
-    position: relative;
-    height: 300px;
-    background-size: cover;
+	background-image: url(../images/lime.jpg);
+	position: relative;
+	height: 300px;
+	background-size: cover;
 }
 
+/*
+.mypage-title {
+	margin-top: 30px;
+	letter-spacing: 1px;
+	font-family: 'IBMPlexSansKR-Light';
+}*/
 
 b {
 	font-family: 'IBMPlexSansKR-Regular';
@@ -52,11 +58,7 @@ b {
 	letter-spacing: 1px;
 }
 
-.detail-btn {
-	border-left: 2px solid #E5E5E5;
-}
-
-th,td, .product-detail {
+th, td, .product-detail {
 	font-family: 'IBMPlexSansKR-Light';
 	letter-spacing: 1px;
 }
@@ -83,118 +85,4 @@ th {
 	border: 2px solid #44633F;
 	border-radius: 15px;
 	float: right;
-}
-
-
-
-/* 마이페이지 전체 적용 */
-.mypagev-view {
-    padding-top: 0px;
-    margin-bottom: 100px;
-}
-
-/* 페이지 레이아웃 */
-.left-menu-layout {
-    overflow: hidden;
-    margin: 0 auto;
-    width: 944px;
-    padding: 0 40px;
-}
-
-/* 좌측 메뉴바 */
-.left-menu-layout .left-menu {
-    float: left;
-    width: 250px;
-    margin-top: 60px;
-}
-
-/* mypage */
-.left-menu-layout .left-menu h3 {
-    padding: 25px 0;
-    font-size: 25px;
-    color: #333;
-    text-align: center;
-    border-bottom: 1px solid #adadad;
-    font-family: 'Inkfree';
-}
-
-.left-menu>h3>a:hover {
-    text-decoration: none;
-    color: black;
-}
-
-.left-menu-layout .left-menu ul {
-    margin-top: 2px;
-    text-align: center;
-}
-
-ul, ol, li {
-    list-style: none;
-}
-
-.left-menu-layout .left-menu li {
-    text-align: center;
-    padding: 25px 0 0;
-}
-
-.left-menu-layout .left-menu li>a {
-    display: block;
-    line-height: 18px;
-    font-size: 18px;
-    color: #333;
-}
-
-.left-menu-layout .right-contents {
-    position: relative;
-    float: left;
-    margin-left: 34px;
-    width: 550px;
-}
-
-.myPage_menu>li>a {
-    font-family: 'S-CoreDream-3Light';
-    letter-spacing: 2px;
-}
-
-.myPage_menu>li>a:hover {
-    text-decoration: none;
-    color: black;
-}
-
-/*--------------------*/
-
-.mypagev-view #mypagev-home .mypagev-home-top {
-    position: relatvie;
-    margin-top: 40px;
-    padding-bottom: 12px;
-}
-
-.home-top-content>h2, .user-account, .title>strong {
-    text-align: center;
-    font-family: 'S-CoreDream-3Light';
-}
-
-.mypagev-view #mypagev-home .mypagev-home-latest .home-latest-header {
-    height: 70px;
-    background-image: url(/images/icons/icon-select-next.png);
-    background-size: 6px;
-    background-repeat: no-repeat;
-    background-position: right center;
-}
-
-.mypagev-view #mypagev-home .mypagev-home-latest .home-latest-header>em.title {
-    float: left;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 70px;
-    color: grey;
-}
-
-.mypagev-view #mypagev-home .mypagev-home-latest .home-latest-header>span {
-    float: left;
-    padding-right: 16px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 70px;
-    color: #999;
 }

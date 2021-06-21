@@ -140,7 +140,7 @@
 						href="${pageContext.request.contextPath}/myPage/orderList.do"
 						class="menu-content">ORDER</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
+						href="${pageContext.request.contextPath}/myPage/myPageHome.do?userId=${member.userId}"
 						class="menu-content">MYPAGE</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogout.do"
