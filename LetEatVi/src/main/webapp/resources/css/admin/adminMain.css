@@ -1,206 +1,618 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap')
+	;
 
+@import
+	url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Poppins:wght@300;400;500;600;700;800;900&display=swap')
+	;
 
+/* Variables */
+:root { 
+	--color: #e02f6b; 
+	--blue: #0000ff; 
+	--blue-dark: #18293c; 
+	--orange: #ffa500; 
+	--green-yellow: #cddc39; 
+	--pink-light: #efa2b4; 
+	--cyan-light: #aef1ee; 
+	--white: #ffffff; 
+	--white-alpha-40: rgba(255, 255, 255, 0.40); 
+	--white-alpha-25: rgba(255, 255, 255, 0.25); 
+	--backdrop-filter-blur: blur(5px);
+	--main:ffb130;
+}
+
+/* Global Settings */
 * {
-    margin: 0;
-    padding: 0;    
-    font-family: 'IBMPlexSansKR-Regular';
-    box-sizing: border-box;
-}
-/*
-    align-items: center;
-    justify-content: center;
-*/
-
-.main{
-    /* background: #f6f6f6; */
-    /* background: #d7d7d7; */
-    
-}
-.sidebar {
-    position: absolute;
-    left: 0;
-    width: 300px;
-    height: 100%;
-    background: #212529;
-    padding-top: 30px;
-}
-
-/* 사이드바 타이틀 */
-.sidebar_inner h1{
+	margin: 0;
+	padding: 0;
 	font-family: 'IBMPlexSansKR-Regular';
-    font-size: 22px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 70px;
-    background: #212529;
-    user-select: none;
-    padding-left: 40px;
+	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+}
+
+/*-----------------------------------------------------------------------------*/
+/* 21-06-18 dababy Admin main page - div 정리, Design 변경(사이드바, mini header, Notification 추가) */
+
+/* Main Div Box */
+.main {
+	width: 100%;
+	height: 100vh;
+	background : lightblue;
+	overflow: hidden;
+}
+
+/* 배경 이미지 */
+.bgImg {
+	position: absolute;
+	top: 250px;
+	left: 100px;
+	height: 600px;
+	animation: bounce 8s linear infinite;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+/* 사이드바 */
+.sidebar {
+	position: absolute;
+	left: 0;
+	width: 70px;
+	height: 100%;
+	background: #fff;
+	padding-top: 100px;
+}
 /* 사이드바 메뉴 */
 .sidebar ul li {
-    list-style: none;
+	list-style: none;
+	text-align: center;
 }
 
 .sidebar ul li a {
-    color: #fff;
-    font-size: 16px;
-
-    display: block;
-    height: 100%;
-    width: 100%;
-    line-height: 65px;
-    padding-left: 40px;
-    box-sizing: border-box;
+	color: #333;
+	font-size: 22px;
+	display: block;
+	line-height: 65px;
 }
 
-.sidebar ul li:hover a {
-    padding-left: 50px;
-    /* background: #ffcc77; */
-    text-decoration: none;
-} 
-.sidebar ul li.active a {
-    padding-left: 50px;
-    /* background: #ffcc77; */
-    text-decoration: none;
-} 
-.sidebar ul li a i {
-    margin-right: 16px;
+.sidebar ul li:hover a, .sidebar ul li.active a {
+	background: lightblue;
+	color:#ffb130;
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+	text-decoration: none;
+	margin-left:3px;
 }
 
+/*-----------------------------------------------------------------------------*/
 
+/* Admin Page Navigation */
+.admin_navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	transform: translateY(-10px);
+	padding: 12px 12px;
+}
 
+.admin_nav_logo {
+	font-size: 20px;
+	color: orange;
+}
 
+.admin_nav_logo a {
+	font-size: 20px;
+	color: #ffb130;
+}
 
-/* Dashboard */
+#adminSearchBar {
+	width: 300px;
+	height:35px;
+	border-radius: 30px;
+	transform: translateX(-160px);
+}
+
+.admin_icons {
+	display: flex;
+	list-style: none;
+	padding-left: 0;
+	text-align: center;
+	margin: 0;
+}
+
+.admin_icons li {
+	padding: 8px 12px;
+}
+
+.adminProfile_mini {
+	width: 30px;
+	height: 30px;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+/* Dashboard Div Box */
 .dashboard {
-    position: relative;
-    display: grid;
-    left: 350px;
-}
-.dashboard-sec{
-    margin: 30px;
-}
-.dashboard_title h1,
-.dashboard_title h4 {
-    color: #212529;
+	position: absolute;
+	display: grid;
+	left: 380px;
+	background: transparent;
 }
 
+.dashboard-sec {
+	margin: 5px;
+}
+
+.dashboard_title h1, .dashboard_title h4 {
+	color: #212529;
+}
 
 /* 대시보드 내용 */
 .dashboard_content {
-    width: 1000px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+	width: 1000px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 }
 
-.dashboard_content div{
-    margin: 15px;
+.dashboard_content div {
+	margin: 15px;
 }
 
-
-
-/* 공지사항 */
-.notice{
-    width: 600px;
-    height: 400px;
-    /* background: #fff7e1; */
-    border-radius: 30px;
-    overflow: hidden;  
-}
-.notice_content {
-    display: flex;
-    justify-content: space-between;
-}
-.notice_content img{
-    width: 300px;
-    bottom: 0;
-    transform: translate(-25px, 85px);
+/* Overview, Total Sales, Notice를 감싸는 Div 박스 */
+.DashContent {
+	display: flex;
 }
 
+/*-----------------------------------------------------------------------------*/
 
+/* 왼쪽 구역 : Overview, Total Sales */
+.leftDiv {
+	margin-top:10px;
+}
 
+/* Overview title */
+#items_title {
+	color:#ffb130;
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-left: 20px;
+}
 
-/* 판매 현황 */ 
+/* Sales Report Div Box */
 .report {
-    display: grid;
-    width: 600px;
-    height: 400px;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    justify-items: center;
+	display: grid;
+	width: 900px;
+	height: 200px;
+	grid-template-columns: repeat(3, 1fr);
+	align-items: center;
+	justify-items: center;
 }
 
 .report div {
-    width: 270px;
-    height: 170px;
-    border-radius: 30px;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+	width: 300px;
+	height: 170px;
+	border-radius: 30px;
+	align-items: center;
+	justify-content: center;
+	margin-right: 10px;
+	overflow:hidden;
 }
-.report div p,
+
+#report1, #report2, #report3 {
+	width:250px;
+	height:120px;
+	transform: translate(98px,-50px);
+	overflow:hidden;
+}
+
 .report div h4 {
-    transform: translateY(40px);
-}
-.report1,.report2,.report3,.report4 {
-    /* background: #fff1b9; */
-    /* background: #fff1b9; */
-    box-shadow : 2px 2px 5px gray;
-
-}
-.report1:hover,.report2:hover,.report3:hover,.report4:hover {
-    /* background: #fff1b9; */
-    /* background: #fff1b9; */
-    box-shadow : -2px -2px -5px white;
-    background: rgb(146, 146, 146);
-    color:white;
-    transition: all 0.5s;
-
+	font-size: 18px;
+	font-weight: bold;
+	margin:5px;
 }
 
-/* 
-#f8ecc9
-#fff1b9
-#ffd26f 
-#fbd14b
-#f9d423
+.report div p {
+	font-size: 16px;
+	font-weight: bold;
+	color: rgba(51, 51, 51, 0.5);
+	margin-top:10px;
+}
+
+
+.report div p, .report div h4 {
+	transform: translate(20px,20px);
+}
+
+
+/*
+.report1 {
+	background : linear-gradient(to top right, #ffee00, orange);
+}
 */
 
-
-
-/* 차트 */
-
-.order_chart {
-    width: 600px;
-    height: 800px;
-    background: #fff;
-    border-radius: 30px;
-    overflow: hidden;  
+.report1, .report2, .report3, .report4 {
+	background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
 }
 
-.sales_chart {
-    width: 600px;
-    height: 800px;
-    background: #fff;
-    border-radius: 30px;
-    overflow: hidden;  
+.report1:hover, .report2:hover, .report3:hover, .report4:hover {
+	box-shadow: -2px -2px -5px white;
+	background : linear-gradient(to bottom right, #FFBC42, #ffee00 );
+	color: #333;
+	transition: all 0.5s;
+}
+
+/* Report Chart*/
+
+/**/
+
+/*-----------------------------------------------------------------------------*/
+
+/* 차트 */
+.order_chart {
+	width: 920px;
+	height: 300px;
+	border-radius: 30px;
+	overflow: hidden;
+	/* background: #fffff5; */
+	background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
 }
 
 .content {
-    align-items: center;
-    justify-content: center;
-    transform: translate(10px, 10px);
+	align-items: center;
+	justify-content: center;
+	transform: translate(10px, 10px);
 }
 
-.chart-sec {
-    width: 520px;
-    height: 600px;
-    background: #fff;
+@keyframes bounce { 
+	0%, 100% {
+	transform: translateY(-20px);
+	}
+	50% {
+	transform : translateY(20px);
+	}
 }
-.chart-sec img {
-    width: 100%;
+
+/* Bottom Div Box */
+.bottomDiv {
+	display: grid;
+	width: 900px;
+	height: 200px;
+}
+
+.bottomDiv div {
+	border-radius: 30px;
+}
+
+/* best Seller Box */
+.bestSeller {
+	width: 300px;
+	height: 200px;
+	grid-row: 1/4;
+	margin-left: 10px;
+	margin-right: 15px;
+	overflow: hidden;
+		background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+}
+
+/* image slider */
+.img-slider {
+	position: relative;
+	width: 300px;
+	height: 200px;
+	/* margin: 10px; */
+		background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+}
+
+.img-slider .slide {
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	clip-path: circle(0% at 0 50%);
+}
+
+.img-slider .slide.active {
+	transition: 3s;
+	clip-path: circle(200% at 0%);
+	transition-property: clip-path;
+}
+
+.img-slider .slide img {
+	z-index: 1;
+	width: 100%;
+	border-radius: 5px;
+	/* object-fit: center; */
+	object-position: center;
+}
+
+.img-slider .slide .info {
+	position: absolute;
+	top: 0;
+	padding: 15px 30px;
+}
+
+.img-slider .slide .info h2 {
+	color: #fff;
+	font-size: 45px;
+	text-transform: uppercase;
+	font-weight: 800;
+	letter-spacing: 2px;
+}
+
+.img-slider .slide .info p {
+	color: #fff;
+	background: rgba(0, 0, 0, 0.1);
+	font-size: 16px;
+	width: 60%;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.img-slider .slide_navigation {
+	z-index: 2;
+	position: absolute;
+	display: flex;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	background: transparent;
+}
+
+.img-slider .slide_navigation .slideBtn {
+	background: rgba(255, 255, 255, 0.5);
+	width: 12px;
+	height: 12px;
+	margin: 10px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.img-slider .slide_navigation .slideBtn.active {
+	background: #2696E9;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.trendReport {
+	width: 580px;
+	height: 200px;
+	grid-row: 1/3;
+	margin-left: 15px;
+		background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+}
+
+/*-----------------------------------------------------------------------------*/
+/* 오른쪽 구역 :  Notification, Calendar */
+.rightDiv {
+	margin-left: 40px;
+	margin-top:10px;
+}
+
+/* Notification Title (우측 알림창)*/
+.notice {
+	width: 300px;
+	height: 550px;
+	border-radius: 30px;
+	overflow: hidden;
+		background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+	margin-top:10px;
+	
+}
+
+.notifi_wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.adminProfile {
+	width: 100px;
+	height: 100px;
+	margin-top: 20px;
+}
+
+.adminName {
+	font-size: 28px;
+	font-weight: bold;
+	/* text-align:center; */
+	margin-top: 8px;
+	margin-left: 12px;
+}
+
+.adminIcons {
+	list-style: none;
+	display: flex;
+}
+.notification ul li:hover i {
+	color:#FFBC42;
+}
+
+.adminIcons i {
+	font-size: 22px;
+	margin-right: 15px;
+}
+
+/* Message Div Box */
+#recentMsg {
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.messageBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.message {
+	width: 270px;
+	height: 60px;
+	/* background: #FFBC42; */
+	background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+	border-radius : 10px;
+	padding: 8px;
+	margin-top: 8px;
+	border-radius: 10px;
+}
+
+.message:hover {
+	box-shadow: -2px -2px -5px white;
+	/* background : linear-gradient(to top right, #ffee00, orange); */
+	background : linear-gradient(to bottom right, #333, #555); 
+	color: #FFBC42;
+	transition: all 1s;
+}
+
+.message:nth-child(1) {
+	animation: fadeIn 3s;
+}
+
+.message:nth-child(2) {
+	animation: fadeIn 5s;
+}
+
+.message:nth-child(3) {
+	animation: fadeIn 7s;
+}
+
+
+.message h5 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.message p {
+	font-size: 12px;
+}
+
+@keyframes fadeIn { 
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity : 1;
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+/* Calendar */
+#calendarForm {
+	margin-top: 10px;
+	margin-left:7px;
+}
+
+#calendarForm p {
+	margin-bottom: 0;
+}
+
+.custom_calendar_table td {
+	text-align: center;
+	font-size: 16px;
+}
+
+.custom_calendar_table th {
+	text-align: center;
+	font-size: 16px;
+	color:#ffb130;
+}
+
+.custom_calendar_table thead.cal_date th {
+	font-size: 20px;
+}
+
+.custom_calendar_table thead.cal_date th button {
+	font-size: 20px;
+	background: none;
+	border: none;
+}
+
+.custom_calendar_table thead.cal_week th {
+	background-color: #ffb130;
+	color: #111;
+}
+
+.custom_calendar_table tbody td {
+	cursor: pointer;
+	color:#111;
+}
+
+.custom_calendar_table tbody td:nth-child(1) {
+	color: red;
+}
+
+.custom_calendar_table tbody td:nth-child(7) {
+	color: #30A9DE;
+}
+
+.custom_calendar_table tbody td.select_day {
+	background-color: #ffb130;
+	color: #333;
+}
+
+
+/*---------------------------------------------------------*/
+
+/* Member Page */
+.memberSearchDiv {
+	width:1000px;
+	height:800px;
+}
+
+
+/* insert Message */
+
+/* 메세지 전송 모달창 */
+.insertMessage {
+    position: absolute;
+    width: 250px;
+    height:500px;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px gray;
+    padding: 30px;
+    background-color : var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+    right: 50px;
+    bottom: 200px;
+    visibility: hidden;
+}
+
+.insertMessage.active {
+    visibility: visible;
+}
+
+.messageForm {
+    margin-bottom: 30px;
+}
+
+.messageForm div {
+    margin-top: 20px;
+}
+
+#messageTitle {
+	font-size : 20px;
+	font-weight: bold;
+}
+
+.messageContent {
+    resize: none;
+    width: 200px;
+    height: 300px;
     
+    border-radius:10px;
+    border:none;
 }

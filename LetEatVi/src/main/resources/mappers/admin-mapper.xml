@@ -1,44 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="admin-mapper">
-	
-	
-		<!-- 상품 전체 조회 -->
-	<select id="searchProductAll" parameterType="string" resultType="AdminProduct">
-		SELECT PID, C.CID, PNAME, PPRICE, PINFO, PSTOCK, PENROLL, PSELL, C.CNAME
+
+
+	<!-- 상품 전체 조회 -->
+	<select id="searchProductAll" parameterType="string"
+		resultType="AdminProduct">
+		SELECT PID, C.CID, PNAME, PPRICE, PINFO, PSTOCK, PENROLL,
+		PSELL, C.CNAME
 		FROM PRODUCT P, CATEGORY C
 		WHERE P.CID = C.CID
 	</select>
-	
-	
-	
+
+
+
 	<!-- 상품 조회 -->
-	<select id="searchProduct" parameterType="string" resultType="AdminProduct">
-		SELECT PID, C.CID, PNAME, PPRICE, PINFO, PSTOCK, PENROLL, PSELL, C.CNAME
+	<select id="searchProduct" parameterType="string"
+		resultType="AdminProduct">
+		SELECT PID, C.CID, PNAME, PPRICE, PINFO, PSTOCK, PENROLL,
+		PSELL, C.CNAME
 		FROM PRODUCT P, CATEGORY C
 		WHERE P.CID = C.CID
-		AND PNAME = #{ pname }
+		AND PNAME =
+		#{ pname }
 	</select>
-	
+
 	<!-- 상품 등록 -->
-	<insert id="insertProduct" parameterType="AdminProduct" >
-		INSERT INTO PRODUCT 
-		VALUES (SEQ_PID.NEXTVAL, #{cid}, #{pname}, #{pprice}, #{pinfo}, #{pstock}, SYSDATE, 0)
+	<insert id="insertProduct" parameterType="AdminProduct">
+		INSERT
+		INTO PRODUCT
+		VALUES (SEQ_PID.NEXTVAL, #{cid}, #{pname}, #{pprice}, #{pinfo},
+		#{pstock},
+		SYSDATE, 0)
 	</insert>
 	
-	
-			<!-- 회원 전체 조회 -->
-	<select id="searchMemberAll" parameterType="string" resultType="Member">
+	<!-- 21/06/21 추가 -->
+	<!-- 상품 삭제 -->
+	<delete id="deleteProduct" parameterType="_int">
+	DELETE FROM PRODUCT 
+	WHERE PID = #{pid}
+	</delete>
+
+
+
+
+	<!-- 회원 전체 조회 -->
+	<select id="searchMemberAll" parameterType="string"
+		resultType="Member">
 		SELECT USERID, USERNAME, GENDER, AGE
 		FROM MEMBER
 	</select>
-	
+
 	<!-- 회원 조회 -->
-		<select id="searchMember" parameterType="string" resultType="Member">
+	<select id="searchMember" parameterType="string"
+		resultType="Member">
 		SELECT USERID, USERNAME, GENDER, AGE
 		FROM MEMBER
-		WHERE USERID = #{userId}
+		WHERE USERID
+		= #{userId}
 	</select>
+	
+	<!-- 21/06/21 추가 -->
+	<!-- 회원 삭제 -->
+	<delete id="deleteMember" parameterType="string">
+	DELETE FROM MEMBER 
+	WHERE USERID = #{userId}
+	</delete>
+
+
+
+
+	<!-- 21/06/21 추가 관리자페이지 메인 데이터 -->
+
+	<!-- 상품 판매 현황 데이터 -->
+	<select id="selectSellData" resultType="SalesChart">
+		SELECT TO_CHAR(PENROLL,
+		'MM') AS SALESDATE, SUM(PSELL) AS QUANTITY
+		FROM PRODUCT
+		GROUP BY
+		TO_CHAR(PENROLL, 'MM')
+		ORDER BY SALESDATE
+	</select>
+
+	<!-- TOTAL INCOME -->
+	<select id="selectTotalIncome" resultType="string">
+		SELECT SUM(PPRICE*PSELL) AS TOTALINCOME
+		FROM PRODUCT
+	</select>
+
+	<!-- TOTAL INCOME -->
+	<select id="selectTotalSell" resultType="string">
+		SELECT SUM(PSELL) AS TOTALSELL
+		FROM PRODUCT
+	</select>
+
+	<!-- TOTAL MEMBER -->
+	<select id="selectTotalMember" resultType="string">
+		SELECT COUNT(*) AS TOTALMEMBER
+		FROM MEMBER
+	</select>
+	
+	
+	
+	
+		<!-- DAY INCOME -->
+	<select id="selectDayIncome" parameterType="string" resultType="string">
+		SELECT SUM(PPRICE*PSELL) AS TOTALINCOME
+		FROM PRODUCT
+		WHERE PENROLL = #{date}
+	</select>
+
+	<!-- DAY INCOME -->
+	<select id="selectDaySell" parameterType="string" resultType="string">
+		SELECT SUM(PSELL) AS TOTALSELL
+		FROM PRODUCT
+		WHERE PENROLL = #{date}
+	</select>
+
+	<!-- DAY MEMBER -->
+	<select id="selectDayMember" parameterType="string" resultType="string">
+		SELECT COUNT(*) AS TOTALMEMBER
+		FROM MEMBER
+		WHERE ENROLLDATE = #{date}
+	</select>
+	
+	
+	
+	
+	
+	<!-- Send Message -->
+	<insert id="insertMessage" parameterType="Message">
+		INSERT
+		INTO MESSAGE
+		VALUES (SEQ_MESSAGEID.NEXTVAL, #{userId}, #{message}, 'N')
+	</insert>
+	
+	<!-- Select Message -->
+		<select id="selectMessage" resultType="Message">
+		SELECT USERID, MESSAGE 
+		FROM MESSAGE 
+		WHERE STATUS = 'N'
+	</select>
+	
 	
 
 </mapper>

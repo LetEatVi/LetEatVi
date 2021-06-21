@@ -1,224 +1,759 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 <!DOCTYPE html>
 <html>
 <head th:fragment="head">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
-    <title>Hello, world!</title>
-    <!-- CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/admin/adminMain.css" rel="stylesheet">
-    <!-- FONT AWSOME -->
-    <script src="https://kit.fontawesome.com/2004329f9f.js"
-            crossorigin="anonymous"></script>
-    <!-- BOOTSTRAP CDN v4.6.0 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrinkto-fit=no">
+<title>Hello, world!</title>
 
+<!-- Apex Chart-->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- JQeury CDN -->
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>
+<!-- JS -->
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/adminMain.js"></script>
+
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/jspdf.min.js"></script>
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/html2canvas.js"></script>
+
+<!-- CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/admin/adminMain.css"
+	rel="stylesheet">
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/admin/adminMember.css"
+	rel="stylesheet">
+<!-- FONT AWSOME -->
+<script src="https://kit.fontawesome.com/2004329f9f.js"
+	crossorigin="anonymous"></script>
+<!-- BOOTSTRAP CDN v4.6.0 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+	integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+	crossorigin="anonymous"></script>
+
+
+<!-- font url -->
+<style>
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'IBMPlexSansKR-Regular';
+}
+</style>
 <body>
 
 
-<div class="main">
+	<div class="main" id="pdfDiv">
 
-<!-- ªÁ¿ÃµÂπŸ Ω√¿€ -->
-<div class="sidebar">
-    <div class="sidebar_inner">
-        <!-- ªÁ¿ÃµÂπŸ ≈∏¿Ã∆≤ -->
+		<div class="wrapper">
 
-            <h1>∑ø¿’∫Ò ¥ÎΩ√∫∏µÂ</h1>
 
-    
-        <!-- ªÁ¿ÃµÂπŸ ∏ﬁ¥∫ -->
-        <ul class="sidebar_menu">
-            <li class="active"><a href="${pageContext.request.contextPath}/admin/adminMain.do" ><i class="fas fa-chart-bar"></i>¬˜∆Æ ∫∏±‚</a></li>
-            <li><a href="#" ><i class="fas fa-database"></i>ªÛ«∞ µÓ∑œ</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/adminProduct.do" ><i class="fas fa-boxes"></i>¿Á∞Ì ∞¸∏Æ</a></li>
-            <li><a href="#" ><i class="fas fa-file-invoice-dollar"></i>∏≈√‚ ∞¸∏Æ</a></li>
-            <li><a href="${pageContext.request.contextPath}/admin/adminMember.do" ><i class="fas fa-user-friends"></i>»∏ø¯ ∞¸∏Æ</a></li>
-            <li><a href="#" ><i class="fas fa-cogs"></i>ªÁ¿Ã∆Æ ∞¸∏Æ</a></li>
-            <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£1</a></li>
-            <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£2</a></li>
-            <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£3</a></li>
-        </ul>
-    </div>
-    </div>
-    <!-- ªÁ¿ÃµÂπŸ ≥° -->
 
-   
-<!--------------------------------------------------------------------->
+			<!-- background image -->
+			<img
+				src="${pageContext.request.contextPath}/resources/images/admin/bg-1.png"
+				alt="" class="bgImg">
 
-<!-- ¥ÎΩ√∫∏µÂ Ω√¿€ -->
-<section class="dashboard">
+			<!-- ÏÇ¨Ïù¥ÎìúÎ∞î ÏãúÏûë -->
+			<div class="sidebar">
+				<div class="sidebar_inner">
 
-    <div class="dashboard-sec">
-    
-    
-   <ul>
-	<li onclick="kakaoLogin();">
-      <a href="javascript:void(0)">
-          <span>ƒ´ƒ´ø¿ ∑Œ±◊¿Œ</span>
-      </a>
-	</li>
-	<li onclick="kakaoLogout();">
-      <a href="javascript:void(0)">
-          <span>ƒ´ƒ´ø¿ ∑Œ±◊æ∆øÙ</span>
-      </a>
-	</li>
-</ul>
-<!-- ƒ´ƒ´ø¿ Ω∫≈©∏≥∆Æ -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script>
-Kakao.init('64f4b1b5b189312715a86bfd4423345d'); //πﬂ±ﬁπﬁ¿∫ ≈∞ ¡ﬂ javascript≈∞∏¶ ªÁøÎ«ÿ¡ÿ¥Ÿ.
-console.log(Kakao.isInitialized()); // sdk√ ±‚»≠ø©∫Œ∆«¥‹
-//ƒ´ƒ´ø¿∑Œ±◊¿Œ
-function kakaoLogin() {
-    Kakao.Auth.login({
-      success: function (response) {
-        Kakao.API.request({
-          url: '/v2/user/me',
-          success: function (response) {
-        	  console.log(response)
-          },
-          fail: function (error) {
-            console.log(error)
-          },
-        })
-      },
-      fail: function (error) {
-        console.log(error)
-      },
-    })
-  }
-//ƒ´ƒ´ø¿∑Œ±◊æ∆øÙ  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
+					<!-- ÏÇ¨Ïù¥ÎìúÎ∞î Î©îÎâ¥ -->
+					<ul class="sidebar_menu">
+						<li class="active"><a
+							href="${pageContext.request.contextPath}/admin/adminMain.do"><i
+								class="fas fa-chart-bar"></i></a></li>
+						<li><a href="#"><i class="fas fa-database"></i></a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/adminProduct.do"><i
+								class="fas fa-boxes"></i></a></li>
+						<li><a href="#"><i class="fas fa-file-invoice-dollar"></i></a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/adminMember.do"><i
+								class="fas fa-user-friends"></i></a></li>
+						<li><a href="#"><i class="fas fa-cogs"></i></a></li>
+						<li><a href="#"><i class="fas fa-wrench"></i></a></li>
+						<li><a href="#"><i class="fas fa-wrench"></i></a></li>
+						<li><a href="#"><i class="fas fa-wrench"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- ÏÇ¨Ïù¥ÎìúÎ∞î ÎÅù -->
+
+
+			<!--------------------------------------------------------------------->
+
+
+			<!-- ÎåÄÏãúÎ≥¥Îìú ÏãúÏûë -->
+			<div class="dashboard">
+
+				<div class="dashboard-sec">
+
+
+					<!-- -------------------- Admin Navigation Start------------------------ 
+					<nav class="admin_navbar">
+						<div class="admin_nav_logo">
+							<i class="fas fa-lemon"></i> <a href="">Lea Eat Vi</a>
+						</div>
+
+
+						<input type="text" class="form-control form-control-sm"
+							id="adminSearchBar" style=""/>
+
+
+						<ul class="admin_icons">
+							<li><i class="far fa-envelope"></i></li>
+							<li><i class="far fa-bell"></i></li>
+							<li><img
+								src="${pageContext.request.contextPath}/resources/images/admin/profile.png"
+								alt="" class="adminProfile_mini" /></li>
+						</ul>
+
+					</nav>-->
+					<!-- -------------------- Admin Navigation End------------------------ -->
+
+
+
+
+					<!-- -------------------- Dashboard Start------------------------ -->
+					<div class="DashContent">
+
+
+
+						<!-- ------------------------Left Section Start--------------------------- 
+						(Overview, Chart, Best Seller, Trend Report)-------------------------------------->
+						<div class="leftDiv">
+
+							<h1 id="items_title">OVERVIEW</h1>
+
+							<!-- -------------------- Overview Start------------------------ -->
+							<div class="report">
+
+								<!-- ÌåêÎß§ Í∏àÏï° -->
+								<div class="report1">
+									<p>TOTAL INCOME</p>
+									<h4>${totalIncome}Ïõê</h4>
+
+
+									<canvas id="report1"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+									<script>
+										var ctx = document
+												.getElementById('report1');
+										var report1 = new Chart(
+												ctx,
+												{
+													type : 'doughnut',
+													data : {
+														datasets : [ {
+															label : ['totalincome','goal'],
+															data : [${totalIncome}, '9999999'],
+															
+																backgroundColor : [
+															'#1ec0ff',
+																'rgba(255, 255, 255, 1)'
+																
+																],
+																borderColor : ['none','none']
+														} ]
+													},
+													options : {
+														cutoutPercentage: 85,
+														responsive : false,
+														scales : {
+															yAxes : [ {
+																display : false,
+															} ]
+														},
+													}
+													     
+												});
+									</script>
+
+
+
+
+								</div>
+
+								<!-- ÌåêÎß§ Í∞úÏàò -->
+								<div class="report2">
+									<p>TOTAL SELLING</p>
+									<h4>${totalSell}Í∞ú</h4>
+									<canvas id="report2"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+									<script>
+										var ctx = document
+												.getElementById('report2');
+										var report2 = new Chart(
+												ctx,
+												{
+													type : 'doughnut',
+													data : {
+														datasets : [ {
+															label : ['totalincome','goal'],
+															data : [${totalSell}, '999'],
+															backgroundColor : [
+																'#fe4365',
+																	'rgba(255, 255, 255, 1)'
+																	
+																	],
+																	borderColor : ['none','none']
+															} ]
+														},
+													options : {
+														cutoutPercentage: 85,
+														responsive : false,
+														scales : {
+															yAxes : [ {
+																display : false,
+															} ]
+														},
+													}
+												});
+									</script>
+								</div>
+
+								<!-- ÌöåÏõê Ïàò -->
+								<div class="report3">
+									<p>TOTAL MEMBER</p>
+									<h4>${totalMember}Î™Ö</h4>
+									<canvas id="report3"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+									<script>
+										var ctx = document
+												.getElementById('report3');
+										var report3 = new Chart(
+												ctx,
+												{
+													type : 'doughnut',
+													data : {
+														datasets : [ {
+															label : ['totalincome','goal'],
+															data : [${totalMember}, '99'],
+															backgroundColor : [
+																'#f9d423',
+																	'rgba(255, 255, 255, 1)'
+																	
+																	],
+																	borderColor : ['none','none']
+															} ]
+														},
+													options : {
+														cutoutPercentage: 85,
+														responsive : false,
+														scales : {
+															yAxes : [ {
+																display : false,
+															} ]
+															
+														},
+													}
+												});
+									</script>
+									</script>
+								</div>
+
+
+							</div>
+							<!-- -------------------- Overview End------------------------ -->
+
+
+
+							<!-- -------------------- Chart Start------------------------ -->
+							<h1 id="items_title">TOTAL SALES</h1>
+							<!-- ÎåÄÏãúÎ≥¥Îìú Ï∞®Ìä∏ ÏãúÏûë -->
+							<div class="order_chart">
+								<div class="content">
+									<canvas id="myChart" width="930" height="270"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+									<script>
+										var ctx = document
+												.getElementById('myChart');
+										var myChart = new Chart(
+												ctx,
+												{
+													type : 'line',
+													data : {
+														labels : [ '1Ïõî',
+																'2Ïõî',
+																'3Ïõî',
+																'4Ïõî',
+																'5Ïõî',
+																'6Ïõî',
+																'7Ïõî',
+																'8Ïõî',
+																'9Ïõî',
+																'10Ïõî',
+																'11Ïõî',
+																'12Ïõî'],
+														datasets : [ {
+															label : [${totalSales.get(0).salesdate},${totalSales.get(1).salesdate},${totalSales.get(2).salesdate},
+																${totalSales.get(3).salesdate},${totalSales.get(4).salesdate}],
+															data : [${totalSales.get(0).quantity},${totalSales.get(1).quantity},${totalSales.get(2).quantity},
+																${totalSales.get(3).quantity},${totalSales.get(4).quantity}],
+															backgroundColor : [
+																	'rgba(255, 99, 132, 0.2)',
+																	'rgba(54, 162, 235, 0.2)',
+																	'rgba(255, 206, 86, 0.2)',
+																	'rgba(75, 192, 192, 0.2)',
+																	'rgba(153, 102, 255, 0.2)',
+																	'rgba(255, 159, 64, 0.2)' ],
+															borderColor : [
+																	'rgba(255, 99, 132, 1)',
+																	'rgba(54, 162, 235, 1)',
+																	'rgba(255, 206, 86, 1)',
+																	'rgba(75, 192, 192, 1)',
+																	'rgba(153, 102, 255, 1)',
+																	'rgba(255, 159, 64, 1)' ],
+															borderWidth : 2
+														} ]
+													},
+													options : {
+														responsive : false,
+														scales : {
+															yAxes : [ {
+																ticks : {
+																	beginAtZero : true
+																},
+															 }]
+															
+														},
+													}
+												});
+									</script>
+								</div>
+							</div>
+							<!-- -------------------- Chart End------------------------ -->
+
+
+							<h4 id="items_title" style="margin-top: 15px;">TREND REPORT</h4>
+							<!-- -------------------- Bottom Div Box Start------------------------ -->
+							<div class="bottomDiv">
+
+								<!-- Best Seller Div Box Start -->
+								<div class="bestSeller">
+
+
+									<!-- imgae slider Start -->
+									<div class="img-slider">
+										<div class="slide">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/product_1.PNG"
+												alt="" />
+										</div>
+
+										<div class="slide">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/product_2.jpg"
+												alt="" />
+										</div>
+
+										<div class="slide">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/product_3.jpg"
+												alt="" />
+										</div>
+
+										<div class="slide">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/product_4.jpg"
+												alt="" />
+										</div>
+
+										<div class="slide">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/product_5.jpg"
+												alt="" />
+										</div>
+
+										<div class="slide_navigation">
+											<div class="slideBtn active"></div>
+											<div class="slideBtn"></div>
+											<div class="slideBtn"></div>
+											<div class="slideBtn"></div>
+											<div class="slideBtn"></div>
+										</div>
+
+									</div>
+									<!-- imgae slider End -->
+									<!-- slider Script -->
+									<script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.slideBtn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
     }
-  }  
-</script>
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 3000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+									<!-- slider Script End -->
+								</div>
+								<!-- Best Seller Div Box End -->
 
 
-    <!-- ¥ÎΩ√∫∏µÂ ≈∏¿Ã∆≤-->
-    <div class="dashboard_title">
-        <h1>Let Eat Vi, ∑ø ¿’ ∫Ò!</h1>
-        <h4>æ»≥Á«œººø‰, ∞¸∏Æ¿⁄¥‘</h4>
-    </div>
-    <!-- // ¥ÎΩ√∫∏µÂ ≈∏¿Ã∆≤ -->
+								<!-- Trend Report Chart Start  -->
+								<div class="trendReport">
+									<canvas id="trendChart" width="560" height="170"></canvas>
+									<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+									<script>
+										var ctx = document
+												.getElementById('trendChart');
+										var trendChart = new Chart(
+												ctx,
+												{
+													type: 'bar',
+													data : {
+														labels : [ 'ÏÉÅÌíà1', 'ÏÉÅÌíà2', 'ÏÉÅÌíà3' ],
+														datasets : [ {
+															label : [${totalSales.get(0).salesdate},${totalSales.get(1).salesdate},${totalSales.get(2).salesdate}],
+															data : [${totalSales.get(0).quantity},${totalSales.get(1).quantity},${totalSales.get(2).quantity}],
+															backgroundColor : [
+																	'rgba(255, 99, 132, 0.8)',
+																	'rgba(54, 162, 235, 0.8)',
+																	'rgba(255, 206, 86, 0.8)', ],
+														} ]
+													},
+													options : {
+														responsive : false,
+														scales : {
+															yAxes : [ {
+																ticks : {
+																	beginAtZero : true
+																}
+															} ]
+														},
+													}
+												});
+									</script>
+								</div>
+								<!-- Trend Report Chart End  -->
+							</div>
+							<!-- -------------------- Bottom Div Box End------------------------ -->
 
-    <!-- ¥ÎΩ√∫∏µÂ ≥ªøÎ -->
-    <div class="dashboard_content">
-    <!-- ¥ÎΩ√∫∏µÂ ∞¯¡ˆªÁ«◊ -->
-    <div class="notice">
-        
-        <div class="notice_content">
-        <img src="images/admin.png" alt="">
-        <div class="notice-text">
-        <h1> ∑ø¿’∫Ò </h1>
-        <p> ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. 
-            ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. 
-            ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. ∞¯¡ˆ∞° µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. 
-        </p>
-        </div>
-        </div>
-
-    </div>
-    <!-- // ¥ÎΩ√∫∏µÂ ∞¯¡ˆªÁ«◊ -->
+						</div>
+						<!-- -------------------------Left Section End---------------------------- -->
 
 
-    <!-- ¥ÎΩ√∫∏µÂ ¡÷ø‰ «ˆ»≤ -->
-    <div class="report">
+						<!-- ------------------------Right Section Start--------------------------- 
+						(Notification, Calendar)-------------------------------------->
+						<div class="rightDiv">
 
-        <!-- ∆«∏≈ ±›æ◊ -->
-        <div class="report1">
-  
-            <p> ø¿¥√±Ó¡ˆ ∑ø¿’∫Ò∞° ∆«∏≈«— √— ±›æ◊¿∫</p>
-            <h4> 100,000,000 ø¯</h4>
 
-        </div> 
 
-        <!-- ∆«∏≈ ∞≥ºˆ -->
-        <div class="report2">
+							<h1 id="items_title" style="margin-left: 15px;">NOTIFICATION</h1>
+							<!-- -------------------------Notification Div Box Start ---------------------------- -->
+							<div class="notice">
+								<div class="notice_content">
 
-            <p> ø¿¥√±Ó¡ˆ ∑ø¿’∫Ò∞° ∆«∏≈«— ªÛ«∞ ∞≥ºˆ¥¬</p>
-            <h4> 300,000 ∞≥</h4>
 
-        </div> 
+									<!-- -------------------------Notification Title Start---------------------------- -->
+									<div class="notifi_wrapper">
+										<div class="notification">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/admin/profile.png"
+												alt="" class="adminProfile">
+											<h4 class="adminName">ÎÖ∏Îã§ÎπÑ</h4>
 
-        <!-- »∏ø¯ ºˆ -->
-        <div class="report3">
+											<ul class="adminIcons">
+												<li><a herf="#"><i class="far fa-envelope"
+														id="message"></i></a></li>
+												<li><a herf="#"><i class="fas fa-bell"
+														></i></a></li>
+												<li><a herf="#"><i class="fas fa-cog"
+														id="selectMessage"></i></a></li>
+											</ul>
+										</div>
+									</div>
+									<!-- -------------------------Notification Title End---------------------------- -->
 
-            <p> ø¿¥√±Ó¡ˆ ∑ø¿’∫Òø° ∞°¿‘«— »∏ø¯ ºˆ¥¬</p>
-            <h4> 123,456,789 ∏Ì </h4>
+									<!-- -------------------------Message Div Box Start---------------------------- -->
+									<h4 id="recentMsg">RECENT MESSAGE</h4>
+									<div class="messageBox">
 
-        </div>
-        
-        <!-- ∏Æ∫‰ ∞≥ºˆ -->
-        <div class="report4">
+										<!-- Message From User Div Box Start -->
+										<c:forEach items="${message}" var="ms">
+											<div class="message">
+												<h5>${ms.userId}</h5>
+												<p>${ms.message}</p>
+											</div>
+										</c:forEach>
+										<!-- Message From User Div Box End -->
 
-            <p> ø¿¥√±Ó¡ˆ ∑ø¿’∫Òø° æ≤¿Œ ∏Æ∫‰ ∞≥ºˆ¥¬</p>
-            <h4> 123,456,789 ∞≥</h4>
+									</div>
+									<!-- -------------------------Message Div Box End---------------------------- -->
 
-        </div> 
-    </div>
-    <!-- // ¥ÎΩ√∫∏µÂ ¡÷ø‰ ∏ﬁ¥∫ π⁄Ω∫ -->
+								</div>
 
+							</div>
+							<!-- -------------------------Notification Div Box End ---------------------------- -->
+
+
+							<!-- -------------------------Calendar Div Box Start ---------------------------- -->
+
+							<div id="calendarForm"></div>
+						
+
+						<!-- -------------------------Calendar Div Box End ---------------------------- -->
+						
+						<!-- -------------------------Button Div Box Start  (Download PDF, Daily Report)---------------------------- -->
+
+							<div id="buttonBox">
+							<button class="savePdfBtn" id="savePdfBtn"></button>
+							<button class="dailyReport" id="dailyReport"></button>
+							</div>
+						
+
+						<!-- -------------------------Button Div Box End ---------------------------- -->
+						
+						
+						
+						
+						</div>
+					<!-- -------------------------Right Section End---------------------------- -->
+
+				</div>
+				<!-- -------------------- Dashboard End------------------------ -->
+
+
+
+			</div>
+			<!-- ÎåÄÏãúÎ≥¥Îìú ÎÅù -->
+
+
+
+		</div>
+		<!-- Wrapper End -->
+	</div>
+	<!-- Main End -->
+
+
+
+	<!-- -------------------------------- Message Modal Start ---------------------------- -->
+
+	<!-- ÏÉÅÌíà Îì±Î°ù Î™®Îã¨Ï∞Ω -->
+	<div class="insertMessage">
+		<div class="insert_ms_Inner">
+
+			<h4 id="messageTitle">Î≥¥ÎÇº Î©îÏÑ∏ÏßÄ</h4>
+
+			<!-- --------------- message_select Start ------------ -->
+			<div class="message_select">
+				<form action="" type="POST" class="messageForm" id="messageForm">
+					<div class="select">
+						<div class="item">
+							<div>
+								<p type="text" class="userId" name="userId" id="userId">TEST01</p>
+								<div>
+									<input type="text" class="messageContent" name="message"
+										id="messageContent">
+								</div>
+							</div>
+
+						</div>
+
+
+						<!-- Î™®Îã¨ Ìë∏ÌÑ∞ -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								onclick="insertMessage()">Ï†ÑÏÜ°</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Ï∑®ÏÜå</button>
+						</div>
+						<!-- // Î™®Îã¨ Ìë∏ÌÑ∞ -->
+				</form>
+			</div>
+			<!-- --------------- message_select End ------------ -->
+		</div>
+	</div>
+	<!-- // ÏÉÅÌíà Îì±Î°ù Î™®Îã¨Ï∞Ω -->
+	<!-- -------------------------------- Message Modal End ---------------------------- -->
+
+
+
+	<!--  Î©îÏÑ∏ÏßÄ Ï†ÑÏÜ° ÎπÑÎèôÍ∏∞ÌÜµÏã† ÏãúÏûë -->
+	<script>
+	        function insertMessage(){
+	        	var userId = $("#userId").text();
+	    		var message = $("#messageContent").val();
+	    		
+	    		
+	    		
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/InsertMessage.do",
+		            data : { userId:userId, message:message },
+		            type : "post",
+		            success : function(result){
+		            	
+		            	alert("Î©îÏÑ∏ÏßÄ Ï†ÑÏÜ°Ïù¥ ÏôÑÎ£åÎêòÏóàÏäµÎãàÎã§.");
+		            	$("#userId").val('');
+		            	$("#messageContent").val('');
+
+		            	 	                
+		            }
+		            	            
+	        	}); 
+	    	}   
+        </script>
+	<!--  Î©îÏÑ∏ÏßÄ Ï†ÑÏÜ° ÎπÑÎèôÍ∏∞ÌÜµÏã† ÎÅù -->
+
+	<!--  Î©îÏÑ∏ÏßÄ Ï°∞Ìöå ÎπÑÎèôÍ∏∞ÌÜµÏã† ÏãúÏûë -->
+	<script>
+	$('#selectMessage').click(function() { 
+		
+		$('#messageBox').empty();
+    		
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/selectMessage.do",
+		            data : {  },
+		            type : "get",
+		            success : function(result){
+		            	
+						
+		                
+		                for(var i = 0 ; i < result.length; i++){
+		                	var selectMessage = '<h5>' + result[i].userId + '</h5>'
+		                	+ '<p>' + result[i].message + '</p>'
+
+		                	$('.message').append(selectMessage);    
+		                }
+
+		            } 	                
+		            }); 
+	            }); 
+        </script>
+	<!--  Î©îÏÑ∏ÏßÄ Ï°∞Ìöå ÎπÑÎèôÍ∏∞ÌÜµÏã† ÎÅù -->
+
+
+	<!-- -------------------------------- Download to PDF -------------------------------- -->
+	<script> 
+$('#savePdfBtn').click(function() { 
+  html2canvas($('#pdfDiv')[0]).then(function(canvas) { 
+    // Ï∫îÎ≤ÑÏä§Î•º Ïù¥ÎØ∏ÏßÄÎ°ú Î≥ÄÌôò 
+    let imgData = canvas.toDataURL('image/png');
+
+    var margin = 10; // Ï∂úÎ†• ÌéòÏù¥ÏßÄ Ïó¨Î∞±ÏÑ§Ï†ï 
+    var imgWidth = 210 - ( 10 * 2 ); // Ïù¥ÎØ∏ÏßÄ Í∞ÄÎ°ú Í∏∏Ïù¥(mm) A4 Í∏∞Ï§Ä
+    var pageHeight = imgWidth * 1.414;  // Ï∂úÎ†• ÌéòÏù¥ÏßÄ ÏÑ∏Î°ú Í∏∏Ïù¥ Í≥ÑÏÇ∞ A4 Í∏∞Ï§Ä
+    var imgHeight = canvas.height * imgWidth / canvas.width;
+    var heightLeft = imgHeight;
+
+    var doc = new jsPDF('p', 'mm');
+    var position = margin;
+
+    // Ï≤´ ÌéòÏù¥ÏßÄ Ï∂úÎ†•
+    doc.addImage(imgData, 'PNG', margin, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    // Ìïú ÌéòÏù¥ÏßÄ Ïù¥ÏÉÅÏùº Í≤ΩÏö∞ Î£®ÌîÑ ÎèåÎ©¥ÏÑú Ï∂úÎ†•
+    while (heightLeft >= 20) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+    }
+
+    // ÌååÏùº Ï†ÄÏû• 
+    doc.save('sample.pdf'); 
+    }); 
+    }); 
+    </script>
+    
+    <!-- -------------------------------------------- Daily Report --------------------------------------------- -->
+    
+    <script>
+    $('#dailyReport').click(function() { 
+    	var year = $('#year').text();
+   		var month = $('#month').text();
+ 		var day = $('.select_day').text();
+ 		
+ 		var penroll = year + "/" + month + "/" + day;
+ 		
+ 		location.href ="${pageContext.request.contextPath}/admin/adminReport.do?penroll=" + penroll;
+    	
+    	
+    });
+    </script>
+    
     
 
-    <!-- ¥ÎΩ√∫∏µÂ ¬˜∆Æ Ω√¿€ -->
-
-
-        <!-- øﬁ¬  ¬˜∆Æ : ø˘∫∞ ∏≈√‚ √ﬂ¿Ã -->
-        
-            <div class="order_chart">
-                <div class="content">
-                <h4> ø˘∫∞ ∏≈√‚ √ﬂ¿Ã</h4>
-                <p> º≥∏Ì¿Ã µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. º≥∏Ì¿Ã µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. </p>
-            
-                <div class="chart-sec"><img src="/images/graph.PNG" alt=""></div>
-            </div>
-            </div>
-        
-
-        <!-- ø¿∏•¬  ¬˜∆Æ : ªÛ«∞ ∆«∏≈ µø«‚ ¬˜∆Æ-->
-        
-            <div class="sales_chart">
-                <div class="content">
-                <h4> ªÛ«∞ ∆«∏≈ µø«‚ ¬˜∆Æ</h4>
-                <p> º≥∏Ì¿Ã µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. º≥∏Ì¿Ã µÈæÓ∞• ¿⁄∏Æ¿‘¥œ¥Ÿ. </p>
-            
-                <div class="chart-sec"><img src="/images/graph.PNG" alt=""></div>
-            </div>
-            </div>
-       
-
-
-    <!-- ¥ÎΩ√∫∏µÂ ¬˜∆Æ ≥° -->
-</div>
-<!-- // ¥ÎΩ√∫∏µÂ ≥ªøÎ -->
-
-</div>
-</section>
-<!-- ¥ÎΩ√∫∏µÂ ≥° -->
-
-</div>
 
 
 
 
-
-    <!-- Apex Chart-->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- JQeury CDN -->
-    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
 </body>
 </html>
