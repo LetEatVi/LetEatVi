@@ -48,7 +48,7 @@
         background-color: orange
     }
     
-    #survey-step li:first-child {
+    #survey-step li:nth-child(2) {
     	color: orangered;
     }
 </style>
@@ -136,7 +136,7 @@
 		                                </section>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button type="reset" id="prev-btn" onclick="location.href='/leteatvi/survey/survey2.do';">이전</button>
+		                                <button type="button" id="prev-btn" onclick="location.href='/leteatvi/survey/survey2.do';">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>

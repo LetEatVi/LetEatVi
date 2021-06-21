@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:nth-child(3) {
+    	color: orangered;
+    }
 </style>
 </head>
 
@@ -135,18 +139,19 @@
 			sessionStorage.setItem('q-count', q_count );
 		})
 		
-		/* $('#frm4').on('button', function(){
+		/* 	
+		$('#frm4').on('button', function(){
 			var src = '';
 			
 			for(var i interestType){
 				if(interestType[i] == 1) {
-					var num = Number(i) + Number(4) - 1;
+					var num = Number(i) + Number(4);
 					src ='/leteatvi/survey/survey' + num + '.do';
 					break;
 				}
 			}
-		} */
-			
+		}
+		 */			
 		
         $('#frm4').on('submit', function(){
         	var url = '';

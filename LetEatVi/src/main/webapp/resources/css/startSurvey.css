@@ -12,11 +12,11 @@
 
 /* 테두리 영역 */
 #survey-content {
-	padding: 120px 10px;
+	padding: 150px 10px;
     vertical-align: top;
     /* background-color: ghostwhite; */
     height: 900px;
-    background-image: url(../images/lemons-main1.jpg);
+    background-image: url(../images/surveyImg/syringe.jpg);
     background-size: cover;
 }
 

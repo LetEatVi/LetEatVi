@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:first-child {
+    	color: orangered;
+    }
 </style>
 </head>
 
@@ -105,13 +109,13 @@
 		                                    <br>
 		                                    <div id="gender-wrap">
 		                                        <input class="answer-gender" type="checkbox" value="x"> 선택 안함
-		                                        <input class="answer-gender" type="checkbox" value="f"> 여성
-		                                        <input class="answer-gender" type="checkbox" value="m"> 남성
+		                                        <input class="answer-gender" type="checkbox" value="F"> 여성
+		                                        <input class="answer-gender" type="checkbox" value="M"> 남성
 		                                    </div>
 		                                </section>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button type="reset" id="prev-btn" onclick="location.href='/leteatvi/survey/survey1.do';">이전</button>
+		                                <button type="button" id="prev-btn" onclick="location.href='/leteatvi/survey/survey1.do';">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>

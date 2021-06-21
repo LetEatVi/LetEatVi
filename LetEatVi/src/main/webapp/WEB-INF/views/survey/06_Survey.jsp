@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:nth-child(3) {
+    	color: orangered;
+    }
 </style>
 </head>
 

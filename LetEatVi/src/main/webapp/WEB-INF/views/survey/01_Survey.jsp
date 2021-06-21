@@ -48,6 +48,9 @@
         background-color: orange
     }
     
+    #survey-step li:first-child {
+    	color: orangered;
+    }
     
 </style>
 </head>
@@ -112,14 +115,14 @@
 	    <c:import url="../common/footer.jsp"/>
 	</section>
 	<script>
-	$(function(){
-		// 설문조사 초기화
-		sessionStorage.clear();
-		sessionStorage.setItem('q-count', "1");
-	});
-	$('#frmFirst').on('submit', function(){
-		sessionStorage.setItem('userName', $('#content-full').val());
-	});
+		$(function(){
+			// 설문조사 초기화
+			sessionStorage.clear();
+			sessionStorage.setItem('q-count', "1");
+		});
+		$('#frmFirst').on('submit', function(){
+			sessionStorage.setItem('userName', $('#content-full').val());
+		});
 	</script>
 </body>
 </html>

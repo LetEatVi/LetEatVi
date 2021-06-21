@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:nth-child(3) {
+    	color: orangered;
+    }
 </style>
 </head>
 
@@ -109,7 +113,7 @@
 		                                </section>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button id="prev-btn">이전</button>
+		                                <button type="button" id="prev-btn">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>

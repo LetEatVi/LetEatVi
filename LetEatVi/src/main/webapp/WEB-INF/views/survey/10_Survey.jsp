@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:last-child {
+    	color: orangered;
+    }
 </style>
 </head>
 
@@ -76,7 +80,7 @@
 	                                <div id="survey-progress-rate"></div>
 	                            </div>
 	                            
-	                            <form id="frm10" action="">
+	                            <form id="frm10"  action="/leteatvi/survey/survey11.do">
 		                            <div id="survey-question">
 		                                <section id="question-section">
 		                                    <em>질문 <b id="q-count"></b></em>
@@ -101,7 +105,7 @@
 		                            	</ul>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button id="prev-btn">이전</button>
+		                                <button type="button" id="prev-btn">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>
@@ -112,82 +116,23 @@
 	            </div>
 	        </div>
 	    </div>
+	    
 	    <c:import url="../common/footer.jsp"/>
 	</section>
 	<script>
-	
-	var q_count = Number(sessionStorage.getItem('q-count'));
-	
-	$(function(){
-		answerResult();
-		
-		$('#namePlace').text(sessionStorage.getItem('userName'));
-		
-		$('#q-count').text(++q_count);
-		sessionStorage.setItem('q-count', q_count );
-		
-	})
-	// 결과에 들어갈 내용
-	// 2,0,0,2,2,0
-	var interestType = sessionStorage.getItem('interestType').split(',');
-	
-	function answerResult(){
-		for(var i in interestType){
-
-			var type = sessionStorage.getItem('interestTitle').split(',')[i];
+		$(function(){
+			// 설문조사 초기화
+			// sessionStorage.clear();
+			sessionStorage.setItem('q-count', "10");
+			$('#namePlace').text(sessionStorage.getItem('userName'));
+		});
+		$('#frm10').on('submit', function(){
+			sessionStorage.setItem('height', $('#content-full').val());
 			
-			if(interestType[i] == 2) {
-				var answerText = '';
-				// true, false, true, true
-				// true (1) : OOO을 고려해보세요.
-				// true (2) : OOO을 권장합니다.
-				// true (3) : OOO을 추천합니다.
-				// true (4) : OOO을 강력 추천합니다.
-				var idx = Number(i) + Number(1);
-				var answers = sessionStorage.getItem('answer_q' + idx).split(',');
-				var answerCount = 0;
-				
-				for(var j = 0 ; j < answers.length ; j++){
-					if(answers[j] == 'true'){
-						answerCount++;
-					}
-				}
-
-				switch(answerCount){
-				case 1 :
-					answerText = '타입을 고려해보세요.';
-					break;
-				case 2 :
-					answerText = '타입을 권장합니다.';
-					break;
-				case 3 :
-					answerText = '타입을 추천합니다.';
-					break;
-				case 4 :
-					answerText = '타입을 강력 추천합니다.';
-					break;
-				}
-
-				var interestResult = "["+type +"]" + answerText;
-				var $li = $('<li>').text(interestResult);
-				
-				$('#survey-answer-list').append($li);
-			}
-		}	
-	}
-	
-	$('#frm10').on('submit', function(){
-
-    	$('[name=heal06]').each(function(){
-    		answer_q6.push($(this).prop('checked'));
-    	});
-    	sessionStorage.setItem('answer_q6', answer_q6);
-    	
-    	sessionStorage.setItem('interestType', interestType);
-    	$(this).attr('action', '/leteatvi/survey/survey11.do');
-    });
-	
+			
+		});
 	</script>
+	
 </body>
 
 </html>

@@ -47,6 +47,10 @@
         height: 10px;
         background-color: orange
     }
+    
+    #survey-step li:last-child {
+    	color: orangered;
+    }
 </style>
 </head>
 
@@ -76,7 +80,7 @@
 	                                <div id="survey-progress-rate"></div>
 	                            </div>
 	                            
-	                            <form action="">
+	                            <form id="frm11" action="/leteatvi/survey/resultSurvey.do">
 		                            <div id="survey-question">
 		                                <section id="question-section">
 		                                    <em>질문 <b id="q-count"></b></em>
@@ -96,7 +100,7 @@
 		                                </section>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button id="prev-btn">이전</button>
+		                                <button type="button" id="prev-btn">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>
@@ -110,17 +114,15 @@
 	    <c:import url="../common/footer.jsp"/>
 	</section>
 	<script>
-	
-	var q_count = Number(sessionStorage.getItem('q-count'));
-	
-	$(function(){
-		$('#namePlace').text(sessionStorage.getItem('userName'));
-		
-		$('#q-count').text(++q_count);
-		sessionStorage.setItem('q-count', q_count );
-		
-	})
-	
+		$(function(){
+			// 설문조사 초기화
+			// sessionStorage.clear();
+			$('#namePlace').text(sessionStorage.getItem('userName'));
+			sessionStorage.setItem('q-count', "11");
+		});
+		$('#frm11').on('submit', function(){
+			sessionStorage.setItem('weight', $('#content-full').val());
+		});
 	</script>
 </body>
 

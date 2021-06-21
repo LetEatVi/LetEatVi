@@ -120,8 +120,8 @@
 			<!-- 메뉴 -->
 			<ul class="navbar__menu">
 				<li><a
-					href="${pageContext.request.contextPath}/store/goStore.do"
-					class="menu-content">STORE</a></li>
+					href="${pageContext.request.contextPath}/survey/survey.do"
+					class="menu-content">SURVEY</a></li>
 				<li><a href="" class="menu-content">SURVEY</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/story/goStory.do"

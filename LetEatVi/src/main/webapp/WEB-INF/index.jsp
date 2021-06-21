@@ -106,7 +106,7 @@
 			</h1>
 		</div>
 		<div style="margin-top: 60px;" id="hideme">
-			<a href="#" class="vitamin-btn" style="color: white;">CHECK</a>
+			<a href="${pageContext.request.contextPath}/survey/survey.do" class="vitamin-btn" style="color: white;">CHECK</a>
 		</div>
 	</div>
 	
@@ -231,7 +231,7 @@
 			<div style="line-height: 50%;">
 				<br>
 			</div>
-			<a href="#" class="investigation-btn" style="color: white;">지금 시작하기</a>
+			<a href="${pageContext.request.contextPath}/survey/survey.do" class="investigation-btn" style="color: white;">지금 시작하기</a>
 		</div>
 	</div>
 

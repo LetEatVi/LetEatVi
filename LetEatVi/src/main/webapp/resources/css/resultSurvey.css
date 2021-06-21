@@ -1,0 +1,258 @@
+@charset "UTF-8";
+/* survey.css */
+
+ul {
+    padding-inline-start: 0px;
+}
+
+/* 전체 틀 */
+.result-wrap {
+	margin-top: 100px;
+}
+
+/* head 부분 */
+.result-head {
+    text-align: center;
+    padding: 50px 30px;
+    padding-bottom: 6px;
+    margin: 30px;
+    width: 70%;
+    background-image: linear-gradient(to top, #b4d6d9, #44c76c3d);
+    /* background-image: linear-gradient(to top, #c1d69f, #c1d69f); */
+}
+.result-head h3 {
+    font-size: 33px;
+    font-weight: 800;
+}
+
+.result-head dl {
+    margin-top: 20px;
+    font-size: 19px;
+    display: block;
+}
+.result-head dl dt {
+    display: inline-block;
+    padding-left: 20px;
+}
+.result-head dl dd {
+    display: inline-block;
+    padding-left: 6px;
+    vertical-align: -1px;
+}
+
+.result-head dl dt span img {
+	height: 15px;
+    width: 15px;
+    pointer: cursor;
+}
+
+/* BMI Bar */
+.bmi-wrap {
+    position: relative;
+    margin-top: 16px;
+    left: 0;
+}
+.bmi-bar {
+    width: 90%;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: auto;
+}
+.bmi-data {
+    list-style: none;
+    display: block;
+}
+.bmi-data li {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 15%;
+    font-size: 12px;
+    line-height: 30px;
+    z-index: 1;
+    margin-left: -13px;
+}
+.bmi-data span {
+    margin-top: -5px;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #000;
+}
+.bmi-num {
+    list-style: none;
+    padding-top: 2px;
+}
+.bmi-num li {
+    display: inline-block;
+    text-align: left;
+    font-size: 13px;
+    width: 17%;
+}
+.bmi-content {
+    display: none;
+    text-align: left;
+    position: relative;
+    top: 10px;
+    right: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 25px 20px 30px;
+    background: #fff;
+    border: 1px solid #dedede;
+    box-shadow: 0 5px 4px 0 rgb(0 0 0 / 6%);
+    margin-top: 40px;
+}
+.bmi-content p {
+    margin: 15px;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+/* 함께 노력해보아요 */
+.advice-wrap {
+    margin: 50px 0 20px;
+    padding: 20px 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: #fff;
+}
+.advice-wrap img {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 9px;
+}
+.advice-wrap h4 {
+    color: cornflowerblue;
+    font-size: 25;
+    font-weight: bold;
+}
+.advice-wrap ul {
+    margin-top: 13px;
+    text-align: left;
+    list-style: none;
+    font-size: larger;
+}
+.reult-notice {
+    font-size: 12px;
+}
+
+/* 추천영양성분 */
+.recommend-wrap {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+	padding: 10px 30px;
+	
+}
+.recommend-wrap h2 {
+    text-align: left;
+    font-size: 29px;
+    padding: 0 0 0 16px;
+}
+.recommend-wrap h2 em {
+    padding-left: 10px;
+    color: #ff5c35;
+    font-weight: 700;
+}
+.recommend-item-wrap {
+    width: 90%;
+    padding: 20px 10px 0;
+    list-style: none;
+}
+
+.recommend-item {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+    width: 90px;
+    height: 100px;
+    cursor: pointer;
+}
+.item-img {
+    position: absolute;
+    left: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 30%;
+    display: inline-block;
+}
+.item-img img{
+    width: 60px;
+    max-width: 100%;
+    height: auto;
+    margin-left: 7px;
+}
+
+.item-name {
+    position: absolute;
+    top: 70px;
+    padding-top: 10px;
+    padding-left: 0;
+    font-size: 11px;
+    width: 100%;
+    height: auto;
+}
+.item-name p {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 10px 0px;
+    font-size: large;
+}
+
+/* 밑에 부분 */
+.result-guide {
+    width: 70%;
+}
+.guide-wrap{
+    width: 100%;
+    margin: 0px 30px;
+}
+
+/* 연령대 가이드 */
+.custom-guide{
+    background-color: blanchedalmond;
+    padding: 15px 20px;
+}
+.custom-guide h3 {
+   	font-size: 26px;
+   	margin: 20px;
+}
+.custom-guide h3 b {
+    font-size: larger;
+}
+.custom-guide li {
+    list-style: none;
+    font-size: 22px;
+}
+.custom-guide p {
+    display: inline-block;
+    font-size: 20px;
+}
+
+
+/* 비타민 가이드 */
+.vita-guide {
+    background-color: khaki;
+    padding: 15px 20px;
+}
+.vita-guide li {
+    list-style: none;
+}
+/* 추천음식 사진 */
+.custom-guide span {
+    float: right;
+    margin-top: 20px;
+    margin-right: 50px;
+}
+.custom-guide span img {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+   	position: relative;
+}
