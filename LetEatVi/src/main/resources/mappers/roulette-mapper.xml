@@ -7,7 +7,6 @@
 		<id column="CID" property="coupon_Id"/>
 		<result column="CNAME" property="coupon_name"/>
 		<result column="DISCOUNTRATE" property="discount_rate" />
-		<result column="DISCOUNTPRICE" property="discount_price"/>
 	</resultMap>
 	
 	

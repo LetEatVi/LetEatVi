@@ -15,8 +15,6 @@ public class Coupon implements Serializable {
 	private int coupon_Id;
 	private String coupon_name;
 	private int discount_rate;
-	private int discount_price;
-	
 
 	
 }
