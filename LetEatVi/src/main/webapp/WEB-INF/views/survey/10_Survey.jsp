@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -26,7 +25,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/surveyProcess.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css"/>
+	href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
 	crossorigin="anonymous"></script>
@@ -34,161 +33,151 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
 	rel="stylesheet">
-	
-<style>
-	/* 진행 레이트 */
-    #survey-progress {
-        width: 100%;
-        height: 10px;
-        background-color: white
-    }
 
-    #survey-progress-rate{
-        width: 100%;
-        height: 10px;
-        background-color: orange
-    }
+<style>
+/* 진행 레이트 */
+#survey-progress {
+	width: 100%;
+	height: 10px;
+	background-color: white
+}
+
+#survey-progress-rate {
+	width: 100%;
+	height: 10px;
+	background-color: orange
+}
+
+#survey-step li:last-child {
+	color: orangered;
+}
+
+/* 배경 */
+#survey-content {
+	background-image:
+		url(/leteatvi/resources/images/surveyImg/background10.jpg);
+}
+
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 </style>
 </head>
 
 <body>
-	
+
 	<section>
-		<c:import url="../common/header.jsp"/>
+		<c:import url="../common/header.jsp" />
 		<div id="survey">
-	        <div id="survey-wrap">
-	            <div id="survey-content">
-	                <div id="survey-inner">
-	                    <div id="survey-start">
-	                        <a href="#" onclick="closeSurvey(''); return false;">
-	                            <img src="${pageContext.request.contextPath}/resources/images/surveyImg/x_mark.png" alt="설문닫기 버튼">
-	                        </a>
-	                        <div id="survey-test">
-	                            <nav id="survey-test-header">
-	                                <ul id="survey-step">
-	                                    <li data="기본정보">기본정보</li>
-	                                    <li data="관심/증상">관심/필요</li>
-	                                    <li data="생활 습관">생활습관</li>
-	                                    <li data="기타">기타</li>
-	                                </ul>
-	                            </nav>
-	                            <!-- 진행하는 것 색깔 주는 줄 -->
-	                            <div id="survey-progress">
-	                                <div id="survey-progress-rate"></div>
-	                            </div>
-	                            
-	                            <form id="frm10" action="">
-		                            <div id="survey-question">
-		                                <section id="question-section">
-		                                    <em>질문 <b id="q-count"></b></em>
-		                                    <h2>
-		                                        <span><b id="namePlace"></b>님의 신장을 입력해주세요.</span>
-		                                    </h2>
-		                                    <p id="pContent">신장과 체중의 비율을 활용하여 체질량지수(BMI)를 나타냅니다.</p>
-		                                    <br>
-		                                    <ul id="survey-answer">
-		                                        <li>
-		                                            <div id="input-wrap">
-		                                                <input id="content-full" type="tel" placeholder="키" maxlength="3" required>
-		                                            </div>
-		                                            <span id="unit">cm</span>
-		                                        </li>
-		                                    </ul>
-		                                </section>
-		                            </div>
-		                            <div id="answerResultArea">
-		                            	<ul id="survey-answer-list">
-		                            		
-		                            	</ul>
-		                            </div>
-		                            <div id="question-btn">
-		                                <button id="prev-btn">이전</button>
-		                                <button type="submit" id="next-btn">다음</button>
-		                            </div>
-	                            </form>
-	                            
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    <c:import url="../common/footer.jsp"/>
+			<div id="survey-wrap">
+				<div id="survey-content">
+					<div id="survey-inner">
+						<div id="survey-start">
+							<a href="#" onclick="closeSurvey(''); return false;"> <img
+								src="${pageContext.request.contextPath}/resources/images/surveyImg/cross.png"
+								alt="설문닫기 버튼">
+							</a>
+							<div id="survey-test">
+								<nav id="survey-test-header">
+									<ul id="survey-step">
+										<li data="기본정보">기본정보</li>
+										<li data="관심/증상">관심/필요</li>
+										<li data="생활 습관">생활습관</li>
+										<li data="기타">기타</li>
+									</ul>
+								</nav>
+								<!-- 진행하는 것 색깔 주는 줄 -->
+								<div id="survey-progress">
+									<div id="survey-progress-rate"></div>
+								</div>
+
+								<form id="frm10" action="/leteatvi/survey/survey11.do">
+									<div id="survey-question">
+										<section id="question-section">
+											<em>질문 <b id="q-count"></b></em>
+											<h2>
+												<span><b id="namePlace"></b>님의 신장을 입력해주세요.</span>
+											</h2>
+											<p id="pContent">신장과 체중의 비율을 활용하여 체질량지수(BMI)를 나타냅니다.</p>
+											<br>
+											<ul id="survey-answer">
+												<li>
+													<div id="input-wrap">
+														<input id="content-full" type="tel" placeholder="키"
+															maxlength="3" required>
+													</div> <span id="unit">cm</span>
+												</li>
+											</ul>
+										</section>
+									</div>
+									<div id="answerResultArea">
+										<ul id="survey-answer-list">
+
+										</ul>
+									</div>
+									<div id="question-btn">
+										<button type="button" id="prev-btn">이전</button>
+										<button type="submit" id="next-btn">다음</button>
+									</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<c:import url="../common/footer.jsp" />
 	</section>
 	<script>
-	
-	var q_count = Number(sessionStorage.getItem('q-count'));
-	
-	$(function(){
-		answerResult();
-		
-		$('#namePlace').text(sessionStorage.getItem('userName'));
-		
-		$('#q-count').text(++q_count);
-		sessionStorage.setItem('q-count', q_count );
-		
-	})
-	// 결과에 들어갈 내용
-	// 2,0,0,2,2,0
-	var interestType = sessionStorage.getItem('interestType').split(',');
-	
-	function answerResult(){
-		for(var i in interestType){
-
-			var type = sessionStorage.getItem('interestTitle').split(',')[i];
+		$(function(){
+			// 설문조사 초기화
+			// sessionStorage.clear();
+			sessionStorage.setItem('q-count', "10");
+			$('#namePlace').text(sessionStorage.getItem('userName'));
+		});
+		$('#frm10').on('submit', function(){
+			sessionStorage.setItem('height', $('#content-full').val());
 			
-			if(interestType[i] == 2) {
-				var answerText = '';
-				// true, false, true, true
-				// true (1) : OOO을 고려해보세요.
-				// true (2) : OOO을 권장합니다.
-				// true (3) : OOO을 추천합니다.
-				// true (4) : OOO을 강력 추천합니다.
-				var idx = Number(i) + Number(1);
-				var answers = sessionStorage.getItem('answer_q' + idx).split(',');
-				var answerCount = 0;
-				
-				for(var j = 0 ; j < answers.length ; j++){
-					if(answers[j] == 'true'){
-						answerCount++;
-					}
-				}
-
-				switch(answerCount){
-				case 1 :
-					answerText = '타입을 고려해보세요.';
-					break;
-				case 2 :
-					answerText = '타입을 권장합니다.';
-					break;
-				case 3 :
-					answerText = '타입을 추천합니다.';
-					break;
-				case 4 :
-					answerText = '타입을 강력 추천합니다.';
-					break;
-				}
-
-				var interestResult = "["+type +"]" + answerText;
-				var $li = $('<li>').text(interestResult);
-				
-				$('#survey-answer-list').append($li);
-			}
-		}	
-	}
-	
-	$('#frm10').on('submit', function(){
-
-    	$('[name=heal06]').each(function(){
-    		answer_q6.push($(this).prop('checked'));
-    	});
-    	sessionStorage.setItem('answer_q6', answer_q6);
-    	
-    	sessionStorage.setItem('interestType', interestType);
-    	$(this).attr('action', '/leteatvi/survey/survey11.do');
-    });
-	
+			
+		});
 	</script>
+
 </body>
 
 </html>

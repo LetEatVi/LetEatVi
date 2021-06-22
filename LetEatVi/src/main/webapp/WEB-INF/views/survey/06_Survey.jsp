@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -26,7 +25,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/surveyProcess.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css"/>
+	href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
 	crossorigin="anonymous"></script>
@@ -34,97 +33,144 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
 	rel="stylesheet">
-	
-<style>
-	/* 진행 레이트 */
-    #survey-progress {
-        width: 100%;
-        height: 10px;
-        background-color: white
-    }
 
-    #survey-progress-rate{
-        width: 75%;
-        height: 10px;
-        background-color: orange
-    }
+<style>
+/* 진행 레이트 */
+#survey-progress {
+	width: 100%;
+	height: 10px;
+	background-color: white
+}
+
+#survey-progress-rate {
+	width: 75%;
+	height: 10px;
+	background-color: orange
+}
+
+#survey-step li:nth-child(3) {
+	color: orangered;
+}
+
+/* 배경 */
+#survey-content {
+	background-image:
+		url(/leteatvi/resources/images/surveyImg/background6.jpg);
+}
+
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 </style>
 </head>
 
 <body>
-	
+
 	<section>
-		<c:import url="../common/header.jsp"/>
-	
+		<c:import url="../common/header.jsp" />
+
 		<div id="survey">
-	        <div id="survey-wrap">
-	            <div id="survey-content">
-	                <div id="survey-inner">
-	                    <div id="survey-start">
-	                        <a href="#" onclick="closeSurvey(''); return false;">
-	                            <img src="${pageContext.request.contextPath}/resources/images/surveyImg/x_mark.png" alt="설문닫기 버튼">
-	                        </a>
-	                        <div id="survey-test">
-	                            <nav id="survey-test-header">
-	                                <ul id="survey-step">
-	                                    <li data="기본정보">기본정보</li>
-	                                    <li data="관심/증상">관심/필요</li>
-	                                    <li data="생활 습관">생활습관</li>
-	                                    <li data="기타">기타</li>
-	                                </ul>
-	                            </nav>
-	                            <!-- 진행하는 것 색깔 주는 줄 -->
-	                            <div class="survey-progress">
-	                                <div id="survey-progress-rate"></div>
-	                            </div>
-	                            
-	                            <form id="frm6" action="">
-		                            <div id="survey-question">
-		                                <section id="question-section">
-		                                    <em>질문 <b id="q-count"></b> | &nbsp;&nbsp; 관절 / 뼈</em>
-		                                    <h2>
-		                                        <span><b id="namePlace"></b>님에게 해당되는 것을 모두 선택해주세요.</span>
-		                                        <img id="get-img" src="${pageContext.request.contextPath}/resources/images/surveyImg/bone.png" alt="관절/뼈 사진">
-		                                    </h2>
-		                                    <br>
-		                                    <ul id="survey-answer">
-		                                        <li>
-		                                            <label for="heal03_a">
-		                                                <input type="checkbox" name="heal03" id="heal03_a">
-		                                                평소 뼈가 약한 느낌이 있고 부러져 본 경험이 있어요.
-		                                            </label>
-		                                            <label for="heal03_b">
-		                                                <input type="checkbox" name="heal03" id="heal03_b">
-		                                                유제품생〮선채〮소과 같은 칼슘 식품의 섭취가 부족해요.
-		                                            </label>
-		                                            <label for="heal03_c">
-		                                                <input type="checkbox" name="heal03" id="heal03_c">
-		                                                운동을 즐기고, 활동하는 것을 좋아해요.
-		                                            </label>
-		                                            <label for="heal03_d">
-		                                                <input type="checkbox" name="heal03" id="heal03_d">
-		                                                햇볕을 쬘 시간이 부족하고, 뼈관〮절 개선이 필요해요!
-		                                            </label>
-		                                        </li>
-		                                    </ul>
-		                                </section>
-		                            </div>
-		                            <div id="question-btn">
-		                                <button type="button" id="prev-btn">이전</button>
-		                                <button type="submit" id="next-btn">다음</button>
-		                            </div>
-	                            </form>
-	                            
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <c:import url="../common/footer.jsp"/>
+			<div id="survey-wrap">
+				<div id="survey-content">
+					<div id="survey-inner">
+						<div id="survey-start">
+							<a href="#" onclick="closeSurvey(''); return false;"> <img
+								src="${pageContext.request.contextPath}/resources/images/surveyImg/cross.png"
+								alt="설문닫기 버튼">
+							</a>
+							<div id="survey-test">
+								<nav id="survey-test-header">
+									<ul id="survey-step">
+										<li data="기본정보">기본정보</li>
+										<li data="관심/증상">관심/필요</li>
+										<li data="생활 습관">생활습관</li>
+										<li data="기타">기타</li>
+									</ul>
+								</nav>
+								<!-- 진행하는 것 색깔 주는 줄 -->
+								<div class="survey-progress">
+									<div id="survey-progress-rate"></div>
+								</div>
+
+								<form id="frm6" action="">
+									<div id="survey-question">
+										<section id="question-section">
+											<em>질문 <b id="q-count"></b> | &nbsp;&nbsp; 관절 / 뼈
+											</em>
+											<h2>
+												<span><b id="namePlace"></b>님에게 해당되는 것을 모두 선택해주세요.</span> <img
+													id="get-img"
+													src="${pageContext.request.contextPath}/resources/images/surveyImg/bone.png"
+													alt="관절/뼈 사진">
+											</h2>
+											<br>
+											<ul id="survey-answer">
+												<li><label for="heal03_a"> <input
+														type="checkbox" name="heal03" id="heal03_a"> 평소 뼈가
+														약한 느낌이 있고 부러져 본 경험이 있어요.
+												</label> <label for="heal03_b"> <input type="checkbox"
+														name="heal03" id="heal03_b"> 유제품생〮선채〮소과 같은 칼슘 식품의
+														섭취가 부족해요.
+												</label> <label for="heal03_c"> <input type="checkbox"
+														name="heal03" id="heal03_c"> 운동을 즐기고, 활동하는 것을
+														좋아해요.
+												</label> <label for="heal03_d"> <input type="checkbox"
+														name="heal03" id="heal03_d"> 햇볕을 쬘 시간이 부족하고, 뼈관〮절
+														개선이 필요해요!
+												</label></li>
+											</ul>
+										</section>
+									</div>
+									<div id="question-btn">
+										<button type="button" id="prev-btn">이전</button>
+										<button type="submit" id="next-btn">다음</button>
+									</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<c:import url="../common/footer.jsp" />
 	</section>
-			<script>
+	<script>
 		var interestType = sessionStorage.getItem('interestType').split(',');
 		var q_count = Number(sessionStorage.getItem('q-count'));
 		var answer_q3= [];

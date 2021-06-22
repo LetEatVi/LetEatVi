@@ -1,144 +1,155 @@
 @charset "UTF-8";
 /* survey.css */
-
-
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-family: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font-family: inherit;
 }
 
 /* 테두리 영역 */
 #survey-content {
-	padding: 120px 10px;
-    vertical-align: top;
-    /* background-color: ghostwhite; */
-    height: 900px;
-    background-image: url(../images/lemons-main1.jpg);
-    background-size: cover;
+	padding: 150px 10px;
+	vertical-align: top;
+	/* background-color: ghostwhite; */
+	height: 1000px;
+	width: 100%;
+	background-image: url(../images/surveyImg/syringe.jpg);
+	background-size: cover;
 }
 
 /* 서베이 전 영역 */
 #survey {
-    height: 900px;
-    color: #333;
-    background-color: ghostwhite
+	height: 900px;
+	color: #333;
+	background-color: ghostwhite
 }
 
 /* 서베이 네모 겉 틀 */
 #survey-inner {
-    padding:0 90px;
-    text-align: left;
-    position: relative;
-    margin: 0 auto;
-    width: 900px;
+	padding: 0 90px;
+	text-align: left;
+	position: relative;
+	margin: 0 auto;
+	width: 900px;
 }
 
 /* 서베이 네모 틀 */
 #survey-start {
-    padding: 20px 150px;
-    text-align: left;
-    position: relative;
-    margin: auto;
-    width: 800px;
-    background-color: white;
-    border: 1px solid whitesmoke;
-    box-shadow: 9px 9px 60px 9px lightblue;
+	padding: 40px 150px;
+	text-align: left;
+	position: relative;
+	margin: auto;
+	width: 800px;
+	background-color: white;
+	/* box-shadow: 9px 9px 150px 100px lightsteelblue; */
+	box-shadow: 9px 9px 221px 15px lightsteelblue;
 }
-
 
 /* 윗부분 글 */
 #start-header {
-    line-height: 30px
+	line-height: 30px
 }
 
 /* x 표시 */
 #survey-wrap #survey-content a img {
-    margin-top: 4px;
-    vertical-align: top;
-    max-width: 100%;
-    height: auto;
-    line-height: 16px;
-    color: inherit;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    float: right;
-    z-index: -1 !important;
-    transform: translate(165px, -50px);
-
+	vertical-align: top;
+	line-height: -18px;
+	color: inherit;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	float: right;
+	z-index: -1 !important;
+	transform: translate(170px, -60px);
 }
-
 
 /*  렛잇비 로고 */
 #start-header {
-    position : relative;
-    line-height: 40px
+	position: relative;
+	line-height: 40px
 }
+
 .logo {
-    margin-top: 80px;
-    width: 200px;
-    height: 90px;
+	width: 100%;
+	float: right;
+	margin: auto;
+	margin-right: -60px;
+	margin-top: 50px;
 }
 
 /* 윗부분 글 */
-#start-header h2 {
-    margin-top: 50px;
-    margin-bottom: 120px;
-    font-size: 30px;
-    line-height: 40px;
-    font-weight: 700;
+#start-header #brand {
+	font-size: 50px;
+	line-height: 40px;
+	font-weight: bolder;
+	font-family: 'S-CoreDream-3Light';
+	padding-top: 50px;
+	letter-spacing: 7px;
+	text-align: center;
+	margin-top: 30px;
 }
 
-/* 이름 */
-#brand {
-    font-weight: 300 !important
+#brand-text {
+	font-family: 'Inkfree';
+	font-size: 30px;
+	padding-top: 40px;
+	padding-left: 10px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+#start-intro p {
+	font-family: 'IBMPlexSansKR-Light';
+	text-align: center;
+	margin-bottom: -30px;
+	letter-spacing: 1px;
 }
 
 /* 작은 글 인트로 */
 #start-intro {
-    width: 100%;
-    line-height: 24px;
-    font-size: 16px;
-    color: #333;
-    position: relative;
-    margin-top: 150px;
+	width: 100%;
+	line-height: 24px;
+	font-size: 19px;
+	color: #333;
+	position: relative;
+	margin-top: 150px;
 }
 
 /* 시작버튼 */
 #btn-start {
-    line-height: 50px;
-    background-color: #333;
-    border: none;
-    color: #fff;
-    line-height: 50px;
-    border-radius: 25px;
-    appearance: none;
-    display: inline-block;
-    padding: 0 36px;
-    min-width: 74px;
-    height: 50px;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    box-sizing: border-box;
-    text-decoration: none;
-    width: 100%;
-    margin-top: 90px;
+	line-height: 50px;
+	background-color: #333;
+	border: none;
+	color: #fff;
+	line-height: 50px;
+	border-radius: 25px;
+	appearance: none;
+	display: inline-block;
+	padding: 0 36px;
+	min-width: 74px;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	outline: none;
+	box-sizing: border-box;
+	text-decoration: none;
+	width: 100%;
+	margin-top: 90px;
 }
 
 /* 밑 주의사항 */
 #mention {
-    margin-top: 30px;
-    font-size: 12px;
-    color: #848484;
-    display: block;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+	margin-top: 30px;
+	font-size: 15px;
+	color: #848484;
+	display: block;
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	text-align: center;
 }

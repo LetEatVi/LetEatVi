@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -26,7 +25,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/surveyProcess.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css"/>
+	href="${pageContext.request.contextPath}/resources/css/footer.css" />
 
 <script src="https://kit.fontawesome.com/2d323a629b.js"
 	crossorigin="anonymous"></script>
@@ -34,97 +33,147 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap"
 	rel="stylesheet">
-	
-<style>
-	/* 진행 레이트 */
-    #survey-progress {
-        width: 100%;
-        height: 10px;
-        background-color: white
-    }
 
-    #survey-progress-rate{
-        width: 25%;
-        height: 10px;
-        background-color: orange
-    }
+<style>
+/* 진행 레이트 */
+#survey-progress {
+	width: 100%;
+	height: 10px;
+	background-color: white
+}
+
+#survey-progress-rate {
+	width: 25%;
+	height: 10px;
+	background-color: orange
+}
+
+#survey-step li:first-child {
+	color: orangered;
+}
+
+/* 배경 */
+#survey-content {
+	background-image:
+		url(/leteatvi/resources/images/surveyImg/background2.png);
+}
+
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 </style>
 </head>
 
 <body>
-	
+
 	<section>
-		<c:import url="../common/header.jsp"/>
-	
+		<c:import url="../common/header.jsp" />
+
 		<div id="survey">
-	        <div id="survey-wrap">
-	            <div id="survey-content">
-	                <div id="survey-inner">
-	                    <div id="survey-start">
-	                        <a href="/leteatvi" onclick="closeSurvey(''); return false;">
-	                            <img src="${pageContext.request.contextPath}/resources/images/surveyImg/x_mark.png" alt="설문닫기 버튼">
-	                        </a>
-	                        <div id="survey-test">
-	                            <nav id="survey-test-header">
-	                                <ul id="survey-step">
-	                                    <li data="기본정보">기본정보</li>
-	                                    <li data="관심/증상">관심/필요</li>
-	                                    <li data="생활 습관">생활습관</li>
-	                                    <li data="기타">기타</li>
-	                                </ul>
-	                            </nav>
-	                            <!-- 진행하는 것 색깔 주는 줄 -->
-	                            <div class="survey-progress">
-	                                <div id="survey-progress-rate"></div>
-	                            </div>
-	                            
-	                            <form id="frmSecond" action="/leteatvi/survey/survey3.do">
-		                            <div id="survey-question">
-		                                <section id="question-section">
-		                                    <em>질문 2</em>
-		                                    <h2>
-		                                        <span><b id="namePlace"></b>님의 정보를 알려주세요.</span>
-		                                    </h2>
-		                                    <br>
-		                                    <ul id="survey-answer">
-		                                        <div id="answer-title">* 나이</div>
-		                                        <br>
-		                                        <li>
-		                                            <select name="answer-age" id="answer-age">
-		                                                <option value="-">선택</option>
-		                                                <option value="-" disabled></option>
-		                                                <option value="10대">10대</option>
-		                                                <option value="20대">20대</option>
-		                                                <option value="30대">30대</option>
-		                                                <option value="40대">40대</option>
-		                                                <option value="50대">50대 이상</option>
-		                                            </select>
-		                                        </li>
-		                                    </ul>
-		                                    <br>
-		                                    <div id="answer-title">* 성별</div>
-		                                    <br>
-		                                    <div id="gender-wrap">
-		                                        <input class="answer-gender" type="checkbox" value="x"> 선택 안함
-		                                        <input class="answer-gender" type="checkbox" value="f"> 여성
-		                                        <input class="answer-gender" type="checkbox" value="m"> 남성
-		                                    </div>
-		                                </section>
-		                            </div>
-		                            <div id="question-btn">
-		                                <button type="reset" id="prev-btn" onclick="location.href='/leteatvi/survey/survey1.do';">이전</button>
-		                                <button type="submit" id="next-btn">다음</button>
-		                            </div>
-	                            </form>
-	                            
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	    
-	    <c:import url="../common/footer.jsp"/>
+			<div id="survey-wrap">
+				<div id="survey-content">
+					<div id="survey-inner">
+						<div id="survey-start">
+							<a href="/leteatvi" onclick="closeSurvey(''); return false;">
+								<img
+								src="${pageContext.request.contextPath}/resources/images/surveyImg/cross.png"
+								alt="설문닫기 버튼">
+							</a>
+							<div id="survey-test">
+								<nav id="survey-test-header">
+									<ul id="survey-step">
+										<li data="기본정보">기본정보</li>
+										<li data="관심/증상">관심/필요</li>
+										<li data="생활 습관">생활습관</li>
+										<li data="기타">기타</li>
+									</ul>
+								</nav>
+								<!-- 진행하는 것 색깔 주는 줄 -->
+								<div class="survey-progress">
+									<div id="survey-progress-rate"></div>
+								</div>
+
+								<form id="frmSecond" action="/leteatvi/survey/survey3.do">
+									<div id="survey-question">
+										<section id="question-section">
+											<em>질문 2</em>
+											<h2>
+												<span><b id="namePlace"></b>님의 정보를 알려주세요.</span>
+											</h2>
+											<br>
+											<ul id="survey-answer">
+												<div id="answer-title">* 나이</div>
+												<br>
+												<li><select name="answer-age" id="answer-age">
+														<option value="-">선택</option>
+														<option value="-" disabled></option>
+														<option value="10대">10대</option>
+														<option value="20대">20대</option>
+														<option value="30대">30대</option>
+														<option value="40대">40대</option>
+														<option value="50대">50대 이상</option>
+												</select></li>
+											</ul>
+											<br>
+											<div id="answer-title">* 성별</div>
+											<br>
+											<div id="gender-wrap">
+												<input class="answer-gender" type="checkbox" value="x">
+												선택 안함 <input class="answer-gender" type="checkbox" value="F">
+												여성 <input class="answer-gender" type="checkbox" value="M">
+												남성
+											</div>
+										</section>
+									</div>
+									<div id="question-btn">
+										<button type="button" id="prev-btn"
+											onclick="location.href='/leteatvi/survey/survey1.do';">이전</button>
+										<button type="submit" id="next-btn">다음</button>
+									</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<c:import url="../common/footer.jsp" />
 	</section>
 	<script>
 		$(function(){
