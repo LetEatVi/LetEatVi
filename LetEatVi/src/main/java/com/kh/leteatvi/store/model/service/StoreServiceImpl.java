@@ -1,5 +1,6 @@
 package com.kh.leteatvi.store.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Service;
 import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.dao.StoreDAO;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Order;
+import com.kh.leteatvi.store.model.vo.OrderDetail;
 import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
+import com.kh.leteatvi.story.model.vo.Coupon;
 
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -59,6 +63,27 @@ public class StoreServiceImpl implements StoreService {
 	public int insertPaymentInfo(Payment p) {
 		return storeDAO.insertPaymentInfo(p);
 	}
+
+	@Override
+	public int insertOrderDetails(List<OrderDetail> orderList) {
+		int result = 0;
+		for(OrderDetail od : orderList) {
+			result = storeDAO.insertOrderDetails(od);
+			
+			if(result != 1) {
+				// 익셉션 처리
+			}
+		}
+		
+		return result;
+	}
+	
+
+	@Override
+	public List<OrderDetail> selectList(String userId) {
+		
+		return storeDAO.selectList(userId);
+	}
 	
 	@Override
 	public int insertOneCart(Cart cartProduct) {
@@ -86,5 +111,29 @@ public class StoreServiceImpl implements StoreService {
 		return storeDAO.selectAllCart(userId);
 	}
 
-}
+	@Override
+	public List<OrderDetail> selectOidList(String userId) {
+		return storeDAO.selectOidList(userId);
+	}
 
+	@Override
+	public int selectPcount(String oid) {
+		return storeDAO.selectPcount(oid);
+	}
+
+	@Override
+	public List<Order> selectProductList(String userId) {
+		return storeDAO.seletProductList(userId);
+	}
+
+	@Override
+	public List<Order> selectproductDetail(String userId) {
+		return storeDAO.selectproductDetail(userId);
+	}
+
+	@Override
+	public Coupon selectCoupon(String userId) {
+		return storeDAO.selectCoupon(userId);	
+	}
+
+}

@@ -10,8 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Order;
+import com.kh.leteatvi.store.model.vo.OrderDetail;
 import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
+import com.kh.leteatvi.story.model.vo.Coupon;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {
@@ -57,6 +60,16 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 	
 	@Override
+	public int insertOrderDetails(OrderDetail od) {
+		return sqlSession.insert("store.insertOrderDetail", od);
+	}
+	
+	@Override
+	public List<OrderDetail> selectList(String userId) {
+		return sqlSession.selectList("store.selectOrderDetailList", userId);
+	}
+	
+	@Override
 	public int insertOneCart(Cart cartProduct) {
 		return sqlSession.insert("store.insertOneCart", cartProduct);
 	}
@@ -82,5 +95,29 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.selectList("store.selectAllCart", userId);
 	}
 
-}
+	@Override
+	public List<OrderDetail> selectOidList(String userId) {
+		return sqlSession.selectList("store.selectOidList", userId);
+	}
 
+	@Override
+	public int selectPcount(String oid) {
+		return sqlSession.selectOne("store.selectPcount", oid);
+	}
+
+	@Override
+	public List<Order> seletProductList(String userId) {
+		return sqlSession.selectList("store.selectProductList", userId);
+	}
+
+	@Override
+	public List<Order> selectproductDetail(String userId) {
+		return sqlSession.selectList("store.selectproductDetail", userId);
+	}
+
+	@Override
+	public Coupon selectCoupon(String userId) {
+		return sqlSession.selectOne("store.selectCoupon", userId);
+	}
+
+}

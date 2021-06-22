@@ -1,6 +1,7 @@
 package com.kh.leteatvi.store.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.kh.leteatvi.common.Utils;
 import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.service.StoreService;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.OrderDetail;
 import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
+import com.kh.leteatvi.story.model.vo.Coupon;
 
 @Controller
 public class storeController {
@@ -69,8 +73,6 @@ public class storeController {
 		Product p = storeService.selectOneProduct(pid);
 		Member m = storeService.selectOneMember(userId);
 		
-		System.out.println("회원 정보 : " + m);
-		
 		model.addAttribute("selectProduct", p);
 		model.addAttribute("qno", qno);
 		
@@ -85,8 +87,6 @@ public class storeController {
 	@ResponseBody
 	public void addCart(@RequestParam int pid, @RequestParam String userId) {
 		Cart cartProduct = new Cart(userId, pid);
-		
-		System.out.println(cartProduct);
 		
 		int selectCart = storeService.selectOneCart(cartProduct);
 		
@@ -109,18 +109,11 @@ public class storeController {
 	@RequestMapping("/store/addCartWithQuantity.do")
 	@ResponseBody
 	public void addCartWithQuantity(@RequestParam String userId, @RequestParam int pid, @RequestParam int qno) {
-		System.out.println("qno : " + qno);
-		System.out.println("userId : " + userId);
-		System.out.println("pno : " + pid);
 		
 		Cart cartProduct = new Cart(userId, pid);
 		Cart cartCartWithQuantity = new Cart(userId, pid, qno);
 		
-		System.out.println(cartCartWithQuantity);
-		
 		int selectCart = storeService.selectOneCart(cartProduct);
-		
-		System.out.println(selectCart);
 		
 		if(selectCart == 0) {
 			int addCart = storeService.insertOneCartWithQuantity(cartCartWithQuantity);
@@ -160,8 +153,6 @@ public class storeController {
 		else {
 			List cList = storeService.selectCategory(cid);
 			
-			System.out.println(cList);
-			
 			return cList;
 		}
 		
@@ -173,14 +164,12 @@ public class storeController {
 	// ============================================== //
 	@RequestMapping("/store/insertPaymentInfo.do")
 	@ResponseBody
-	public Payment insertPaymentInfo(Payment p) {
-		System.out.println("결제 정보 : " + p);
+	public Payment insertPaymentInfo(Payment p, @RequestParam String orderList_json) {
 		
+		List<OrderDetail> orderList = Arrays.asList(new Gson().fromJson(orderList_json, OrderDetail[].class));
+
 		int addPaymentInfo = storeService.insertPaymentInfo(p);
-		
-		System.out.println(addPaymentInfo);
-		
-		System.out.println("결제 완료 test");
+		int result2 = storeService.insertOrderDetails(orderList);
 		
 		return p;
 
@@ -192,12 +181,11 @@ public class storeController {
 		List cartList = new ArrayList();
 		
 		cartList = storeService.selectAllCart(userId);
-		
-		System.out.println(cartList);
+		Coupon cp = storeService.selectCoupon(userId);
 		
 		model.addAttribute("cartList", cartList);
+		model.addAttribute("coupon", cp);
 		
 		return "store/cart";
 	}
-	
 }

@@ -137,7 +137,7 @@
 				</c:if>
 				<c:if test="${!empty member}">
 					<li><a
-						href="${pageContext.request.contextPath}/myPage/orderList.do"
+						href="${pageContext.request.contextPath}/myPage/myOrder.do"
 						class="menu-content">ORDER</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/myPage/myPageHome.do?userId=${member.userId}"

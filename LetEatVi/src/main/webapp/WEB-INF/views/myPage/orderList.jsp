@@ -69,10 +69,10 @@
 				<img class="tracking-img" src="${pageContext.request.contextPath}/resources/images/tracking.png">
 				<span class="detail-title">&nbsp;&nbsp;주문목록</span>
 				
-				
+				<c:forEach items="${productList}" var="o" varStatus="st">
 				<!-- 주문내역 박스 -->
 				<div class="order-entire-box">
-					<p id="order-date"><b class="order-date">2021.06.18</b></p>
+					<p id="order-date"><b class="order-date">${o.oenroll}</b></p>
 					<!-- 구매 상품 -->
 					<div class="row detail-box"
 						style="margin-right: 0px; margin-left: 48.3px;">
@@ -84,16 +84,21 @@
 							<div class="row">
 								<div class="col" style="padding: 0px 0px;">
 									<img class="product_img" style="padding: 20px 30px;"
-									src="${pageContext.request.contextPath}/resources/images/루테인 플러스.jpg">
+									src="${pageContext.request.contextPath}/resources/images/${o.pname}.jpg">
 								</div>
 							</div>
 						</div>
+						
 						<div class="col detail-text">
-							<div class="row detail-text" style="height: 90px;"><b style="padding-top: 23px;">주문번호 300000102683771</b></div>
-							<div class="row" class="product-name"
-								style="padding-right: 30px; font-size: 17px;">루테인 플러스 외 2개</div>
+							<div class="row detail-text" style="height: 90px;"><b style="padding-top: 23px;">${o.oid}</b></div>
+							<c:forEach items="${pcount}" var="p" varStatus="st2">
+								<c:if test="${ st2.count == 1 }">
+								<div class="row" class="product-name"
+									style="padding-right: 30px; font-size: 17px;">${o.pname} 외 ${p - 1}개 </div>
+								</c:if>
+							</c:forEach>
 							<div class="row" class="product-price"
-								style="padding-right: 30px; font-size: 17px;"><b style="margin-top:5px;">총 78,000 원</b></div>
+								style="padding-right: 30px; font-size: 17px;"><b style="margin-top:5px;">${o.totalPrice}원</b></div>
 						</div>
 						<div class="col detail-btn" style="max-width: 25%;">
 							<div class="row">
@@ -103,54 +108,14 @@
 								<button type="button"
 									onclick="location.href='${pageContext.request.contextPath}/myPage/orderDetail.do'"
 									class="btn btn-dark btn-lg" id="detail-btn"
-									style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">상세보기</button>
+									style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black; margin-bottom: 20px;">상세보기</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div style="height: 40px;"></div>
 				<!-- 주문내역 박스 끝 -->
-				
-				
-								<!-- 주문내역 박스 -->
-				<div class="order-entire-box">
-					<p id="order-date"><b class="order-date">2021.06.18</b></p>
-					<!-- 구매 상품 -->
-					<div class="row detail-box"
-						style="margin-right: 0px; margin-left: 48.3px;">
-						<div class="col detail-content" style="max-width: 20%;">
-							<div class="row shipping-status"
-								style="padding-left: 36px; padding-top: 20px; font-size: 20px;">
-								<b>배송완료</b>
-							</div>
-							<div class="row">
-								<div class="col" style="padding: 0px 0px;">
-									<img class="product_img" style="padding: 20px 30px;"
-									src="${pageContext.request.contextPath}/resources/images/루테인 플러스.jpg">
-								</div>
-							</div>
-						</div>
-						<div class="col detail-text">
-							<div class="row detail-text" style="height: 90px;"><b style="padding-top: 23px;">주문번호 300000102683771</b></div>
-							<div class="row" class="product-name"
-								style="padding-right: 30px; font-size: 17px;">루테인 플러스 외 2개</div>
-							<div class="row" class="product-price"
-								style="padding-right: 30px; font-size: 17px;"><b style="margin-top:5px;">총 78,000 원</b></div>
-						</div>
-						<div class="col detail-btn" style="max-width: 25%;">
-							<div class="row">
-								<button type="button" class="btn btn-dark btn-lg"
-									id="detail-btn"
-									style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 32px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
-								<button type="button"
-									onclick="location.href='${pageContext.request.contextPath}/myPage/orderDetail.do'"
-									class="btn btn-dark btn-lg" id="detail-btn"
-									style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">상세보기</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- 주문내역 박스 끝 -->
+				</c:forEach>
 				
 			</div>
 		</div>

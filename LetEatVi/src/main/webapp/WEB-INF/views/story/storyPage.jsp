@@ -130,13 +130,13 @@
 						<div class="col ctimg"
 							onclick="location.href='https://itembbal.com/%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8-%EC%8B%9D%EB%8B%A8-%EC%B6%94%EC%B2%9C-%EA%B1%B4%EA%B0%95%ED%95%9C-%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8-%EC%8B%9D%EB%8B%A8-%EC%A7%9C%EA%B8%B0/';">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/diet.JPG"
+								src="${pageContext.request.contextPath}/resources/images/7.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
 							onclick="location.href='https://krtopic.com/145'">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/skin.png"
+								src="${pageContext.request.contextPath}/resources/images/14.jpg"
 								alt="">
 						</div>
 					</div>

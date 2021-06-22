@@ -42,18 +42,14 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap')
 	;
-
 @import
 	url('https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap')
 	;
-
 @import
 	url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-
 @import
 	url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap')
 	;
-
 @font-face {
 	font-family: 'S-CoreDream-3Light';
 	src:
@@ -62,7 +58,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'GongGothicMedium';
 	src:
@@ -71,7 +66,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'MapoGoldenPier';
 	src:
@@ -80,7 +74,6 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
 	font-family: 'Inkfree';
 	src:

@@ -11,12 +11,16 @@
 		<typeAlias type="com.kh.leteatvi.member.model.vo.Member" alias="Member"/>
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Product" alias="Prod" />
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Cart" />
-		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Payment" />
+		<typeAlias type="com.kh.leteatvi.store.model.vo.Payment" alias="Payment" />
+		<typeAlias type="com.kh.leteatvi.store.model.vo.OrderDetail" alias="OrderDetail" />
+		<typeAlias type="com.kh.leteatvi.store.model.vo.Order" alias="Order" />
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.AdminProduct" alias="AdminProduct" />
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.SalesChart" alias="SalesChart" />
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.Message" alias="Message" />
 		<typeAlias alias="SurveyResult" type="com.kh.leteatvi.survey.model.vo.SurveyResult"/>
-	
+
+		<typeAlias type="com.kh.leteatvi.story.model.vo.Coupon" alias="Coupon" />
+
 	</typeAliases>
 
 </configuration>
