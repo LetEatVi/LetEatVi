@@ -4,8 +4,6 @@
 <mapper namespace="member-mapper">
 	
 		<resultMap type="Member" id="resultMember">
-		<result property="enrollDate" column="enroll_date" />
-		<result property="lastDate" column="last_date" />
 	</resultMap>
 	
 	<!-- 회원 가입 -->
@@ -14,7 +12,7 @@
 			#{ userId }, 2, #{ password }, #{ userName }, 
 			 #{ age }, #{ gender }, #{ email },
 			#{ phone }, #{ address },
-			 SYSDATE, SYSDATE, 'Y', 'Y'
+			 SYSDATE, SYSDATE, 'Y', 'Y', NULL
 		)
 	</insert>
 	

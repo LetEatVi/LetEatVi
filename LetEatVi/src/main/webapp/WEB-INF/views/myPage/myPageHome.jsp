@@ -146,8 +146,8 @@
 					<td>배송현황</td>
 				</tr>
 				<tr style="">
-					<td>${orderList.oId}</td>
-					<td>${orderList.oEnroll}</td>
+					<td>${orderList.oid}</td>
+					<td>${orderList.onnroll}</td>
 					<td>${orderList.totalPrice}</td>
 					<td>${orderList.addressee}</td>
 					<td>배송완료</td>

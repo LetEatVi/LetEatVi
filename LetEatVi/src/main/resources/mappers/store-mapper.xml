@@ -65,6 +65,18 @@
 		INSERT INTO CART VALUES(SEQ_CART_ID.NEXTVAL, #{userId}, #{pid}, #{cartquantity})
 	</insert>
 
+	<insert id="insertOrderDetail" parameterType="OrderDetail">
+		INSERT INTO ORDER_DETAIL VALUES(#{oid}, #{pid}, #{qty})
+	</insert>
+	
+	<select id="selectOrderDetailList" parameterType="string" resultType="OrderDetail">
+		SELECT O.OID, O.PID, O.QTY, PNAME, PPRICE, OL.USERID, ol.oenroll, OCOMMENT, ADDRESSEE, ADDRESS, PHONE, TOTALPRICE, PINFO
+		FROM ORDER_DETAIL O, PRODUCT P, ORDERLIST OL
+		WHERE O.PID = P.PID
+		  AND O.OID = OL.OID
+		  AND USERID= #{userId}
+		ORDER BY OID
+	</select>
 	
 	<select id="selectAllCart" parameterType="string" resultType="Cart">
 		SELECT * FROM PRODUCT P,
@@ -73,5 +85,52 @@
     		WHERE USERID = #{userId} ) B
 		WHERE P.PID = B.PID
 	</select>
+	
+	<select id="selectOidList" parameterType="string" resultType="orderDetail">
+		SELECT O.OID
+		FROM ORDER_DETAIL O, ORDERLIST L
+		WHERE O.OID = L.OID
+		AND USERID = #{userId}
+		GROUP BY O.OID
+	</select>
+	
+	<select id="selectPcount" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM ORDER_DETAIL
+		WHERE OID = #{oid}
+	</select>
+	
+	<select id="selectProductList" parameterType="string" resultType="Order">
+	SELECT * FROM(
+		SELECT * FROM PRODUCT P
+		JOIN (SELECT *
+		      FROM ORDER_DETAIL
+		      WHERE (OID, PID) IN (SELECT OID, PID
+		                           FROM(SELECT ROW_NUMBER() OVER(PARTITION BY OID ORDER BY QTY DESC) OID_NO, OID, PID
+		                                FROM ORDER_DETAIL)
+		                            WHERE OID_NO = 1)) B ON(P.PID = B.PID)
+		JOIN ORDERLIST L ON(L.OID = B.OID)) A
+		WHERE A.USERID = #{userId}
+	</select>
+	
+	<select id="selectproductDetail" parameterType="string" resultType="Order">
+		SELECT * FROM(
+			SELECT * FROM PRODUCT P
+			JOIN (SELECT *
+			      FROM ORDER_DETAIL
+			      WHERE (OID, PID) IN (SELECT OID, PID
+			                           FROM(SELECT ROW_NUMBER() OVER(PARTITION BY OID
+			                                                          ORDER BY QTY DESC) OID_NO, OID, PID
+			                                FROM ORDER_DETAIL)
+			                            WHERE OID_NO = 1)) B ON(P.PID = B.PID)
+			JOIN ORDERLIST L ON(L.OID = B.OID)) A
+			WHERE A.USERID = #{userId}
+	</select>
 
+	<select id="selectCoupon" parameterType="string" resultType="Coupon">
+		SELECT C.*
+		FROM COUPON C, MEMBER M
+		WHERE USERID = #{userId}
+		AND C.CID = M.COUPONID
+	</select>
 </mapper>

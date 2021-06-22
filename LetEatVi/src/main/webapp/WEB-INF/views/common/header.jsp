@@ -122,7 +122,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/store/goStore.do"
 					class="menu-content">STORE</a></li>
-				<li><a href="" class="menu-content">SURVEY</a></li>
+				<li><a href="${pageContext.request.contextPath}/survey/survey.do" class="menu-content">SURVEY</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/story/goStory.do"
 					class="menu-content">STORY</a></li>
@@ -137,7 +137,7 @@
 				</c:if>
 				<c:if test="${!empty member}">
 					<li><a
-						href="${pageContext.request.contextPath}/myPage/orderList.do"
+						href="${pageContext.request.contextPath}/myPage/myOrder.do"
 						class="menu-content">ORDER</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/myPage/myPageHome.do"

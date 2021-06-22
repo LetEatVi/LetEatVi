@@ -1,12 +1,16 @@
 package com.kh.leteatvi.store.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.kh.leteatvi.member.model.vo.Member;
 import com.kh.leteatvi.store.model.vo.Cart;
+import com.kh.leteatvi.store.model.vo.Order;
+import com.kh.leteatvi.store.model.vo.OrderDetail;
 import com.kh.leteatvi.store.model.vo.Payment;
 import com.kh.leteatvi.store.model.vo.Product;
+import com.kh.leteatvi.story.model.vo.Coupon;
 
 public interface StoreDAO {
 
@@ -39,4 +43,18 @@ public interface StoreDAO {
 
 
 	List selectAllCart(String userId);
+
+	int insertOrderDetails(OrderDetail od);
+
+	List<OrderDetail> selectList(String userId);
+
+	List<OrderDetail> selectOidList(String userId);
+
+	int selectPcount(String oid);
+
+	List<Order> seletProductList(String userId);
+
+	List<Order> selectproductDetail(String userId);
+
+	Coupon selectCoupon(String userId);
 }

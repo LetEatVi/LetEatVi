@@ -27,7 +27,6 @@ public class Member implements Serializable{
 	private Date lastDate;
 	private String status;
 	private String couponstatus;
-	
-	
+	private int couponId;
 
 }

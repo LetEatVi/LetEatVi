@@ -22,7 +22,7 @@ public class Payment {
 	private String address;
 	private String phone;
 	// == input_form ==
-	
+	private int[] pidList;
 	private String userName;
 	
 	//	private int pid;

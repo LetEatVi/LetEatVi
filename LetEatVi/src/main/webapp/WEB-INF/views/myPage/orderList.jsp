@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Let Eat VI</title>
 
 <link rel="stylesheet"
@@ -61,173 +62,65 @@
 	<%@include file="../common/header.jsp"%>
 
 	<div class="top-img"></div>
-	
-	
 
-	<div>
-		<a href="${pageContext.request.contextPath}/myPage/orderDetail.do">상세보기</a>
-	</div>
-
-	<div class="container orderContext" style="width: 1000px;">
+	<div class="container orderContext table" style="width: 1000px;">
 		<div class="order-inner">
 			<div class="buyProductText">
-				<p class="detail-title">주문상세</p>
-				<p class="order_detail" style="font-size: 20px;">
-					<b>2021.06.23 주문</b> &nbsp;&nbsp; 주문번호 300000102683771
-				</p>
-
-				<!-- 구매 상품 -->
-				<div class="row detail-box">
-					<div class="col detail-content" style="max-width: 20%;">
-						<div class="row"
-							style="padding-left: 65px; padding-top: 20px; font-size: 20px;">
-							<b>배송완료</b>
+				<img class="tracking-img" src="${pageContext.request.contextPath}/resources/images/tracking.png">
+				<span class="detail-title">&nbsp;&nbsp;주문목록</span>
+				
+				<c:forEach items="${productList}" var="o" varStatus="st">
+				<!-- 주문내역 박스 -->
+				<div class="order-entire-box">
+					<p id="order-date"><b class="order-date">${o.oenroll}</b></p>
+					<!-- 구매 상품 -->
+					<div class="row detail-box"
+						style="margin-right: 0px; margin-left: 48.3px;">
+						<div class="col detail-content" style="max-width: 20%;">
+							<div class="row shipping-status"
+								style="padding-left: 36px; padding-top: 20px; font-size: 20px;">
+								<b>배송완료</b>
+							</div>
+							<div class="row">
+								<div class="col" style="padding: 0px 0px;">
+									<img class="product_img" style="padding: 20px 30px;"
+									src="${pageContext.request.contextPath}/resources/images/${o.pname}.jpg">
+								</div>
+							</div>
 						</div>
-						<div class="row">
-							<div class="col" style="padding: 0px 0px;">
-								<img class="product_img" style="padding: 20px 30px;"
-									src="${pageContext.request.contextPath}/resources/images/루테인 플러스.jpg">
+						
+						<div class="col detail-text">
+							<div class="row detail-text" style="height: 90px;"><b style="padding-top: 23px;">${o.oid}</b></div>
+							<c:forEach items="${pcount}" var="p" varStatus="st2">
+								<c:if test="${ st2.count == 1 }">
+								<div class="row" class="product-name"
+									style="padding-right: 30px; font-size: 17px;">${o.pname} 외 ${p - 1}개 </div>
+								</c:if>
+							</c:forEach>
+							<div class="row" class="product-price"
+								style="padding-right: 30px; font-size: 17px;"><b style="margin-top:5px;">${o.totalPrice}원</b></div>
+						</div>
+						<div class="col detail-btn" style="max-width: 25%;">
+							<div class="row">
+								<button type="button" class="btn btn-dark btn-lg"
+									id="detail-btn"
+									style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 32px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
+								<button type="button"
+									onclick="location.href='${pageContext.request.contextPath}/myPage/orderDetail.do'"
+									class="btn btn-dark btn-lg" id="detail-btn"
+									style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black; margin-bottom: 20px;">상세보기</button>
 							</div>
 						</div>
 					</div>
-					<div class="col detail-text">
-						<div class="row" style="margin-top: 80px;">
-							<b>루테인 플러스</b>
-						</div>
-						<div class="row" class="product-detail"
-							style="padding-right: 30px; padding-top: 10px;">눈이 침침할 때
-							사용하는 영양제에는 루테인이라는 성분이 포함되어있는데요. 루테인은 눈 관련 건강 기능성 식품으로 황반 색소 밀도를
-							유지시켜 눈 건강에 도움을 주는 기능 성분</div>
-					</div>
-					<div class="col detail-btn" style="max-width: 25%;">
-						<div class="row">
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 30px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환,
-								반품 신청</button>
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">리뷰
-								작성하기</button>
-						</div>
-					</div>
 				</div>
-
-				<div class="row detail-box">
-					<div class="col detail-content" style="max-width: 20%;">
-						<div class="row"
-							style="padding-left: 65px; padding-top: 20px; font-size: 20px;">
-							<b>배송완료</b>
-						</div>
-						<div class="row">
-							<div class="col" style="padding: 0px 0px;">
-								<img class="product_img" style="padding: 20px 30px;"
-									src="${pageContext.request.contextPath}/resources/images/루테인 플러스.jpg">
-							</div>
-						</div>
-					</div>
-					<div class="col detail-text">
-						<div class="row" style="margin-top: 80px;">
-							<b>루테인 플러스</b>
-						</div>
-						<div class="row" class="product-detail"
-							style="padding-right: 30px; padding-top: 10px;">눈이 침침할 때
-							사용하는 영양제에는 루테인이라는 성분이 포함되어있는데요. 루테인은 눈 관련 건강 기능성 식품으로 황반 색소 밀도를
-							유지시켜 눈 건강에 도움을 주는 기능 성분</div>
-					</div>
-					<div class="col detail-btn" style="max-width: 25%;">
-						<div class="row">
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid blue; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 30px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: blue;">배송조회</button>
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">교환,
-								반품 신청</button>
-							<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-								style="width: 90%; border: 1px solid #D3D3D3; border-radius: 10px; margin: auto; font-family: 'IBMPlexSansKR-Regular'; margin-top: 25px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black;">리뷰
-								작성하기</button>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- 받는사람 정보 -->
-				<p
-					style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; font-size: 25px;">받는사람
-					정보</p>
-				<hr style="border: 1px solid #B2B2B2">
-
-				<table style="border-collapse: separate; border-spacing: 0 10px;">
-					<tr>
-						<th>받는사람</th>
-						<td>${member.userName}</td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						<td>${member.phone}</td>
-					</tr>
-					<tr>
-						<th>받는주소</th>
-						<td>${member.address}</td>
-					</tr>
-				</table>
-				<hr style="border: 1px solid #E5E5E5;">
-
-				<!-- 결제 정보 -->
-				<div
-					style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; padding-bottom: 10px; font-size: 25px; border-bottom: 2px solid #B2B2B2;">결제
-					정보</div>
-
-				<div class="row about-paytext"
-					style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
-					<div class="col">
-						<div class="row inner-row"
-							style="padding-top: 15px; padding-left: 10px;">결제수단</div>
-						<div class="row inner-row"
-							style="padding-top: 15px; padding-left: 10px;">국민카드</div>
-					</div>
-					<div class="col" style="background-color: #F2F2F2; max-width: 45%;">
-						<div class="row" style="padding-top: 15px;">
-							<div class="col col-th">총 상품 가격</div>
-							<div class="col col-td">84,000 원</div>
-						</div>
-						<div class="row" style="padding-top: 15px;">
-							<div class="col col-th">배송비</div>
-							<div class="col col-td">0 원</div>
-						</div>
-					</div>
-				</div>
-				<div class="row about-paytext"
-					style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
-					<div class="col">
-						<div class="row"></div>
-						<div class="row"></div>
-					</div>
-					<div class="col" style="background-color: #F2F2F2; max-width: 45%">
-						<div class="row" style="padding-top: 15px;">
-							<div class="col col-th">국민카드</div>
-							<div class="col col-td">84,000 원</div>
-						</div>
-						<div class="row" style="padding-top: 15px;">
-							<div class="col col-th" style="font-weight: bolder;">총 결제
-								금액</div>
-							<div class="col col-td" style="font-weight: bolder;">84,000
-								원</div>
-						</div>
-					</div>
-				</div>
-
-				<button type="button" class="btn btn-dark btn-lg" id="detail-btn"
-					style="border: 1px solid #D3D3D3; border-radius: 10px; margin-top: 20px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black; float: right;">&lt;
-					주문목록 돌아가기</button>
-
-				<img style="width: 100%; margin-top: 70px;"
-					src="${pageContext.request.contextPath}/resources/images/shipping.png">
-
-
-
+				<div style="height: 40px;"></div>
+				<!-- 주문내역 박스 끝 -->
+				</c:forEach>
+				
 			</div>
 		</div>
 	</div>
+
 	<br>
 
 

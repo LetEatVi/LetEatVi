@@ -128,15 +128,16 @@
 		
 		<c:forEach items="${cartList}" var="c" varStatus="st">
 		<div class="container orderContext">
+		<input type="hidden" name="pid" value="${c.pid}"/>
 			<div class="order-inner">
 				<div class="buyProductText">
 					<div class="buyImg" style="display: inline-block;">
-						<img class="pay_product_img" src="${pageContext.request.contextPath}/resources/images/${c.pname}.jpg">
+						<img class="pay_product_img" src="${pageContext.request.contextPath}/resources/images/${c.pname}.jpg" style="width: 150px; height: 150px;">
 					</div>
 					<div class="buyContent buyText" style="margin-top: 85px; padding-right: 17px;">${c.pname}</div>
 					<div class="buyContent buyText" style="margin-top: 85px; padding-left: 5px;">
 						<img src="${pageContext.request.contextPath}/resources/images/remove.png" style="width: 15px;" id="minusQuantity" onclick="minusQuantity(${st.count}, ${c.pprice})">
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="quantity${st.count}">${c.cartquantity}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="qty" id="quantity${st.count}">${c.cartquantity}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<img src="${pageContext.request.contextPath}/resources/images/plus.png" style="width: 15px;" id="addQuantity" onclick="addQuantity(${st.count}, ${c.pprice})">
 					</div>
 					<div class="buyContent buyText" style="margin-top: 85px;" id="productPrice${st.count}">${c.pprice}</div>
@@ -249,7 +250,7 @@
 							id="pleaseRequest">요청사항</div>
 						<div class="col-7 card-text">
 							<div class="input-group">
-								<textarea class="form-control" name="comment" aria-label="With textarea" style="resize: none;"></textarea>
+								<textarea class="form-control" name="ocomment" aria-label="With textarea" style="resize: none;"></textarea>
 							</div>
 						</div>
 					</div>
@@ -291,7 +292,7 @@
 					<br> <br>
 
 					<div class="row">
-						<div class="col-2 buySumProductPrice">42000</div>
+						<div class="col-2 buySumProductPrice"></div>
 
 						<div class="col-1">
 
@@ -309,7 +310,7 @@
 								style="width: 15px;">
 						</div>
 
-						<div class="col-2 buyProductText">0</div>
+						<div class="col-2 buyProductText discountText">0</div>
 
 						<div class="col-1">
 							<img
@@ -317,22 +318,22 @@
 								style="width: 15px;">
 						</div>
 
-						<div class="col-2 buyTotalProductPrice">42000</div>
+						<input type="hidden" class="originalPrice" value="42000">
+						<div class="col-2 buyTotalProductPrice"></div>
 					</div>
 					<br> <br>
-
 
 					<div class="row">
 						<div class="col-2 card-text" style="margin-top: 8px;">쿠폰</div>
 						<div class="col-9">
-							<select class="custom-select" name="cupon" id="cupon">
+							<select class="custom-select coupon-select" name="coupon" id="coupon">
 								<option selected>쿠폰을 선택해주세요</option>
-								<option value="1">데이터 베이스에</option>
-								<option value="2">등록된 쿠폰 항목</option>
-								<option value="2">가져와서 등록</option>
+								<option value="1" id="test">${coupon.getCname()}</option>
+								<option value="2" id="test">10% DC</option>
 							</select>
 						</div>
 					</div>
+					
 					<br> <br>
 					
 					<div class="row">
@@ -375,7 +376,7 @@
 	       	기타 문의사항은 채팅 또는 전화문의로 연락주시면 <br />
 	       	답변 드리겠습니다 <br /><br />
 	       	
-	       	-주문 정보- <br />
+	       	-주문 정보- <br />	<br />
 	       	<div id="orderer">주문자 명 : 000. </div><br />
 	       	<div id="orderNo">주문 번호 : 000. </div><br />
 	       	<div id="orderPrice">결제 금액 : 000. </div><br />
@@ -399,6 +400,7 @@
 			$(function() {
 			    IMP.init('imp77211071');
 			}); 
+			
 			function QueryStringToJSON(str) {
 			    var pairs = str.split('&');
 			    var result = {};
@@ -418,7 +420,8 @@
 			    });
 			    return (result);
 			}
-
+			
+			// 실제 버튼 기능
 			$('#payBtn').on('click', function(){ 
 				
 				console.log("결제 진행");
@@ -427,7 +430,7 @@
 			            merchant_uid : 'merchant_' + new Date().getTime(),
 			            amount : parseInt($('.buyTotalProductPrice').text()),
 			            buyer_tel : '${member.phone}',
-			            
+			           
 			            // 추가 항목
 			            name : '${cartList.get(0).pname}'
 			        }, function(rsp) {
@@ -450,14 +453,25 @@
 			                console.log(totalPrice);
 			                console.log(userId);
 			                
+			                var orderList = [];"C:/Users/user1/Desktop/LetEatVi (2)/LetEatVi/src/main/webapp/WEB-INF/views/store/storeHome.jsp"
+			                $('[name=pid]').each(function(index, item){
+			                	var orderDetail = {};
+			                	orderDetail['oid'] = oid;
+			                	orderDetail['pid'] = Number($(item).val());
+			                	orderDetail['qty'] = Number($(this).siblings('div.order-inner').find('.qty').text());
+			                	
+			                	orderList.push(orderDetail);
+			                });
+			                
 			                payment['oid'] = oid;
 			                payment['totalPrice'] = totalPrice;
 			                payment['userId'] = userId;
-			                
+			                payment['orderList_json'] = JSON.stringify(orderList);
 /* 			                $(".paySuccess").click();
 			                
 			                $('#insertFrm').submit(); */
- 
+ 							console.log(payment);
+			                
 			                $.ajax({
 			                	url : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
 			                    type : 'POST', 
@@ -485,29 +499,105 @@
 			                $("#errorModal").trigger("click");
 			            }
 			            
-			            alert(msg);
+			            /* alert(msg); */
 			        });
 			        
 			});
+			
+			// 확인용 버튼 기능
+			/*
+			$('#payBtn').on('click', function(){ 
+				
+        	    var form = $("#insertFrm");        
+                var payment = QueryStringToJSON(decodeURIComponent(form.serialize()));
+                
+                var userId = "${member.userId}";
+                
+                var pidList = [];
+                $('[name=pid]').each(function(index, item){
+                	pidList.push(Number($(item).val()));
+                });
+                
+                payment['oid'] = '0';
+                payment['totalPrice'] = '500';
+                payment['userId'] = userId;
+                payment['pidList_json'] = JSON.stringify(pidList);
+				console.log(payment);
+			                
+                $.ajax({
+                	url : "${pageContext.request.contextPath}/store/insertPaymentInfo.do",
+                    type : 'POST', 
+                    data : payment,
+                    success : function(data){
+                    	console.log("ajax 성공");
+                    	console.log(data);
+                    	$("#orderer").text("주문자 명 : " + $("#orderPerson").val());
+                    	$("#orderNo").text("주문 번호 : " + data.oid);
+                    	$("#orderPrice").text("결제 금액 : " + data.totalPrice + "￦");
+		                $(".paySuccess").click();
+                	}, error : function(jqxhr, textStatus, errorThrown){
+		                console.log(jqxhr);
+		                console.log(textStatus);
+		                console.log(errorThrown);
+                		console.log("ajax 처리 실패");
+                	}
+          	 	});
+			});
+			*/
 		</script>
 
 	<script>
 	function minusQuantity(value, price){
+		var totalPrice = $('.originalPrice').val();
 		console.log("value : " + value);
 		 if($("#quantity" + value).text() > 1){
 			$("#quantity" + value).text($("#quantity" + value).text() - 1);
 			$("#finalPrice" + value).text(Number($("#quantity" + value).text()) * price + "￦"); 
-			$(".buySumProductPrice").text($(".buySumProductPrice").text() - price);
-			$(".buyTotalProductPrice").text($(".buyTotalProductPrice").text() - price);
+			$(".buySumProductPrice, .buyTotalProductPrice").text($(".buySumProductPrice").text() - price);
+			// $(".buyTotalProductPrice").text($(".buyTotalProductPrice").text() - price);
+			$(".originalPrice").val($(".buyTotalProductPrice").text());
+			
+			var couponId = parseInt($('.coupon-select').val());
+			var discountPrice = 0;
+			var totalPrice = $('.originalPrice').val();
+			
+			switch(couponId){
+			case 1 :
+				discountPrice = 10000;
+				break;
+			case 2 : 
+				discountPrice = parseInt(Number(totalPrice) / 10);
+				break;
+			}
+			
+	    	$(".discountText").text(discountPrice);
+			$(".buyTotalProductPrice").text(totalPrice - discountPrice);
 		}
 	}
 	
 	function addQuantity(value, price){
+		var totalPrice = $('.originalPrice').val();
  		console.log("value : " + value);
 		$("#quantity" + value).text(parseInt($("#quantity" + value).text()) + 1);
 		$("#finalPrice" + value).text(Number($("#quantity" + value).text()) * price + "￦");
-		$(".buySumProductPrice").text(Number($(".buySumProductPrice").text()) + price);
-		$(".buyTotalProductPrice").text(Number($(".buyTotalProductPrice").text()) + price);
+		$(".buySumProductPrice, .buyTotalProductPrice").text(Number($(".buySumProductPrice").text()) + price);
+		$(".originalPrice").val($(".buyTotalProductPrice").text());
+		
+		var couponId = parseInt($('.coupon-select').val());
+		var discountPrice = 0;
+		var totalPrice = $('.originalPrice').val();
+		
+		switch(couponId){
+		case 1 :
+			discountPrice = 10000;
+			break;
+		case 2 : 
+			discountPrice = parseInt(Number(totalPrice) / 10);
+			break;
+		}
+		
+    	$(".discountText").text(discountPrice);
+		$(".buyTotalProductPrice").text(totalPrice - discountPrice);
 	} 
 	</script>
 
@@ -515,13 +605,17 @@
 			 $(document).ready(function () {
 				 
 				 console.log(${cartList.size()});
+				 console.log("수량 : " + $("#quantity2").text());
 				 var totalPrice = 0;
 				 
 				 for(var i = 1 ; i <= ${cartList.size()} ; i++){
-					 totalPrice += parseInt($("#finalPrice" + i).text());
+					 totalPrice += parseInt($("#finalPrice" + i).text() * $("#quantity" + i).text());
 					 console.log(totalPrice);
-				 } 
-				 
+					 $(".buySumProductPrice").text(Number(totalPrice));
+					 $(".buyTotalProductPrice").text(Number(totalPrice));
+					 $(".originalPrice").val(Number(totalPrice));
+					 $("#finalPrice" + i).text($("#finalPrice" + i).text() * $("#quantity" + i).text());
+				 } 	
 				 
 				$("#orderPerson").attr("value", "${member.userName}");
 				$("#orderEmail").attr("value", "${member.email}");
@@ -544,8 +638,36 @@
 		}
 		
 		function goMypage(){
-			location.href = "${pageContext.request.contextPath}/myPage/myPageHome.do";
+			var form = $("#insertFrm"); 
+			var payment = QueryStringToJSON(decodeURIComponent(form.serialize()));
+		
+			location.href = "${pageContext.request.contextPath}/myPage/myOrder.do";
 		}
+	</script>
+			
+	<script>
+	
+	$("#coupon").on("change", function(){
+		
+		console.log("실행 테스트");
+		
+		var couponId = parseInt($('.coupon-select').val());
+		var discountPrice = 0;
+		var totalPrice = $('.originalPrice').val();
+		
+		switch(couponId){
+		case 1 :
+			discountPrice = parseInt(Number(totalPrice) / ${coupon.discountrate});
+			break;
+		case 2 :
+			discountPrice = parseInt(Number(totalPrice) / 10);
+			break;
+		}
+		
+    	$(".discountText").text(discountPrice);
+		$(".buyTotalProductPrice").text(totalPrice - discountPrice);
+	});
+		
 	</script>
 	<%@include file="../common/footer.jsp"%>
 </body>
