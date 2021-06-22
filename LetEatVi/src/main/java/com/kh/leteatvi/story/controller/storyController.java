@@ -95,6 +95,9 @@ public class storyController {
 		
 		int updateCoupon = storyService.updateCouponMember(couponId, userId);
 		
+		
+	    int usingCoupon = storyService.updateCouponStatus(member.getCouponStatus(), userId); 
+	    
 		return map;
 		
 	}

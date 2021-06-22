@@ -11,5 +11,9 @@ public interface storyDAO {
 
 	int updateCouponMember(int couponId, String userId);
 
+	int updateCouponStatus(String couponStatus, String userId);
+
+
+
 	
 }

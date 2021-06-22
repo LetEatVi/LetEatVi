@@ -32,4 +32,12 @@ public class storyServiceImpl implements storyService {
 		return storyDAO.updateCouponMember(couponId, userId);
 	}
 
+	@Override
+	public int updateCouponStatus(String couponStatus, String userId) {
+		
+		return storyDAO.updateCouponStatus(couponStatus, userId);
+	}
+
+
+
 }

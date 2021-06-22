@@ -48,7 +48,12 @@
 	<update id="updateCoupon" parameterType="Member">
 		UPDATE MEMBER SET COUPONID = #{ couponId }
 		WHERE USERID = #{ userId }
-	</update>	
+	</update>
+	
+	<update id="updateCouponSts" parameterType="Member">
+		UPDATE MEMBER SET COUPONSTATUS = 'N'
+		WHERE USERID = #{ userId }
+	</update>		
 		
 		
 	<!-- 

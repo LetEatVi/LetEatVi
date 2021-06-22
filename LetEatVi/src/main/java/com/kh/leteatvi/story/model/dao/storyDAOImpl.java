@@ -35,4 +35,12 @@ public class storyDAOImpl implements storyDAO {
 		return sqlSession.update("member-mapper.updateCoupon", sendMember);
 	}
 
+	@Override
+	public int updateCouponStatus(String couponStatus, String userId) {
+		Member updateCouponSts = new Member();
+		updateCouponSts.setCouponStatus(couponStatus);
+		updateCouponSts.setUserId(userId);
+		return sqlSession.update("member-mapper.updateCouponSts", updateCouponSts);
+	}
+
 }

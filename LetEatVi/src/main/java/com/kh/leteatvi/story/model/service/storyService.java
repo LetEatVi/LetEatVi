@@ -11,6 +11,10 @@ public interface storyService {
 	Coupon selectCoupon(String couponType);
 
 	int updateCouponMember(int couponId, String userId);
+
+	int updateCouponStatus(String couponStatus, String userId);
+
+	
 	
 	}
 	
