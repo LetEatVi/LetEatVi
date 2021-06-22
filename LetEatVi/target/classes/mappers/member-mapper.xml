@@ -14,7 +14,7 @@
 			#{ userId }, 2, #{ password }, #{ userName }, 
 			 #{ age }, #{ gender }, #{ email },
 			#{ phone }, #{ address },
-			 SYSDATE, SYSDATE, 'Y', 'Y'
+			 SYSDATE, SYSDATE, 'Y', 'Y', NULL
 		)
 	</insert>
 	
@@ -43,6 +43,13 @@
 		    #{userId, mode=IN, jdbcType=VARCHAR}, 
 		    #{result, mode=OUT, jdbcType=NUMERIC, javaType=integer} ) }
 	</select>
+	
+	
+	<update id="updateCoupon" parameterType="Member">
+		UPDATE MEMBER SET COUPONID = #{ couponId }
+		WHERE USERID = #{ userId }
+	</update>	
+		
 		
 	<!-- 
 		프로시저 작성 내용

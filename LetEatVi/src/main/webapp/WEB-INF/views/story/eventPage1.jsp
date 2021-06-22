@@ -109,16 +109,16 @@
             <p class="topwords2" style="font-size: 13px;" id="text">읽다보면 나도 모르게 건강해질 것 같은 그런 기분</p>
             <div class="story-nav">
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goStory.do" style="color: #4B553A;">All</a>
+                    <a href="${pageContext.request.contextPath}/story/goStory.do">All</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goLife.do" style="color: #4B553A;">Life</a>
+                    <a href="${pageContext.request.contextPath}/story/goLife.do">Life</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goNutrition.do" style="color: #4B553A;">Nutrition</a>
+                    <a href="${pageContext.request.contextPath}/story/goNutrition.do">Nutrition</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goEvent.do" style="color: #4B553A;">Event</a>
+                    <a href="${pageContext.request.contextPath}/story/goEvent.do">Event</a>
                 </span>
             </div>
         </div>
@@ -134,13 +134,15 @@
 			</c:if><c:if test="${ couponStatus.equals('N')}">
 				<input type='button' value='시작' id='start_btn' disabled></input>
 			</c:if>
+			<!--
 			<div id="result_id"></div>
 			<div id="result_id2"></div>
 			<div id="result_id3"></div>
+			 -->
 			<script>
 			window.onload = function(){
 				
-				var pArr = ["0:10,000원 할인쿠폰","1:다음 기회에","2:10% 할인쿠폰","3:무료배송 쿠폰","4:다음 기회에","5:무료배송 쿠폰","6:다음 기회에","7:5% 할인쿠폰"];
+				var pArr = ["0:만원할인권","1:다음기회에","2:10% 할인쿠폰","3:무료배송쿠폰","4:다음기회에","5:무료배송쿠폰","6:다음기회에","7:5% 할인쿠폰"];
 			
 				$('#start_btn').click(function(){
 					$('#start_btn').prop('disabled', true);
@@ -159,7 +161,7 @@
 								},
 					  duration:5000
 				   });
-				} // 고고씽
+				} 
 				
 				
 				// 룰렛이 끝나고 나서 아래 상품범위를 통하여 결과 뽑아내기
@@ -191,14 +193,17 @@
 				function sendRouletteData(couponType, userId){
 					console.log(couponType + ", " + userId);
 					$.ajax({
-						url : 'ooo.do',
+						type : "POST",
+						url : "/leteatvi/story/getCoupon.do",
 						data : {
 							couponType : couponType,
 							userId : userId
-						}, success : function(data){
-							
+						},
+						success : function(data){
+							console.log(data);
+							alert(couponType + " 을 획득하였습니다! ")
 						}, error : function(){
-							
+							alert("다시 시도해주세요");
 						}
 					});
 				}

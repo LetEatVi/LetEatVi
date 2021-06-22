@@ -110,13 +110,13 @@
 				모르게 건강해질 것 같은 그런 기분</p>
 			<div class="story-nav">
 				<span class="navspan"> <a
-					href="${pageContext.request.contextPath}/story/goStory.do" style="color: #4B553A;">All</a>
+					href="${pageContext.request.contextPath}/story/goStory.do">All</a>
 				</span> <span class="navspan"> <a
-					href="${pageContext.request.contextPath}/story/goLife.do" style="color: #4B553A;">Life</a>
+					href="${pageContext.request.contextPath}/story/goLife.do">Life</a>
 				</span> <span class="navspan"> <a
-					href="${pageContext.request.contextPath}/story/goNutrition.do" style="color: #4B553A;">Nutrition</a>
+					href="${pageContext.request.contextPath}/story/goNutrition.do">Nutrition</a>
 				</span> <span class="navspan"> <a
-					href="${pageContext.request.contextPath}/story/goEvent.do" style="color: #4B553A;">Event</a>
+					href="${pageContext.request.contextPath}/story/goEvent.do">Event</a>
 				</span>
 			</div>
 		</div>

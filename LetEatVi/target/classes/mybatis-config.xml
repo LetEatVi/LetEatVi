@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Cart" />
 		<typeAlias type="com.kh.leteatvi.store.model.vo.Cart" alias="Payment" />
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.AdminProduct" alias="AdminProduct" />
+		<typeAlias type="com.kh.leteatvi.story.model.vo.Coupon" alias="Coupon"/>
 	</typeAliases>
 
 </configuration>
