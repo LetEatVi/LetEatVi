@@ -1,6 +1,50 @@
 @charset "UTF-8";
 /* survey.css */
 
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+
+
+
+
 ul {
     padding-inline-start: 0px;
 }
@@ -8,6 +52,8 @@ ul {
 /* 전체 틀 */
 .result-wrap {
 	margin-top: 100px;
+    display: block;
+    text-align: -webkit-center;
 }
 
 /* head 부분 */
@@ -121,14 +167,16 @@ ul {
     background-color: #fff;
 }
 .advice-wrap img {
-    width: 25px;
-    height: 25px;
+    width: 60px;
+    height: 70px;
     margin-bottom: 9px;
 }
 .advice-wrap h4 {
     color: cornflowerblue;
-    font-size: 25;
+    font-size: 25px;
     font-weight: bold;
+    display: inline-block;
+    margin-left: 30px;
 }
 .advice-wrap ul {
     margin-top: 13px;
@@ -143,10 +191,11 @@ ul {
 /* 추천영양성분 */
 .recommend-wrap {
     position: relative;
-    width: 100%;
+    width: 70%;
     height: auto;
     background-color: #fff;
 	padding: 10px 30px;
+	text-align: left;
 	
 }
 .recommend-wrap h2 {
@@ -169,7 +218,7 @@ ul {
     position: relative;
     display: inline-block;
     padding: 10px 0;
-    width: 90px;
+    width: 130px;
     height: 100px;
     cursor: pointer;
 }
@@ -185,7 +234,7 @@ ul {
     width: 60px;
     max-width: 100%;
     height: auto;
-    margin-left: 7px;
+    margin-left: 24px;
 }
 
 .item-name {
@@ -208,10 +257,11 @@ ul {
 /* 밑에 부분 */
 .result-guide {
     width: 70%;
+    margin: 50px 30px;
+    text-align: left;
 }
 .guide-wrap{
-    width: 100%;
-    margin: 0px 30px;
+	
 }
 
 /* 연령대 가이드 */

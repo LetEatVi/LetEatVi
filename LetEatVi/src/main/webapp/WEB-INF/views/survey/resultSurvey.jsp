@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Survey</title>
 <script
 	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
@@ -122,13 +123,13 @@
   font-family: sans-serif;
 }
 
-.bmi-wrap .unit{
+.bmi-wrap .unit {
   font-family: sans-serif;
   font-weight: 700;
   font-size: 20px;
 }
 
-.bmi-wrap #calculate{
+.bmi-wrap #calculate {
   margin-left: 35%;
   margin-top: 100px;
   padding: 4px 40px;
@@ -223,8 +224,10 @@
 	                    </p>
 	                </div>
 	                <div class="advice-wrap">
-	                    <img src="${pageContext.request.contextPath}/resources/images/surveyImg/eye.png" alt="">
+	                    <img src="${pageContext.request.contextPath}/resources/images/surveyImg/healthy.png" alt="">
 	                    <h4>함께 노력 해보아요!</h4>
+	                    <div>★ : 고민, &nbsp; ★★ : 추천, &nbsp; ★★★ : 적극 추천, &nbsp; ★★★★ : 강력 권장</div>
+	                    <br />
 	                    <ul id="survey-answer-list"> </ul>
 	                </div>
 	                <p class="result-notice">* 상기 내용은 의료 진단 및 의사의 처방을 대신하지 않습니다.</p>
@@ -237,7 +240,7 @@
 	            <ul class="recommend-item-wrap">
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민B">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>비타민 B</p>
@@ -245,7 +248,7 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="프로바이오틱스">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>프로바이오틱스</p>
@@ -253,7 +256,7 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민D">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>비타민D</p>
@@ -261,7 +264,7 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민C">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>비타민 C</p>
@@ -269,7 +272,7 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="루테인">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>루테인</p>
@@ -277,7 +280,7 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="">
+	                        <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="프로폴리스">
 	                    </div>
 	                    <div class="item-name">
 	                        <p>프로폴리스</p>
@@ -366,39 +369,43 @@
 	                            <img src="${pageContext.request.contextPath}/resources/images/surveyImg/fruits.png" alt="">
 	                        </span>
 	                    </div>
-	                    <div class="vita-guide"> 
-	                    	<h3>비타민 B</h3>
-	                        <ul> 
+	                    <div class="vita-guide">
+	                    	<h3>Let's Eat Vitamin의 추천 가이드</h3>
+	                    	<br />
+	                    	<br />
+	                    
+	                        <ul class="item-ul">
+	                        <h3>비타민 B</h3>
 	                            <li># 세포와 혈액 생성</li>
 	                            <li># 활력에너지 충전</li>
 	                        </ul>
 	                    
+	                        <ul class="item-ul">
 	                        <h3>프로바이오틱스</h3>
-	                        <ul>
 	                            <li># 유산균 증식 및 유해균 억제</li>
 	                            <li># 배변 활동 원할에 도움</li>
 	                        </ul>
 	                        
+	                        <ul class="item-ul">
 	                        <h3>칼슘, 마그네슘, 비타민D</h3>
-	                        <ul>
 	                            <li># 뼈 & 치아 & 관절 건강</li>
 	                            <li># 신경과 근육 기능 유지</li>
 	                        </ul>
 	                        
+	                        <ul class="item-ul">
 	                        <h3>비타민 C</h3>
-	                        <ul>
 	                            <li># 피부/모발 건강, 피로회복</li>
 	                            <li># 생기, 미백</li>
 	                        </ul>
 	                        
+	                        <ul class="item-ul">
 	                        <h3>루테인, 지아잔틴</h3>
-	                        <ul>
 	                            <li># 눈 건강, 눈 피로 회복</li>
 	                            <li># 안구 개선, 황반색소밀도 유지</li>
 	                        </ul>
 	                        
+	                        <ul class="item-ul">
 	                        <h3>프로폴리스</h3>
-	                        <ul>
 	                            <li># 항산화, 정상적 면역기능</li>
 	                            <li># 유해산소로부터 세포 보호</li>
 	                        </ul>
@@ -443,13 +450,19 @@
 				surveyData['userId'] = $('#surveyUserId').val();
 			}
 			
-			for(var i in interestType){
+			for(var j in interestType){
 				console.log(interestType[i]);
 				if(interestType[i] == '2'){
 					console.log($('.recommend-item-wrap>li')[i]);
 					$($('.recommend-item-wrap>li')[i]).show();
+					
+					console.log($('.vita-guide>ul')[i]);
+					$($('.vita-guide>ul')[i]).show();
 				}
 			}
+		
+			
+		
 			surveyData['userName'] = sessionStorage.getItem('userName');
 			surveyData['age'] = sessionStorage.getItem('answer-age');
 			surveyData['gender'] = sessionStorage.getItem('answer-gender');
@@ -492,15 +505,18 @@
 		$('#namePlace').text(sessionStorage.getItem('userName'));
 		$('#age-bend').text(sessionStorage.getItem('answer-age'));
 		$('.recommend-item-wrap>li').hide(0);
+		$('.vita-guide>ul').hide(0);
 		
 		for(var i in interestType){
 			console.log(interestType[i]);
 			if(interestType[i] == '2'){
 				console.log($('.recommend-item-wrap>li')[i]);
 				$($('.recommend-item-wrap>li')[i]).show();
+				
+				console.log($('.vita-guide>ul')[i]);
+				$($('.vita-guide>ul')[i]).show();
 			}
 		}
-		
 		
 		var gen = sessionStorage.getItem('answer-gender');
 		gen = (gen == 'm' ? '남성' : gen == 'f' ? '여성' : 'X');
@@ -543,16 +559,16 @@
 
 				switch(answerCount){
 				case 1 :
-					answerText = '타입을 고려해보세요.';
+					answerText = '타입의 고민이 있으시군요. 복용을 고려해보세요. ★';
 					break;
 				case 2 :
-					answerText = '타입을 권장합니다.';
+					answerText = '타입의 비타민 복용을 추천합니다. ★★';
 					break;
 				case 3 :
-					answerText = '타입을 추천합니다.';
+					answerText = '타입의 비타민 복용을 적극 추천합니다. ★★★';
 					break;
 				case 4 :
-					answerText = '타입을 강력 추천합니다.';
+					answerText = '타입의 복용이 시급합니다! 강력 권장합니다. ★★★★';
 					break;
 				}
 
