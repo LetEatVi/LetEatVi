@@ -129,12 +129,7 @@
 								src="${pageContext.request.contextPath}/resources/images/event1img.jpg"
 								alt="">
 						</div>
-						<div class="col ctimg"
-							onclick="location.href='https://krtopic.com/145'">
-							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/skin.png"
-								alt="">
-						</div>
+						
 					</div>
 					<div class="row story-content">
 						<div class="col cttext">
@@ -145,14 +140,7 @@
 							</p>
 							<span class="moresee">더 보기...</span>
 						</div>
-						<div class="col cttext">
-							<p class="cate" style="color: #ff1493">Life</p>
-							<h3>나의 피부는 영유아 때로 돌아갈 수 있을까..?</h3>
-							<p id="text">
-								영유아까지는 모르겠지만!<br> 지금보단 훨씬 좋은 피부를 만들어보자!
-							</p>
-							<span class="moresee">더 보기...</span>
-						</div>
+						
 					</div>
 				</div>
 			</div>
