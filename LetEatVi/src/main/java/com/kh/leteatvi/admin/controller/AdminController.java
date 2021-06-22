@@ -60,40 +60,19 @@ public class AdminController {
 		System.out.println(totalSell);
 		System.out.println(totalMember);
 		System.out.println(message);
-		
-
-		
+				
 
 		model.addAttribute("totalSales", totalSales);
 		model.addAttribute("totalIncome", totalIncome);
 		model.addAttribute("totalSell", totalSell);
 		model.addAttribute("totalMember", totalMember);
 		model.addAttribute("message", message);
+		
 
 		return "/admin/adminMain";
 
 	}
-	
 
-	/* total income */
-
-
-	/* total sales */
-
-	@RequestMapping("/admin/totalSales.do")
-	@ResponseBody
-	public List<SalesChart> totalSales(Model model) {
-
-		// 월별 총 판매량
-		List<SalesChart> totalSales = adminService.selectSellData();
-
-		System.out.println(totalSales);
-
-		model.addAttribute("totalSales", totalSales);
-
-		return totalSales;
-
-	}
 	
 
 	/* 상품 관리 페이지 - 상품 전체 조회, 상품 검색, 상품 등록, 상품 삭제 */
@@ -102,8 +81,12 @@ public class AdminController {
 
 		// 처음에는 모든 상품 정보가 나오도록
 		List<AdminProduct> ap = adminService.searchProductAll();
+		
+		// 메세지 목록 조회
+		List<Message> message = adminService.selectMessage();
 
 		model.addAttribute("ap", ap);
+		model.addAttribute("message", message);
 
 		return "/admin/adminProduct";
 
@@ -179,8 +162,13 @@ public class AdminController {
 
 		// 처음에는 모든 상품 정보가 나오도록
 		List<Member> mb = adminService.searchMemberAll();
+		
+		// 메세지 목록 조회
+		List<Message> message = adminService.selectMessage();
+
 
 		model.addAttribute("mb", mb);
+		model.addAttribute("message", message);
 
 		return "/admin/adminMember";
 
@@ -273,6 +261,9 @@ public class AdminController {
 	/* Report Controller */
 	@RequestMapping("/admin/adminReport.do")
 	public String adminReport(String date, Model model) {
+		
+		// Debug 1 - Check Parameter
+		System.out.println(date);
 
 		// 월별 총 판매량
 		List<SalesChart> totalSales = adminService.selectSellData();

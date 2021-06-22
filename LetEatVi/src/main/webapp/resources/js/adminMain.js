@@ -1,8 +1,5 @@
-
-
-
-const message = document.querySelector('#message');
-const msModal = document.querySelector('.insertMessage');
+var message = document.querySelector('#message');
+var msModal = document.querySelector('.insertMessage');
 
 
 

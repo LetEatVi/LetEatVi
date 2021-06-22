@@ -1,166 +1,183 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 <!DOCTYPE html>
 <html>
 <head th:fragment="head">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
-    <title>Hello, world!</title>
-    <!-- JQeury -->
-    <script
-	src="${pageContext.request.contextPath}/resources/js/jquery-3.6.0.min.js"></script>
-    <!-- CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/admin/adminMember.css" rel="stylesheet">
-    <!-- FONT AWSOME -->
-    <script src="https://kit.fontawesome.com/2004329f9f.js"
-            crossorigin="anonymous"></script>
-    <!-- BOOTSTRAP CDN v4.6.0 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrinkto-fit=no">
+<title>Hello, world!</title>
+
+<!-- Apex Chart-->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<!-- JQeury CDN -->
+<script src="https://code.jquery.com/jquery-2.2.4.js"
+	integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+	crossorigin="anonymous"></script>
+<!-- JS -->
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/adminMain.js"></script>
+
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/jspdf.min.js"></script>
+<script defer
+	src="${pageContext.request.contextPath}/resources/js/html2canvas.js"></script>
+
+<!-- CSS -->
+<link
+	href="${pageContext.request.contextPath}/resources/css/admin/adminMain.css"
+	rel="stylesheet">
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/admin/adminMember.css"
+	rel="stylesheet">
+<!-- FONT AWSOME -->
+<script src="https://kit.fontawesome.com/2004329f9f.js"
+	crossorigin="anonymous"></script>
+<!-- BOOTSTRAP CDN v4.6.0 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+	integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+	crossorigin="anonymous"></script>
+
+
+<!-- font url -->
+<style>
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	font-family: 'IBMPlexSansKR-Regular';
+}
+</style>
 <body>
 
-    <div class="main">
 
-        <!-- ªÁ¿ÃµÂπŸ Ω√¿€ -->
-        <div class="sidebar">
-            <div class="sidebar_inner">
-                <!-- ªÁ¿ÃµÂπŸ ≈∏¿Ã∆≤ -->
-        
-                    <h1>∑ø¿’∫Ò ¥ÎΩ√∫∏µÂ</h1>
-        
-            
-                <!-- ªÁ¿ÃµÂπŸ ∏ﬁ¥∫ -->
-                <ul class="sidebar_menu">
-                    <li class="active"><a href="${pageContext.request.contextPath}/admin/adminMain.do" ><i class="fas fa-chart-bar"></i>¬˜∆Æ ∫∏±‚</a></li>
-                    <li><a href="#" ><i class="fas fa-database"></i>ªÛ«∞ µÓ∑œ</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/adminProduct.do" ><i class="fas fa-boxes"></i>¿Á∞Ì ∞¸∏Æ</a></li>
-                    <li><a href="#" ><i class="fas fa-file-invoice-dollar"></i>∏≈√‚ ∞¸∏Æ</a></li>
-                    <li><a href="${pageContext.request.contextPath}/admin/adminMember.do" ><i class="fas fa-user-friends"></i>»∏ø¯ ∞¸∏Æ</a></li>
-                    <li><a href="#" ><i class="fas fa-cogs"></i>ªÁ¿Ã∆Æ ∞¸∏Æ</a></li>
-                    <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£1</a></li>
-                    <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£2</a></li>
-                    <li><a href="#" ><i class="fas fa-wrench"></i>¿”Ω√∞¯∞£3</a></li>
-                </ul>
-            </div>
-            </div>
-            <!-- ªÁ¿ÃµÂπŸ ≥° -->
+	<div class="main" id="pdfDiv">
 
-    <div class="inner">
 		<div class="wrapper">
-			<div class="container sub-contents">
 
 
-            <!-- ªÛ«∞ ¡∂»∏ -->
-            <h3 id="searchTitle">»∏ø¯ ¡∂»∏</h3> 
+			<!---------------------------------- Side Bar Start ----------------------------------->
+			<%@include file="adminSidebar.jsp"%>
+			<!------------------------------------ Side Bar End --------------------------------->
 
-            <!-- ªÛ«∞ ∞Àªˆ º≠ƒ°πŸ form -->
-            <div id="searchProduct">
 
-            <form class="searchForm">
-<!-- 
-            <select id="category" name="category" aria-label="category" class="form-control input_value">
-                <option value="all" selected>¿¸√º</option>
-                <option value="1">»∞µø ¡ﬂ</option>
-                <option value="2">»∞µø ¡§¡ˆ</option>
-            </select>
-            
-             -->
+			<!-- ÎåÄÏãúÎ≥¥Îìú ÏãúÏûë -->
+			<div class="dashboard">
 
-            <!-- <h4> »∏ø¯ ¿Ã∏ß </h4> -->
-            <div class="col-sm-8" >
-                <input type="test" class="form-control input_value" placeholder="»∏ø¯ æ∆¿Ãµ∏¶ ¿‘∑¬«œººø‰." name="userId" id="userId">
-            </div>
-             
-            
+				<div class="dashboard-sec">
 
-            
-            <button type="button" class="btn btn-success"
-            id="search" onclick="searchMember()">∞Àªˆ</button>
-            
-			</form>
-			
-            <!-- <button type="button" class="btn btn-primary"
-             id="new">ªı ªÛ«∞ µÓ∑œ</button> -->
+					<!-- -------------------- Dashboard Inner Start------------------------ -->
+					<div class="DashContent">
 
-            </div>
 
-          
-        <!-- // »∏ø¯ ∞Àªˆ º≠ƒ°πŸ form -->
-            
-            <!-- √ﬂ∞°«— ªÛ«∞µÈ¿ª ≥™ø≠«œø© ∫∏ø©¡÷¥¬ ≈◊¿Ã∫Ì -->
-				<div class="scrollable">
-					<table class="table table-hover text-center">
-	
-						<thead>
-							<tr data-target="#listmodal" data-toggle="modal" id="sorter">
-                                <th>»∏ø¯æ∆¿Ãµ</th>
-								<th>¿Ã∏ß</th>
-								<th>º∫∫∞</th>
-								<th>≥™¿Ã</th>
-								<th>»∞µø ¡§¡ˆ πˆ∆∞</th>
-							</tr>
-						</thead>
-<!-- ªÛ«∞ ¡∂»∏ ∫Œ∫– Ω√¿€ -->
-						<c:forEach items="${mb}" var="m">
-						<tbody id="memContent">
-												                            <td>${a.cname} </td>
-                            <td>${m.userId}</td>
-                            <td>${m.userName}</td>
-                            <td>${m.gender}</td>
-                            <td>${m.age}</td>
-                            <td><button type="button" class="btn btn-secondary"
-                                onclick="modalDelBtn()" >ªË¡¶</button></td>
+
+						<!-- ------------------------Left Section Start--------------------------- 
+						(Overview, Chart, Best Seller, Trend Report)-------------------------------------->
 						
-					
-						</tbody>
-	</c:forEach> 
-	
-	<!-- //ªÛ«∞ ¡∂»∏ ∫Œ∫– -->
-	
-					</table>				
-				</div>
-            
+						<div class="leftDiv">
+
+							<h1 id="items_title">MEMBER VIEW</h1>
+
+
+							<!-- -------------------- Member View Div Start------------------------ -->
+							<div class="member">
+
+
+								<div class="member_inner">
+
+
+									<!-- -----------------------Member Search Bar Start ------------------------ -->
+									<div id="searchProduct">
+
+										<form class="searchForm">
+
+											<!-- <h4> ÌöåÏõê Ïù¥Î¶Ñ </h4> -->
+											<div class="col-sm-8">
+												<input type="text" class="form-control form-control-sm"
+													placeholder="ÌöåÏõê ÏïÑÏù¥ÎîîÎ•º ÏûÖÎ†•ÌïòÏÑ∏Ïöî." name="userId" id="userId"
+													style="" />
+											</div>
+											<button type="button" class="searchBtn" id="searchBtn"
+												onclick="searchMember()">
+												<i class="fas fa-search"></i>
+											</button>
+
+										</form>
+									</div>
+									<!-- -----------------------Member Search Bar End ------------------------ -->
+
+									<!-- --------------------- ÌöåÏõê Ï†ïÎ≥¥ Ï°∞Ìöå ÌÖåÏù¥Î∏î Start -------------------------- -->
+									<div class="scrollable">
+										<table class="table table-hover text-center" id="memberTbl">
+
+											<thead>
+												<tr data-target="#listmodal" data-toggle="modal" id="sorter">
+													<th>ÌöåÏõêÏïÑÏù¥Îîî</th>
+													<th>Ïù¥Î¶Ñ</th>
+													<th>ÏÑ±Î≥Ñ</th>
+													<th>ÎÇòÏù¥</th>
+													<th>ÌôúÎèô Ï†ïÏßÄ Î≤ÑÌäº</th>
+												</tr>
+											</thead>
+											
+											
+											
+											<c:forEach items="${mb}" var="m">
+												<tbody id="memContent">
+													<tr>
+														<td id="s1">${m.userId}</td>
+														<td>${m.userName}</td>
+														<td>${m.gender}</td>
+														<td>${m.age}</td>
+														<td id="del"><button type="button"
+																class="btn btn-secondary" id="delBtn">ÏÇ≠Ï†ú</button></td>
+													</tr>
+												</tbody>
+											</c:forEach>
+
+											<!-- ----------------------- ÌöåÏõê Ï†ïÎ≥¥ Ï°∞Ìöå ÌÖåÏù¥Î∏î End ------------------------ -->
+										</table>
+									</div>
+								</div>
+							</div>
+							<!-- -------------------- Member View Div  End------------------------ -->
+						</div>
+						<!-- -------------------------Left Section End---------------------------- -->
+
+
+
+
+ 						<!-- ------------------------Right Section Start--------------------------- 
+						(Notification, Calendar, Script)-------------------------------------->
+						<%@include file="adminRightDiv.jsp"%>
+						<!-- -------------------------Right Section End---------------------------- -->
+						
+						
 
 </div>
-
 </div>
-<!-- ªÁ¿ÃµÂπŸ ≥° -->
-
-<!--  ªÛ«∞¡∂»∏ ∫Òµø±‚≈ÎΩ≈ Ω√¿€ -->             
-		<script>
-	        function searchMember(){
-	    		var userId = $("#userId").val();
-	        	
-	        	$.ajax({
-		            url  : "${pageContext.request.contextPath}/admin/adminSearchMember.do",
-		            data : {userId:userId},
-		            type : "get",
-		            success : function(result){
-
-		            	$('#memContent').empty();
-		                
-		                for(var i = 0 ; i < result.length; i++){
-		                	var searchMember = '<tr><td>' + result[i].userId + '</td>'
-		                	+ '<td>' + result[i].userName + '</td>'
-		                	+ '<td>' + result[i].gender + '</td>'
-		                	+ '<td>' + result[i].age + '</td>'
-		                	+ '<td><button type="button" class="btn btn-secondary" onclick="modalDelBtn()" >ªË¡¶</button></td></tr>'
-
-                            
-		                	$('#memContent').append(searchMember);    	                
-		            }
-		            }	            
-	        	}); 
-	    	}   
-        </script>
-    <!--  ªÛ«∞¡∂»∏ ∫Òµø±‚≈ÎΩ≈ ≥° -->   
-
-
-
-
-
-
-
+</div>
+</div>
+</div>
 </body>
 </html>
