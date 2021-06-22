@@ -7,12 +7,21 @@
 
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head th:fragment="head">
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrinkto-fit=no">
 <title>Hello, world!</title>
+=======
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
+    <title>Hello, world!</title>
+>>>>>>> refs/remotes/origin/Minji
 
 <!-- Apex Chart-->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

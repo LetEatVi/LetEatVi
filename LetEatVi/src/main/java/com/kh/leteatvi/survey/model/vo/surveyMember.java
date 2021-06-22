@@ -14,7 +14,7 @@ public class surveyMember implements Serializable {
 
 	private String userId;
 	private String userName;
-	private int age;
+	private String age;
 	private String gender;
 	private SurveyContent[] surveyAnswer;
 	private int height;

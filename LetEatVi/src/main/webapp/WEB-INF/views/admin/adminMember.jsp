@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <head th:fragment="head">
 <!-- Required meta tags -->
 <meta charset="utf-8">

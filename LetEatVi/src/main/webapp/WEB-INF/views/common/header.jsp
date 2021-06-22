@@ -122,7 +122,7 @@
 				<li><a
 					href="${pageContext.request.contextPath}/store/goStore.do"
 					class="menu-content">STORE</a></li>
-				<li><a href="" class="menu-content">SURVEY</a></li>
+				<li><a href="${pageContext.request.contextPath}/survey/survey.do" class="menu-content">SURVEY</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/story/goStory.do"
 					class="menu-content">STORY</a></li>
@@ -140,7 +140,7 @@
 						href="${pageContext.request.contextPath}/myPage/orderList.do"
 						class="menu-content">ORDER</a></li>
 					<li><a
-						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
+						href="${pageContext.request.contextPath}/myPage/myPageHome.do?userId=${member.userId}"
 						class="menu-content">MYPAGE</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/member/memberLogout.do"

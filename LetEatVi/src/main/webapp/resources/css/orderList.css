@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 상단 이미지 */
 .top-img {
 	background-image: url(../images/lime.jpg);
 	position: relative;
@@ -7,71 +8,65 @@
 	background-size: cover;
 }
 
+/* 같은 폰트 공통 적용하는 부분 */
+.product-name, .detail-text, .detail-content>col {
+	font-family: 'IBMPlexSansKR-Light';
+	letter-spacing: 1px;
+}
+
 b {
 	font-family: 'IBMPlexSansKR-Regular';
 	letter-spacing: 1px;
 }
 
+.buyProductText {
+	margin-top: 40px;
+}
+
+.tracking-img {
+	width: 7%;
+	padding-bottom: 20px;
+	margin-left: 20px;
+}
+
 .detail-title {
 	font-family: 'IBMPlexSansKR-Regular';
-	letter-spacing: 1px;
-	margin-top: 30px;
+	letter-spacing: 3px;
 	font-size: 30px;
 }
 
-.order_detail {
-	font-family: 'IBMPlexSansKR-Light';
-	letter-spacing: 1px;
-	font-weight: lighter;
-	margin-bottom: 40px;
+.order-entire-box {
+	max-width: 100%;
+	padding-bottom: 38px;
+	padding-top: 10px;
+	border-radius: 10px;
+	border: 1px solid #EAEAEA;
+	box-shadow: 0px 2px 5px #EAEAEA;
 }
 
-.detail-box {
-	border: 2px solid #E5E5E5;
-	border-radius: 10px;
+.order-date {
+	font-size: 23px;
+	padding-left: 60px;
+}
+
+#order-date {
 	margin-top: 20px;
 }
 
+.detail-box {
+	max-width: 90%;
+	border: 1px solid #EAEAEA;
+	border-radius: 10px;
+}
+
 .product_img {
-	width: 100%;
+	width: 80%;
 }
 
 .detail-content {
 	width: 70%;
 }
 
-.detail-context col {
-	font-family: 'IBMPlexSansKR-Light';
-	letter-spacing: 1px;
-}
-
 .detail-btn {
-	border-left: 2px solid #E5E5E5;
-}
-
-#detail-btn {
-	
-}
-
-th,td, .product-detail {
-	font-family: 'IBMPlexSansKR-Light';
-	letter-spacing: 1px;
-}
-
-th {
-	width: 200px;
-	padding-left: 10px;
-}
-
-.about-paytext {
-	font-size: 18px;
-}
-
-.col-th {
-	font-family: 'IBMPlexSansKR-Regular';
-}
-
-.col-td {
-	font-family: 'IBMPlexSansKR-Light';
-	text-align: right;
+	border-left: 1px solid #EAEAEA;
 }

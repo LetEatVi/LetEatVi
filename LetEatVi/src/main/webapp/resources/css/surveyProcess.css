@@ -1,377 +1,372 @@
 @charset "UTF-8";
 /* survey.css */
-
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-family: inherit;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
 }
 
-/* 테두리 영역 */
-#survey-content {
-    padding: 120px 10px;
-    vertical-align: top;
-    background-color: ghostwhite;
-    height: 900px;
-    background-image: url(../images/lemons-main1.jpg);
-    background-size: cover;
+#survey-step, em, span, b {
+	font-family: 'IBMPlexSansKR-Light';
+	letter-spacing: 3px;
+}
+
+option, input, li>label {
+	font-family: 'IBMPlexSansKR-Light';
+	letter-spacing: 1px;
 }
 
 /* 서베이 전 영역 */
 #survey {
-    color: #333;
+	color: #333;
 }
 
 /* 서베이 네모 겉 틀 */
 #survey-inner {
-    padding:0 90px;
-    text-align: left;
-    position: relative;
-    margin: 0 auto;
-    height: 500p;
+	padding: 0 90px;
+	text-align: left;
+	position: relative;
+	margin: 0 auto;
+	height: 500p;
+}
+
+/* 테두리 영역 */
+#survey-content {
+	padding: 150px 10px;
+	vertical-align: top;
+	background-color: ghostwhite;
+	height: 1100px;
+	background-image: url(../images/surveyImg/tomato.jpg);
+	background-size: cover;
 }
 
 /* 서베이 네모 틀 */
 #survey-start {
-    padding:20px 150px;
-    text-align: left;
-    position: relative;
-    margin: auto;
-   	width: 1100px;
-    background-color: white;
-    border: 1px solid whitesmoke;
-    box-shadow: 9px 9px 60px 9px lightslategrey;
+	padding: 20px 150px;
+	text-align: left;
+	position: relative;
+	margin: auto;
+	width: 1100px;
+	background-color: white;
+	border: 1px solid whitesmoke;
+	box-shadow: 9px 9px 114px 0px darkgrey;
 }
 
 /* 윗부분 글 */
 #start-header {
-    line-height: 30px
+	line-height: 30px
 }
 
 /* x 표시 */
 #survey-wrap #survey-content a img {
-    margin-top: 4px;
-    vertical-align: top;
-    max-width: 100%;
-    height: auto;
-    line-height: 16px;
-    color: inherit;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    float: right;
-    z-index: -1 !important;
-    transform: translate(165px, -50px);
-
+	vertical-align: top;
+	line-height: -18px;
+	color: inherit;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	float: right;
+	z-index: -1 !important;
+	transform: translate(170px, -45px);
 }
-
-
 
 /*  렛잇비 로고 */
 #start-header {
-    position : relative;
-    line-height: 40px
-}
-.logo {
-    margin-top: 10px;
-    width: 110px;
-    height: 50px;
+	position: relative;
+	line-height: 40px
 }
 
+.logo {
+	margin-top: 10px;
+	width: 110px;
+	height: 50px;
+}
 
 /* 윗부분 글 */
 #start-header h2 {
-    margin-top: 30px;
-    margin-bottom: 120px;
-    font-size: 30px;
-    line-height: 40px;
-    font-weight: 700;
+	margin-top: 30px;
+	margin-bottom: 120px;
+	font-size: 30px;
+	line-height: 40px;
+	font-weight: 700;
 }
 
 /* 이름 */
 #brand {
-    font-weight: 300 !important
+	font-weight: 300 !important
 }
 
 /* 작은 글 인트로 */
 #start-intro {
-    width: 100%;
-    line-height: 24px;
-    font-size: 16px;
-    color: #333;
-    position: relative;
-    margin: auto;
+	width: 100%;
+	line-height: 24px;
+	font-size: 16px;
+	color: #333;
+	position: relative;
+	margin: auto;
 }
 
 /* 시작버튼 */
 #btn-start {
-    line-height: 50px;
-    background-color: #333;
-    border: none;
-    color: #fff;
-    line-height: 50px;
-    border-radius: 25px;
-    appearance: none;
-    display: inline-block;
-    padding: 0 36px;
-    min-width: 74px;
-    height: 50px;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    box-sizing: border-box;
-    text-decoration: none;
-    width: 100%;
-    margin-top: 60px;
+	line-height: 50px;
+	background-color: #333;
+	border: none;
+	color: #fff;
+	line-height: 50px;
+	border-radius: 25px;
+	appearance: none;
+	display: inline-block;
+	padding: 0 36px;
+	min-width: 74px;
+	height: 50px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	outline: none;
+	box-sizing: border-box;
+	text-decoration: none;
+	width: 100%;
+	margin-top: 60px;
 }
 
 /* 밑 주의사항 */
 #mention {
-    margin-top: 30px;
-    font-size: 12px;
-    color: #848484;
-    display: block;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+	margin-top: 30px;
+	font-size: 12px;
+	color: #848484;
+	display: block;
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
 }
 
 /* ------------설문 틀------------ */
 #survey-wrap {
-    display: block;
-    background-color: #fff;
+	display: block;
+	background-color: #fff;
 }
 
 #survey-test-header {
-    height: 120px;
-    box-sizing: border-box;
+	height: 120px;
+	box-sizing: border-box;
 }
 
 /* 순서틀 */
 #survey-step {
-    padding: 0 25px;
-    width: 100%;
-    height: 70px;
-    box-sizing: border-box;
-    display: table;
-    margin: 0 auto;
-    width: 670px;
-    table-layout: fixed;
-    list-style: none;
+	padding: 0 25px;
+	width: 100%;
+	height: 70px;
+	box-sizing: border-box;
+	display: table;
+	margin: 0 auto;
+	width: 670px;
+	table-layout: fixed;
+	list-style: none;
 }
 
 /* 순서 */
 #survey-step li {
-    font-size: 20px;
-    font-weight:bold;
-    height: 90px;
-    text-align: center;
-    position: relative;
-    display: table-cell;
-    vertical-align: middle;
-    color: #bdbdbd;
-    list-style: none;
+	font-size: 20px;
+	font-weight: bold;
+	height: 90px;
+	text-align: center;
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	color: #bdbdbd;
+	list-style: none;
 }
 
 /* 질문내용 틀 */
 #survey-question {
-    padding-top: 39px;
-    margin: 0 auto;
-    width: 670px;
+	padding-top: 39px;
+	margin: 0 auto;
+	width: 670px;
 }
 
 /* 질문 1,2,3,4,5 */
 #question-section em {
-    font-size: 16px;
-    font-weight: 700;
-    color: #999;
-    font-style: normal;
+	font-size: 16px;
+	font-weight: 700;
+	color: #999;
+	font-style: normal;
 }
 
 /* 질문 제목 */
 #question-section h2 {
-    position: relative;
-    padding: 10px 0 10px;
-    line-height: 1.2;
-    font-size: 24px;
-    font-weight: 700;
-    color: #333;
+	position: relative;
+	padding: 10px 0 10px;
+	line-height: 1.2;
+	font-size: 24px;
+	font-weight: 700;
+	color: #333;
 }
 
 /* 대답하는 곳 */
 #survey-answer {
-    border-top: 1px solid #eee;
-    padding: 28px 0;
-    list-style: none;
+	border-top: 1px solid #eee;
+	padding: 28px 0;
+	list-style: none;
 }
 
 /* 입력하는 상자 */
 #content-full {
-    width: 100%;
-    font-size: 20px;
-    padding: 0 25px;
-    height: 50px;
-    border: 1px solid #d7d7d7;
-    border-radius: 4px;
-    outline: none;
-    background-color: #fff;
-    box-sizing: border-box;
+	width: 100%;
+	font-size: 20px;
+	padding: 0 25px;
+	height: 50px;
+	border: 1px solid #d7d7d7;
+	border-radius: 4px;
+	outline: none;
+	background-color: #fff;
+	box-sizing: border-box;
 }
-
 
 /* 이전 , 다음 버튼 */
 #question-btn {
-    overflow: hidden;
-    margin: 35px auto 25px;
-    width: 670px;
+	overflow: hidden;
+	margin: 35px auto 25px;
+	width: 670px;
 }
+
 #question-btn button {
-    border-radius: 25px;
-    padding: 0 36px;
-    min-width: 74px;
-    height: 50px;
-    line-height: 48px;
-    font-size: 16px;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    border: 1px solid #d7d7d7;
-    cursor: pointer;
+	border-radius: 25px;
+	padding: 0 36px;
+	min-width: 74px;
+	height: 50px;
+	line-height: 48px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	outline: none;
+	border: 1px solid #d7d7d7;
+	cursor: pointer;
 }
 
 /* 이전 버튼 */
 #prev-btn {
-    float: left;
-    width: 158px;
-    border: none;
-    background-color:#fff
+	float: left;
+	width: 158px;
+	border: none;
+	background-color: #fff
 }
 
 /* 다음버튼 */
 #next-btn {
-    float: right;
-    width: 430px;
-    background-color: #333;
-    border: none;
-    color: #fff;
+	float: right;
+	width: 430px;
+	background-color: #333;
+	border: none;
+	color: #fff;
 }
-
 
 /* ------------기본정보------------- */
 
 /* 나이 */
 #answer-age {
-    width: 50%;
-    font-size: 20px;
-    padding: 0 25px;
-    height: 40px;
-    border: 1px solid #d7d7d7;
-    border-radius: 4px;
-    background-color: #fff;
-
+	width: 50%;
+	font-size: 20px;
+	padding: 0 25px;
+	height: 40px;
+	border: 1px solid #d7d7d7;
+	border-radius: 4px;
+	background-color: #fff;
 }
 
 /* 성별 */
 #answer-title {
-    font-size: larger;
-    font-weight: bold;
+	font-size: larger;
+	font-weight: bold;
 }
 
 #gender-wrap {
-    font-size: larger;
-
+	font-size: larger;
 }
+
 .answer-gender {
-    margin: 10px;
-    height: 20px;
-    width: 20px;
+	margin: 10px;
+	height: 20px;
+	width: 20px;
 }
 
 /* 신장, 체중 */
 #pContent {
-    font-size: 12px;
-    color: #999;
-    padding-bottom: 15px;
+	font-size: 12px;
+	color: #999;
+	padding-bottom: 15px;
 }
 
 #unit {
-    position: absolute;
-    display: block;
-    right: 236px;
-    font-size: 21px;
-    top: 378px;
-    font-size: 16x;
-    color: #999;
+	position: absolute;
+	display: block;
+	right: 236px;
+	font-size: 21px;
+	top: 378px;
+	font-size: 16x;
+	color: #999;
 }
 
 /* ------------건강 관심분야----------------- */
 #survey-answer-interest {
-    border-top: 1px solid #eee;
-    padding: 28px 0;
-    list-style: none;
+	border-top: 1px solid #eee;
+	padding: 28px 0;
+	list-style: none;
 }
 
-#survey-answer-interest li{
-    display: inline-block;
+#survey-answer-interest li {
+	display: inline-block;
 }
 
 #survey-answer-interest input {
-    display: none;
+	display: none;
 }
-
 
 /* 카테고리 이미지 */
 #survey-answer-interest img {
-    width: 190px;
-    height: 190px;
-    margin: 10px;
-    cursor: pointer;
+	width: 190px;
+	height: 190px;
+	margin: 10px;
+	cursor: pointer;
 }
+
 .selected-yellow {
-    background-color:gold;
-    border-radius: 20%;
+	background-color: gold;
+	border-radius: 20%;
 }
 
 #survey-answer-interest label {
-    font-size: larger;
+	font-size: larger;
 }
 
 #survey-answer-interest div {
-    text-align: center;
+	text-align: center;
 }
 
-
 /* 해당되는 건강상태 */
-
 #survey-answer label {
-    cursor: pointer;
-    position: relative;
-    display: block;
-    color: #333;
-    font-size: 22px;
-    margin-bottom: 15px;
-    
+	cursor: pointer;
+	position: relative;
+	display: block;
+	color: #333;
+	font-size: 22px;
+	margin-bottom: 15px;
 }
 
 #survey-answer li label input {
-    margin-right: 20px;
-    height: 20px;
-    width: 20px;
+	margin-right: 20px;
+	height: 20px;
+	width: 20px;
 }
 
 #get-img {
-    height: 65px;
-    width: 65px;
-    right: 0;
-    top: -20px;
-    position: absolute;
-    border-radius: 40%;
-    background-color: lemonchiffon;
-    
+	height: 65px;
+	width: 65px;
+	right: 0;
+	top: -20px;
+	position: absolute;
+	border-radius: 40%;
+	background-color: lemonchiffon;
 }
-

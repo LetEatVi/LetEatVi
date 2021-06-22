@@ -36,6 +36,10 @@ a:visited {
 	letter-spacing: 2px;
 }
 
+.product-info {
+		font-family: 'Eulyoo1945-Regular';
+}
+
 /* BEST 항목 관련 */
 .firstText {
 	text-align: center;

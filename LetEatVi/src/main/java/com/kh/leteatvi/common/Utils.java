@@ -19,7 +19,7 @@ public class Utils {
 //		System.out.println("totalPage : "+totalPage);
 //		System.out.println("pageStart["+pageNo+"] ~ pageEnd["+pageEnd+"]");
 		
-		pageBar += "<ul class='pagination justify-content-center pagination-sm pagebar'>";
+		pageBar += "<ul class='pagination justify-content-center pagination-sm pagebar' style='margin-top: 30px'>";
 		//[이전]section
 		if(pageNo == 1 ){
 			pageBar += "<li class='page-item disabled'>";

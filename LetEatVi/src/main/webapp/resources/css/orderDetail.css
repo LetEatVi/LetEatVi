@@ -12,18 +12,20 @@ b {
 	letter-spacing: 1px;
 }
 
-.detail-title {
-	font-family: 'IBMPlexSansKR-Regular';
-	letter-spacing: 1px;
-	margin-top: 30px;
-	font-size: 30px;
+.buyProductText {
+	margin-top: 40px;
 }
 
-.order_detail {
-	font-family: 'IBMPlexSansKR-Light';
-	letter-spacing: 1px;
-	font-weight: lighter;
-	margin-bottom: 40px;
+.tracking-img {
+	width: 7%;
+	padding-bottom: 20px;
+}
+
+.detail-title {
+	font-family: 'IBMPlexSansKR-Regular';
+	letter-spacing: 3px;
+	margin-top: 30px;
+	font-size: 30px;
 }
 
 .detail-box {
@@ -47,10 +49,6 @@ b {
 
 .detail-btn {
 	border-left: 2px solid #E5E5E5;
-}
-
-#detail-btn {
-	
 }
 
 th,td, .product-detail {

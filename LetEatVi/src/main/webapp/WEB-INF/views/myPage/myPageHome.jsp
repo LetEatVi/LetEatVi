@@ -5,6 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
+<link rel="shortcut icon"
+	href="${pageContext.request.contextPath}/resources/favicon.ico">
+<title>Let Eat VI</title>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +34,7 @@
 	rel="stylesheet" />
 
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/myPageHome.css">
+	href="${pageContext.request.contextPath}/resources/css/myPage.css">
 
 
 <style>
@@ -92,159 +95,130 @@
 
 	<div class="top-img"></div>
 
+	<!-- 
+	<div style="text-align: center;">
+	<p class="mypage-title" style="	font-size: 35px;">${member.userName} 님의 Let Eat VI</p>
+	<a href="" class="mypage-title" style="	font-size: 25px; text-decoration: none; color: orange;">건강설문 확인</a>
+	</div>
+	 -->
 
-	<div id="mypagev-home">
-		<div class="home-top-content">
-			<h2>
-				<b> ${member.userId} </b> 님의 <em class="light"> Let Eat Vi </em>
-			</h2>
-		</div>
-		<br>
-		<br>
+	<div class="container orderContext" style="width: 1000px;">
+		<div class="order-inner">
+			<p
+				style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; font-size: 25px;">회원정보
+				관리</p>
+			<hr style="border: 1px solid #B2B2B2">
 
-		<h3>회원정보관리</h3>
-		<input type="submit" class="btn btn-outline-success"
-			onclick="location.href='${pageContext.request.contextPath}/myPage/memberView.do?userId=${member.userId}'"
-			value="수정">
-
-		<table border=0 width=100% cellpadding=10 cellspacing=10>
-			<tr>
-				<td>이름 :</td>
-				<td>${member.userName}</td>
-			</tr>
-			<tr>
-				<td>나이 :</td>
-				<td>${member.age}</td>
-			</tr>
-			<tr>
-				<td>성별 :</td>
-				<td>${member.gender}</td>
-			</tr>
-			<tr>
-				<td>전화번호 :</td>
-				<td>${member.phone}</td>
-			</tr>
-			<tr>
-				<td>이메일 :</td>
-				<td>${member.email}</td>
-			</tr>
-			<tr>
-				<td>주소:</td>
-				<td>${member.address}</td>
-			</tr>
-
-		</table>
-
-		<h3>최근주문내역</h3>
-		<table class="list_view">
-			<tbody align=center>
-				<tr style="background: #33ff00">
-					<td>주문번호</td>
-					<td>주문일자</td>
-					<td>주문금액</td>
-					<td>수령인</td>
-					<td>배송현황</td>
+			<table style="border-collapse: separate; border-spacing: 0 10px;">
+				<tr>
+					<th>이름</th>
+					<td>${member.userName}</td>
 				</tr>
-				<tr style="">
-					<td>${orderList.oId}</td>
-					<td>${orderList.oEnroll}</td>
-					<td>${orderList.totalPrice}</td>
-					<td>${orderList.addressee}</td>
-					<td>배송완료</td>
+				<tr>
+					<th>나이</th>
+					<td>${member.age}세</td>
 				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>${member.phone}</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>${member.email}</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td style="width: 500px;">${member.address}</td>
 
-				<c:choose>
-					<c:when test="${ empty orderList  }">
-						<tr>
-							<td colspan=5 class="fixed"><strong>주문한 상품이 없습니다.</strong></td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<c:forEach var="item" items="${orderList }" varStatus="i">
-							<c:choose>
-								<c:when test="${ pre_order_id != item.order_id}">
-									<c:choose>
-										<c:when test="${item.delivery_state=='delivery_prepared' }">
-											<tr bgcolor="lightgreen">
-										</c:when>
-										<c:when test="${item.delivery_state=='finished_delivering' }">
-											<tr bgcolor="lightgray">
-										</c:when>
-										<c:otherwise>
-											<tr bgcolor="orange">
-										</c:otherwise>
-									</c:choose>
-									<tr>
-										<td><a
-											href="${contextPath}/mypage/orderDetail.do?order_id=${item.oId }"><span>${item.order_id }</span>
-										</a></td>
-										<td><span>${item.pay_order_time }</span></td>
-										<td align="left"><strong> <c:forEach var="item2"
-													items="${myOrderList}" varStatus="j">
-													<c:if test="${item.order_id ==item2.order_id}">
-														<a
-															href="${contextPath}/goods/goodsDetail.do?goods_id=${item2.goods_id }">${item2.goods_title }/${item.order_goods_qty }개</a>
-														<br>
-													</c:if>
-												</c:forEach>
-										</strong></td>
-										<td><c:choose>
-												<c:when test="${item.delivery_state=='delivery_prepared' }">
-				       배송준비중
-				    </c:when>
-												<c:when test="${item.delivery_state=='delivering' }">
-				       배송중
-				    </c:when>
-												<c:when
-													test="${item.delivery_state=='finished_delivering' }">
-				       배송완료
-				    </c:when>
-												<c:when test="${item.delivery_state=='cancel_order' }">
-				       주문취소
-				    </c:when>
-												<c:when test="${item.delivery_state=='returning_goods' }">
-				       반품완료
-				    </c:when>
-											</c:choose></td>
-										<td><c:choose>
-												<c:when test="${item.delivery_state=='delivery_prepared'}">
-													<input type="button"
-														onClick="fn_cancel_order('${item.order_id}')" value="주문취소" />
-												</c:when>
-												<c:otherwise>
-													<input type="button"
-														onClick="fn_cancel_order('${item.order_id}')" value="주문취소"
-														disabled />
-												</c:otherwise>
-											</c:choose></td>
-									</tr>
-									<c:set var="pre_order_id" value="${item.order_id}" />
-								</c:when>
-							</c:choose>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
-			</tbody>
+					<td style="width: 300px;"><button class="fix-btn"
+							style="background-color: white; width: 40%;"
+							onclick="location.href='${pageContext.request.contextPath}/myPage/memberView.do?userId=${member.userId}'">수정하기</button></td>
+				</tr>
+			</table>
+			<hr style="border: 1px solid #E5E5E5;">
 
-			<tr>
-				<td colspan="5" style="align: center";><input type="submit"
-					class="btn btn-outline-success"
-					onclick="location.href='${pageContext.request.contextPath}/myPage/orderDetail.do?oId=${orderList.oId}'"
-					value="수정"></td>
-			</tr>
-		</table>
+			<!-- 주문내역 -->
+			<div
+				style="margin-top: 70px; padding-left: 10px; font-family: 'IBMPlexSansKR-Regular'; padding-bottom: 10px; font-size: 25px; border-bottom: 2px solid #B2B2B2;">
+				최근 주문내역<a
+					href="${pageContext.request.contextPath}/myPage/orderList.do"
+					style="border: 1px solid rgba(0, 0, 0, 0);; border-radius: 10px; font-family: 'IBMPlexSansKR-Regular'; text-decoration: none; font-size: 20px; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); float: right;">주문목록
+					&gt;</a>
+			</div>
+			<!-- 주문내역 박스 -->
+			<div class="row about-paytext"
+				style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
+				<div class="col">
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문번호</div>
+						<div class="col">300000102683771</div>
+					</div>
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문일자</div>
+						<div class="col">2021-06-18</div>
+					</div>
+				</div>
+				<div class="col" style="background-color: #F2F2F2; max-width: 45%;">
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th" style="font-weight: bolder;">총 결제 금액</div>
+						<div class="col col-td" style="font-weight: bolder;">84,000
+							원</div>
+					</div>
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th"></div>
+						<div class="col col-td">
+							<a
+								href="${pageContext.request.contextPath}/myPage/orderDetail.do"
+								style="color: blue; text-decoration: none;">상세조회</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-		<br>
-		<br>
 
-		<h3>건강설문관리</h3>
-		<div>
-			<input type="submit" class="btn btn-outline-success"
-				onclick="location.href='${pageContext.request.contextPath}/'"
-				value="바로가기">
+			<!-- 주문내역 박스 -->
+			<div class="row about-paytext"
+				style="border-bottom: 2px solid #E5E5E5; width: 970px; height: 100px; margin-left: 0px;">
+				<div class="col">
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문번호</div>
+						<div class="col">300000102683771</div>
+					</div>
+					<div class="row inner-row"
+						style="padding-top: 15px; padding-left: 10px;">
+						<div class="col">주문일자</div>
+						<div class="col">2021-06-18</div>
+					</div>
+				</div>
+				<div class="col" style="background-color: #F2F2F2; max-width: 45%;">
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th" style="font-weight: bolder;">총 결제 금액</div>
+						<div class="col col-td" style="font-weight: bolder;">84,000
+							원</div>
+					</div>
+					<div class="row" style="padding-top: 15px;">
+						<div class="col col-th"></div>
+						<div class="col col-td">
+							<a
+								href="${pageContext.request.contextPath}/myPage/orderDetail.do"
+								style="color: blue; text-decoration: none;">상세조회</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<button type="button"
+				onclick="location.href='${pageContext.request.contextPath}/survey/survey.do'"
+				class="btn btn-dark btn-lg"
+				style="border: 2px solid #B2B2B2; border-radius: 10px; margin-top: 40px; font-family: 'IBMPlexSansKR-Regular'; letter-spacing: 3px; background-color: rgba(0, 0, 0, 0); color: black; width: 100%;">건강설문
+				결과 확인</button>
+
 		</div>
-
-
-		<%@include file="../common/footer.jsp"%>
+	</div>
+	<%@include file="../common/footer.jsp"%>
 </body>
 </html>
