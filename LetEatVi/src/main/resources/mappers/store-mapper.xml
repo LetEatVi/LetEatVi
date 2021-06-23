@@ -114,17 +114,12 @@
 	</select>
 	
 	<select id="selectproductDetail" parameterType="string" resultType="Order">
-		SELECT * FROM(
-			SELECT * FROM PRODUCT P
-			JOIN (SELECT *
-			      FROM ORDER_DETAIL
-			      WHERE (OID, PID) IN (SELECT OID, PID
-			                           FROM(SELECT ROW_NUMBER() OVER(PARTITION BY OID
-			                                                          ORDER BY QTY DESC) OID_NO, OID, PID
-			                                FROM ORDER_DETAIL)
-			                            WHERE OID_NO = 1)) B ON(P.PID = B.PID)
-			JOIN ORDERLIST L ON(L.OID = B.OID)) A
-			WHERE A.USERID = #{userId}
+		SELECT O.OID, O.PID, O.QTY, PNAME, PPRICE, OL.USERID, ol.oenroll, OCOMMENT, ADDRESSEE, ADDRESS, PHONE, TOTALPRICE, PINFO
+		FROM ORDER_DETAIL O, PRODUCT P, ORDERLIST OL
+		WHERE O.PID = P.PID
+		AND O.OID = OL.OID
+		AND USERID= #{userId}
+		ORDER BY OID
 	</select>
 
 	<select id="selectCoupon" parameterType="string" resultType="Coupon">

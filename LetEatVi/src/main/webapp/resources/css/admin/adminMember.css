@@ -45,13 +45,12 @@
 .insertProduct {
     position: absolute;
     width: 1000px;
-    height:600px;
+    height:680px;
     border: 1px solid rgb(187, 187, 187);
     border-radius: 10px;
     box-shadow: 10px 5px 5px gray;
     padding: 30px;
     background: white;
-    left: 350px;
     top: 200px;
     visibility: hidden;
 }
@@ -99,6 +98,14 @@
 .member_inner::-webkit-scrollbar {
 	 display: none;
 }
+
+.member_inner table th,
+.member_inner table td,
+.member_inner table p {
+	font-size : 12px;
+}
+
+
 
 #userId, #pname {
 	border-radius : 50px;

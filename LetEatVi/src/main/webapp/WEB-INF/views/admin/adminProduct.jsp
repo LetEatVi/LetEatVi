@@ -7,21 +7,12 @@
 
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<head th:fragment="head">
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrinkto-fit=no">
-<title>Hello, world!</title>
-=======
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
     <title>Hello, world!</title>
->>>>>>> refs/remotes/origin/Minji
 
 <!-- Apex Chart-->
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -34,6 +25,8 @@
 	src="${pageContext.request.contextPath}/resources/js/calendar.js"></script>
 <script defer
 	src="${pageContext.request.contextPath}/resources/js/adminMain.js"></script>
+	<script defer
+	src="${pageContext.request.contextPath}/resources/js/adminProduct.js"></script>
 
 <script defer
 	src="${pageContext.request.contextPath}/resources/js/jspdf.min.js"></script>
@@ -187,8 +180,190 @@
 						<%@include file="adminRightDiv.jsp"%>
 						<!-- -------------------------Right Section End---------------------------- -->
 						
-						
 
+	<!--  modal -->
+	<!-- 상품 등록 모달창 -->
+	<div class="insertProduct">
+		<div class="insertInner">
+
+			<h3>상품 등록</h3>
+
+			<!-- 상품등록을 위한 폼 -->
+			<div class="product_select">
+				<form action="" type="POST" class="modalForm" id="modalForm">
+					<div class="select">
+
+
+						<div class="item">
+
+							<div>
+								카테고리
+								<div class="col-sm-8">
+									<select id="category" name="cid" aria-label="category"
+										class="form-control input_value">
+										<option value="all" selected>전체</option>
+										<option value="1">눈 건강</option>
+										<option value="2">장 건강</option>
+										<option value="3">간 건강</option>
+										<option value="4">임시</option>
+										<option value="5">임시</option>
+									</select>
+								</div>
+							</div>
+
+
+
+							<div>
+								상품명
+								<div class="col-sm-8">
+									<input type="text" class="form-control input_value" id="pname2">
+								</div>
+							</div>
+						</div>
+
+
+						<div>
+							가격
+							<div class="col-sm-8">
+								<input type="text" class="form-control input_value" min="0"
+									id="pprice">
+							</div>
+						</div>
+
+						<div>
+							상품내용
+							<div class="col-sm-8">
+								<input type="text" class="form-control input_value" min="0"
+									id="pinfo">
+							</div>
+						</div>
+
+
+						<div>
+							재고량
+							<div class="col-sm-8">
+								<input type="text" class="form-control input_value" min="0"
+									id="pstock">
+							</div>
+						</div>
+
+
+
+					</div>
+
+					<!-- 모달 푸터 -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary"
+							onclick="insertProduct()">등록</button>
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">취소</button>
+					</div>
+					<!-- // 모달 푸터 -->
+				</form>
+
+
+			</div>
+		</div>
+		<!-- // 상품 등록 모달창 -->
+
+   		
+	
+ <!--  상품조회 비동기통신 시작 -->             
+		<script>
+	        function searchProduct(){
+	    		var pname = $("#pname").val();
+	    		
+	    		$('#productTbl tbody').empty();
+	    		
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/adminSearchProduct.do",
+		            data : {pname:pname},
+		            type : "get",
+		            success : function(result){
+
+		            	
+		                
+		                for(var i = 0 ; i < result.length; i++){
+		                	var searchProduct = '<tr><td>' + result[i].cname + '</td>'
+		                	+ '<td style="display:none;">' + result[i].pid + '</td>'
+		                	+ '<td>' + result[i].pname + '</td>'
+		                	+ '<td>' + result[i].pprice + '</td>'
+		                	+ '<td>' + result[i].pstock + '</td>'
+		                	+ '<td id="del"><button type="button" class="btn btn-secondary" id="delBtn" >삭제</button></td></tr>'
+
+                            
+		                	$('#prdContent').append(searchProduct);    	                
+		            }
+		            }	            
+	        	}); 
+	    	}   
+        </script>
+		<!--  상품조회 비동기통신 끝 -->
+
+
+		<!--  상품등록 비동기통신 시작 -->
+		<script>
+	        function insertProduct(){
+	    		var cid = $("#category").val();
+	    		var pname2 = $("#pname2").val();
+	    		var pinfo = $("#pinfo").val();
+	    		var pprice = $("#pprice").val();
+	    		var pstock = $("#pstock").val();
+	    		
+	    		
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/adminInsertProduct.do",
+		            data : {cid:cid, pname:pname2, pinfo:pinfo, pprice:pprice, pstock:pstock },
+		            type : "post",
+		            success : function(result){
+		            	
+		            	alert("상품등록이 완료되었습니다.");  	
+		            	
+		            	$("#category").val('');
+		            	$("#pname2").val('');
+		            	$("#pinfo").val('');
+		            	$("#pprice").val('');
+		            	$("#pstock").val('');
+
+		            	 	                
+		            }
+		            	            
+	        	}); 
+	    	}   
+        </script>
+		<!--  상품등록 비동기통신 끝 -->
+
+
+		<!--  상품 삭제 비동기통신 시작 -->
+		<script>
+ 
+    $("#del button").click(function(){ 
+    	
+    	var delBtn = $(this);
+		var tr = delBtn.parent().parent(); // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+		var td = tr.children(); // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+		var pid = td.eq(1).text();
+		
+		console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+		console.log(pid);
+    	
+    	tr.remove();
+
+        $.ajax({
+            url  : "${pageContext.request.contextPath}/admin/adminDeleteProduct.do",
+            data : {pid:pid},
+            type : "get",
+            success : function(result){
+
+            	alert("삭제가 완료되었습니다.");  	 
+
+            }
+            	            
+        }); 
+    });
+        </script>
+		<!--  상품 삭제 비동기통신 끝 -->
 </div>
 </div>
 </div>

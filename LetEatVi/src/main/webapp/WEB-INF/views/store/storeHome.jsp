@@ -8,8 +8,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon"
-	href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Store</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -78,21 +76,15 @@
 	font-weight: normal;
 	font-style: normal;
 }
-
 @font-face {
-	font-family: 'Eulyoo1945-Regular';
-	src:
-		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-Regular.woff')
-		format('woff');
-	font-weight: normal;
-	font-style: normal;
+    font-family: 'Eulyoo1945-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2102-01@1.0/Eulyoo1945-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-
 @font-face {
 	font-family: 'Inkfree';
-	src:
-		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
-		format('truetype');
+	src: url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf') format('truetype');
 }
 </style>
 </head>
@@ -102,9 +94,7 @@
 
 	<div class="top-img">
 		<div class="main-title">
-			<h1>
-				내 몸에 필요한 영양제 <br> 궁금하세요?
-			</h1>
+			<h1>내 몸에 필요한 영양제 <br> 궁금하세요?</h1>
 		</div>
 	</div>
 
@@ -190,9 +180,7 @@
 					<div style="border: rgba(0, 0, 0, 0);"
 						class="card border-secondary cardSetCss productDiv${p.pid}">
 						<a onclick="selectProduct(${p.pid})"><img
-							src="${pageContext.request.contextPath}/resources/images/${p.pname}.jpg"
-							class="card-img-top bestProductImg" style="width: 100%;"
-							alt="..." id="img${p.pid}"></a>
+							src="${pageContext.request.contextPath}/resources/images/${p.pname}.jpg" class="card-img-top bestProductImg" style="width: 100%;" alt="..." id="img${p.pid}"></a>
 
 						<div class="card-body cardText">
 							<p class="product-info">
@@ -271,33 +259,35 @@
 			                
 			                for(var i = 0 ; i < result.length; i++){
 			                	var productOne = '<div class="card-deck bestProduct col-4 mx-auto ' + result[i].cname + '">'
-			                				+'<div style="border: rgba(0, 0, 0, 0); font-family: Eulyoo1945-Regular;" class="card border-secondary cardSetCss productDiv' + result[i].pid + '">'
-			                    		    +'<img src="${pageContext.request.contextPath }/resources/images/' + result[i].pname
-			                    		    + '.jpg" class="card-img-top bestProductImg" style="width : 100%;" id="img' + result[i].pid + '">'
-			                    		    + '<div class="card-body cardText"><p><b id="name' + result[i].pid + '">' + result[i].pname + '</b></p>'
-											+ '<div class="product-info row">'
-			                    		    + '<div class="col" id="price' + result[i].pid + '" style="margin-left: 0px; padding-left: 15px;">￦ ' +  result[i].pprice
-									    	+ '</div>'
-									    	+ '<div class="row">'
-											+ '<div class="col" style="padding: 0px 0px;">'
-											+ '<button type="button" onclick="addCart(' +result[i].pid +')" class="popover-dismiss" data-container="body'
-											+ 'data-toggle="popover" data-placement="bottom" data-content="장바구니에 추가하였습니다." style="border: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0);">'
-											+ '<img src="${pageContext.request.contextPath}/resources/images/add-to-basket.png" style="width: 40px; margin-top: -40px;">'
-											+ '</button>'
-											+ '</div>'
-											+ '<div class="col" id="selectProduct' +result[i].pid + '" class="test' +result[i].pid + '">'
-											+ '<button type="button" onclick="selectProduct(' +result[i].pid + ')" style="border: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0);">'
-											+ '<img src="${pageContext.request.contextPath}/resources/images/loupe_store.png" style="width: 35px; margin-top: -37px;">'
-											+ '</button>'
-											+ '</div>'
-											+ '</div>'
-											+ '</div>';
-											+ '<br>';
+			        			+'<div style="border: rgba(0, 0, 0, 0);" class="card border-secondary cardSetCss productDiv' + result[i].pid + '">'
+			        			+'<a onclick="selectProduct(' + result[i].pid + ')">'
+			        			+'<img src="${pageContext.request.contextPath}/resources/images/' + result[i].pname + '.jpg" class="card-img-top bestProductImg" style="width: 100%;" alt="..." id="img' + result[i].pid + '"></a>'
+			        			+'<div class="card-body cardText">'
+			        			+'<p class="product-info"><b id="name' + result[i].pid + '">' + result[i].pname + '</b></p>'
+			        			+'<div class="product-info row">'
+			        			+'<div class="col" id="price' + result[i].pid + '" style="margin-left: 0px; padding-left: 15px;">￦ ' + result[i].pprice + '</div>'
+			        			+'<div class="row">'
+			        			+'<div class="col" style="padding: 0px 0px;">'
+			        			+'<button type="button" onclick="addCart(' + result[i].pid + ')" class="popover-dismiss" data-container="body" data-toggle="popover" data-placement="bottom" data-content="장바구니에 추가하였습니다."'
+			        			+'style="border: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0);">'
+			        			+'<img src="${pageContext.request.contextPath}/resources/images/add-to-basket.png" style="width: 40px; margin-top: -40px;">'
+			        			+'</button>'
+			        			+'</div>'
+			        			+'<div class="col" onclick="selectProduct(' + result[i].pid + ')" id="selectProduct' + result[i].pid + '" class="test${p.pid}">'
+			        			+'<button type="button" onclick="selectProduct(${p.pid})" style="border: rgba(0, 0, 0, 0); background-color: rgba(0, 0, 0, 0);">'
+			        			+'<img src="${pageContext.request.contextPath}/resources/images/loupe_store.png" style="width: 35px; margin-top: -37px;"></button>'
+			        			+'</div>'
+			        			+'</div>'
+			        			+'</div>'
+			        			+'</div>'
+			        			+'</div>'
+			        			+'</div>';
 			                     $('#productListDiv').append(productOne);
 			                }
+			                     $('[data-toggle="popover"]').popover();
 			            }
 		        	}); 
-			}
+				}
 		</script>
 
 		<script>

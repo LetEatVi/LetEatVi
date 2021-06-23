@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/favicon.ico">
 <title>Store</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -330,6 +329,7 @@
 							<select class="custom-select coupon-select" name="coupon" id="coupon">
 								<option selected>쿠폰을 선택해주세요</option>
 								<option value="1" id="test">${coupon.getCname()}</option>
+								<option value="2" id="test">10% DC</option>
 							</select>
 						</div>
 					</div>
@@ -563,7 +563,10 @@
 			
 			switch(couponId){
 			case 1 :
-				discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
+				discountPrice = 10000;
+				break;
+			case 2 : 
+				discountPrice = parseInt(Number(totalPrice) / 10);
 				break;
 			}
 			
@@ -586,7 +589,10 @@
 		
 		switch(couponId){
 		case 1 :
-			discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
+			discountPrice = 10000;
+			break;
+		case 2 : 
+			discountPrice = parseInt(Number(totalPrice) / 10);
 			break;
 		}
 		
@@ -651,9 +657,11 @@
 		
 		switch(couponId){
 		case 1 :
-			discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
+			discountPrice = parseInt(Number(totalPrice) / ${coupon.discountrate});
 			break;
-	
+		case 2 :
+			discountPrice = parseInt(Number(totalPrice) / 10);
+			break;
 		}
 		
     	$(".discountText").text(discountPrice);

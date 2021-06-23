@@ -119,7 +119,7 @@
 													data : {
 														datasets : [ {
 															label : ['totalincome','goal'],
-															data : [${totalIncome}, '9999999'],
+															data : [${totalIncome}, '999999999'],
 															
 																backgroundColor : [
 															'#1ec0ff',
@@ -163,7 +163,7 @@
 													data : {
 														datasets : [ {
 															label : ['totalincome','goal'],
-															data : [${totalSell}, '999'],
+															data : [${totalSell}, '9999'],
 															backgroundColor : [
 																'#fe4365',
 																	'rgba(255, 255, 255, 1)'

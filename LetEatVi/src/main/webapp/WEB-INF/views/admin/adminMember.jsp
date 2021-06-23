@@ -173,7 +173,68 @@
 						<%@include file="adminRightDiv.jsp"%>
 						<!-- -------------------------Right Section End---------------------------- -->
 						
-						
+	<!--  회원 조회 비동기통신 시작 -->             
+		<script>
+	        function searchMember(){
+	    		var userId = $("#userId").val();
+	    		
+	    		$('#memberTbl tbody').empty();
+	        	
+	        	$.ajax({
+		            url  : "${pageContext.request.contextPath}/admin/adminSearchMember.do",
+		            data : {userId:userId},
+		            type : "get",
+		            success : function(result){
+
+		            	
+		                
+		                for(var i = 0 ; i < result.length; i++){
+		                	var searchMember = '<tr><td>' + result[i].userId + '</td>'
+		                	+ '<td>' + result[i].userName + '</td>'
+		                	+ '<td>' + result[i].gender + '</td>'
+		                	+ '<td>' + result[i].age + '</td>'
+		                	+ '<td id="del"><button type="button" class="btn btn-secondary" id="delBtn">삭제</button></td></tr>'
+
+                            
+		                	$('#memContent').append(searchMember);    	                
+		            }
+		            }	            
+	        	}); 
+	    	}   
+        </script>
+    <!--  회원 조회 비동기통신 끝 -->   
+    
+    
+    
+        <!--  회원 강퇴 비동기통신 시작 -->
+    <script>
+ 
+    $("#del button").click(function(){ 
+    	
+    	var delBtn = $(this);
+		var tr = delBtn.parent().parent(); // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+		var td = tr.children(); // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+		var userId = td.eq(0).text();
+		
+		console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+		console.log(userId);
+    	
+    	tr.remove();
+
+        $.ajax({
+            url  : "${pageContext.request.contextPath}/admin/adminDeleteMember.do",
+            data : {userId:userId},
+            type : "get",
+            success : function(result){
+
+            	alert("삭제가 완료되었습니다.");  	 
+
+            }
+            	            
+        }); 
+    });
+        </script>
+    <!--  회원 강퇴 비동기통신 끝 -->						
 
 </div>
 </div>

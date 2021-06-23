@@ -21,7 +21,7 @@
 	--backdrop-filter-blur: blur(5px);
 	--main:ffb130;
 	
-	--background-color:lightblue;
+	--background-color:#eee;
 }
 
 /* Global Settings */
@@ -81,7 +81,7 @@ a {
 }
 
 .sidebar ul li:hover a, .sidebar ul li.active a {
-	background: lightblue;
+	background: var(--background-color);
 	color:#ffb130;
 	border-top-left-radius: 50%;
 	border-bottom-left-radius: 50%;
@@ -464,7 +464,7 @@ a {
 #recentMsg {
 	font-size: 18px;
 	font-weight: bold;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-left: 20px;
 }
 
@@ -507,7 +507,6 @@ a {
 .message:nth-child(3) {
 	animation: fadeIn 7s;
 }
-
 .message:nth-child(4) {
 	animation: fadeIn 9s;
 }
@@ -654,4 +653,12 @@ a {
     background:#777;
     font-size:12px;
     margin-left : 5px;
+}
+
+/* delete Button */
+#delBtn {
+	width : 60px;
+	height : 45px;
+	font-size: 18px;
+	padding:0;
 }
