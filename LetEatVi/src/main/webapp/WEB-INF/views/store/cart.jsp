@@ -329,7 +329,6 @@
 							<select class="custom-select coupon-select" name="coupon" id="coupon">
 								<option selected>쿠폰을 선택해주세요</option>
 								<option value="1" id="test">${coupon.getCname()}</option>
-								<option value="2" id="test">10% DC</option>
 							</select>
 						</div>
 					</div>
@@ -563,10 +562,7 @@
 			
 			switch(couponId){
 			case 1 :
-				discountPrice = 10000;
-				break;
-			case 2 : 
-				discountPrice = parseInt(Number(totalPrice) / 10);
+				discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
 				break;
 			}
 			
@@ -589,10 +585,7 @@
 		
 		switch(couponId){
 		case 1 :
-			discountPrice = 10000;
-			break;
-		case 2 : 
-			discountPrice = parseInt(Number(totalPrice) / 10);
+			discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
 			break;
 		}
 		
@@ -657,11 +650,9 @@
 		
 		switch(couponId){
 		case 1 :
-			discountPrice = parseInt(Number(totalPrice) / ${coupon.discountrate});
+			discountPrice = parseInt(Number(totalPrice) * Number(${coupon.discountrate})/100);
 			break;
-		case 2 :
-			discountPrice = parseInt(Number(totalPrice) / 10);
-			break;
+
 		}
 		
     	$(".discountText").text(discountPrice);
