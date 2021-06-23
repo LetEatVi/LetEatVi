@@ -112,7 +112,7 @@
 		                            	</ul>
 		                            </div>
 		                            <div id="question-btn">
-		                                <button type="button" id="prev-btn">이전</button>
+		                                <button type="button" id="prev-btn" onclick="history.back(-1)">이전</button>
 		                                <button type="submit" id="next-btn">다음</button>
 		                            </div>
 	                            </form>

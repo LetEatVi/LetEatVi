@@ -167,8 +167,8 @@ ul {
     background-color: #fff;
 }
 .advice-wrap img {
-    width: 60px;
-    height: 70px;
+    width: 70px;
+    height: 60px;
     margin-bottom: 9px;
 }
 .advice-wrap h4 {
@@ -177,7 +177,9 @@ ul {
     font-weight: bold;
     display: inline-block;
     margin-left: 30px;
+    margin-right: 100px;
 }
+
 .advice-wrap ul {
     margin-top: 13px;
     text-align: left;

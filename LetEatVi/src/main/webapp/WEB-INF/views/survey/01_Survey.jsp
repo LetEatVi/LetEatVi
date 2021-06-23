@@ -94,7 +94,7 @@
 		                                    <ul id="survey-answer">
 		                                        <li>
 		                                            <div id="input-wrap">
-		                                                <input id="content-full" type="text" placeholder="이름 또는 닉네임" maxlength="10" value="${gst.userName}" name="userName" required>
+		                                                <input id="content-full" type="text" placeholder="이름 또는 닉네임" maxlength="10" value="${ member.userName }" name="userName" required>
 		                                            </div>
 		                                        </li>
 		                                    </ul>
