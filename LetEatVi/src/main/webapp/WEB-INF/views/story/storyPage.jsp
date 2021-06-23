@@ -130,13 +130,13 @@
 						<div class="col ctimg"
 							onclick="location.href='https://itembbal.com/%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8-%EC%8B%9D%EB%8B%A8-%EC%B6%94%EC%B2%9C-%EA%B1%B4%EA%B0%95%ED%95%9C-%EB%8B%A4%EC%9D%B4%EC%96%B4%ED%8A%B8-%EC%8B%9D%EB%8B%A8-%EC%A7%9C%EA%B8%B0/';">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/7.jpg"
+								src="${pageContext.request.contextPath}/resources/images/백옥피부 비결, 글루타치환.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
 							onclick="location.href='https://krtopic.com/145'">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/14.jpg"
+								src="${pageContext.request.contextPath}/resources/images/관리자 추천 시리즈 6 Dr.쥐의 쉐도우가 보인다면 루테인을 먹어야 할 때! 그때엔.jpg"
 								alt="">
 						</div>
 					</div>
@@ -164,13 +164,13 @@
 						<div class="col ctimg"
 							onclick="location.href='https://breffee.net/bbs/board.php?bo_table=zbove_43&wr_id=12'">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/TRUE.jpg"
+								src="${pageContext.request.contextPath}/resources/images/352 시리즈 4 간 건강을 위해 필요한 352가지, 밀크씨슬352.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
 							onclick="location.href='https://www.bbc.com/korean/news-45423465';">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/choi.JPG"
+								src="${pageContext.request.contextPath}/resources/images/스마트한 에너지 충전 8중 복합기능성, 비타JOIN.jpg"
 								alt="">
 						</div>
 					</div>
@@ -198,13 +198,13 @@
 						<div class="col ctimg"
 							onclick="location.href='https://m.health.chosun.com/svc/news_view.html?contid=2016070501299';">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/healthyfood.JPG"
+								src="${pageContext.request.contextPath}/resources/images/연예인 잇아이템 시리즈 1 괴물쥐환 - 일년내내 활력충전, 비타352 프리미엄.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
 							onclick="location.href='http://www.koreaherald.com/view.php?ud=20140309000209'">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/healthy10.JPG"
+								src="${pageContext.request.contextPath}/resources/images/직장, 학업 스트레스 날려버리자~ 렛잇비타352.jpg"
 								alt="">
 						</div>
 					</div>
@@ -232,13 +232,13 @@
 						<div class="col ctimg"
 							onclick="location.href='https://post.naver.com/viewer/postView.nhn?volumeNo=15759796&memberNo=24108940&searchKeyword=%EB%B9%84%ED%83%80%EB%AF%BC&searchRank=1';">
 							<img id="img1"
-								src="${pageContext.request.contextPath}/resources/images/nono.png"
+								src="${pageContext.request.contextPath}/resources/images/다니엘 You 시리즈 6 Call You 장건강, 프로바이오틱스.jpg"
 								alt="">
 						</div>
 						<div class="col ctimg"
 							onclick="location.href='https://steptohealth.co.kr/10-benefits-of-bananas-for-health/';">
 							<img id="img2"
-								src="${pageContext.request.contextPath}/resources/images/banana.JPG"
+								src="${pageContext.request.contextPath}/resources/images/건강할 자격 시리즈 3 늙지 않을 자격.jpg"
 								alt="">
 						</div>
 					</div>

@@ -240,8 +240,8 @@
 	            <ul class="recommend-item-wrap">
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                       	 <img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민B">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=13">
+	                       	 <img src="${pageContext.request.contextPath}/resources/images/피로1.jpg" alt="비타민B">
 	                    	</a>
 	                    </div>
 	                    <div class="item-name">
@@ -250,8 +250,8 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                        	<img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="프로바이오틱스">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=4">
+	                        	<img src="${pageContext.request.contextPath}/resources/images/장1.jpg" alt="프로바이오틱스">
 	                    	</a>
 	                    </div>
 	                    <div class="item-name">
@@ -260,8 +260,8 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                        	<img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민D">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=3">
+	                        	<img src="${pageContext.request.contextPath}/resources/images/뼈1.jpg" alt="비타민D">
 	                   		</a>
 	                    </div>
 	                    <div class="item-name">
@@ -270,8 +270,8 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                        	<img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="비타민C">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=1">
+	                        	<img src="${pageContext.request.contextPath}/resources/images/피부1.jpg" alt="비타민C">
 	                    	</a>
 	                    </div>
 	                    <div class="item-name">
@@ -280,8 +280,8 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                        	<img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="루테인">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=18">
+	                        	<img src="${pageContext.request.contextPath}/resources/images/눈1.jpg" alt="루테인">
 	                    	</a>
 	                    </div>
 	                    <div class="item-name">
@@ -290,8 +290,8 @@
 	                </li>
 	                <li class="recommend-item">
 	                    <div class="item-img">
-	                    	<a href="${pageContext.request.contextPath}/survey/survey.do">
-	                        	<img src="${pageContext.request.contextPath}/resources/images/surveyImg/male.png" alt="프로폴리스">
+	                    	<a href="${pageContext.request.contextPath}/store/selectProduct.do?pid=3">
+	                        	<img src="${pageContext.request.contextPath}/resources/images/프1.jpg" alt="프로폴리스">
 	                    	</a>
 	                    </div>
 	                    <div class="item-name">
