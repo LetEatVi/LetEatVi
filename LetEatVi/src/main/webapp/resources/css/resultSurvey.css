@@ -1,14 +1,53 @@
 @charset "UTF-8";
 /* survey.css */
 
-div {
-	font-family: 'IBMPlexSansKR-Light';
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+
+
+
 
 ul {
     padding-inline-start: 0px;
 }
-
 
 /* 전체 틀 */
 .result-wrap {
@@ -52,13 +91,6 @@ ul {
     width: 15px;
     pointer: cursor;
 }
-
-/**/
-#survey-answer-list {
-	padding-left: 20px;
-	line-height: 40px;
-}
-
 
 /* BMI Bar */
 .bmi-wrap {
@@ -135,8 +167,8 @@ ul {
     background-color: #fff;
 }
 .advice-wrap img {
-    width: 60px;
-    height: 70px;
+    width: 70px;
+    height: 60px;
     margin-bottom: 9px;
 }
 .advice-wrap h4 {
@@ -145,7 +177,9 @@ ul {
     font-weight: bold;
     display: inline-block;
     margin-left: 30px;
+    margin-right: 100px;
 }
+
 .advice-wrap ul {
     margin-top: 13px;
     text-align: left;

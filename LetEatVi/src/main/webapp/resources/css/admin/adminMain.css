@@ -508,6 +508,10 @@ a {
 	animation: fadeIn 7s;
 }
 
+.message:nth-child(4) {
+	animation: fadeIn 9s;
+}
+
 
 .message h5 {
 	font-size: 16px;

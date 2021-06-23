@@ -1,5 +1,45 @@
 @charset "UTF-8";
 /* survey.css */
+/* font url */
+@font-face {
+	font-family: 'S-CoreDream-3Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inkfree';
+	src:
+		url('${pageContext.request.contextPath}/resources/font/Inkfree.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff')
+		format('woff');
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Light.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -370,3 +410,95 @@ option, input, li>label {
 	border-radius: 40%;
 	background-color: lemonchiffon;
 }
+
+
+/* 모달 */
+
+/* Modal Content */
+	#modal-content {
+		font-family: 'IBMPlexSansKR-Light';
+	  	position: relative;
+	    background-color: #fefefe;
+	    margin: 200px auto;
+	    border: 1px solid #888;
+	    width: 600px;
+    	height: 300px;
+	    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+	    -webkit-animation-name: animatetop;
+	    -webkit-animation-duration: 0.4s;
+	}
+	
+	/* Add Animation */
+	@-webkit-keyframes animatetop {
+	  from {top:-300px; opacity:0} 
+	  to {top:0; opacity:1}
+	}
+	
+	@keyframes animatetop {
+	  from {top:-300px; opacity:0}
+	  to {top:0; opacity:1}
+	}
+	
+	/* The Close Button */
+	.closeWindow {
+	  color: white;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.closeWindow:hover,
+	.closeWindow:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	#modal-header {
+		padding: 5px 18px;
+	    background-color: gray;
+	    color: white;
+	}
+	
+	#double-check {
+		font-size: 25px;
+    	font-weight: 600;
+	}
+	
+	#modal-body {
+		padding: 23px 16px;
+    	font-size: 21px;
+	}
+	
+	#modal-btn {
+	    float: right;
+    	margin-top: 100px;
+	}
+	
+	#yes {
+	  	background-color: #e7e7e7;
+	    border: none;
+	    color: black;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 21px;
+	    width: 150px;
+	    height: 40px;
+	    border-radius: 20px;
+	    margin: 10px 20px;
+	}
+	
+	#no {
+  		background-color: #555555;
+	    border: none;
+	    color: white;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 21px;
+	    width: 150px;
+	    height: 40px;
+	    border-radius: 20px;
+	    margin: 9px 16px;
+	}
