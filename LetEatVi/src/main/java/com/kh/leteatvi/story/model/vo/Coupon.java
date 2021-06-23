@@ -11,13 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Coupon implements Serializable {
-	
 
 	private static final long serialVersionUID = 150L;
 	
 	private int cid;
 	private String cname;
 	private int discountrate;
-	private int discountprice;
 	
 }

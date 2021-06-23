@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -75,51 +75,91 @@
 </head>
 
 <body>
-    <header>
-        <!-- Nav container -->
-        <nav class="navbar">
-            <!-- 로고, 아이콘 -->
-            <div class="navbar__logo">
-                <a href="" class="menu-content"><img src="${pageContext.request.contextPath}/resources/images/LetEatVi_logo.jpg" style="width: 160px;"></a>
-            </div>
+<header>
+		<!-- Nav container -->
+		<nav class="navbar">
+			<!-- 로고, 아이콘 -->
+			<div class="navbar__logo">
+				<a href="http://localhost:8088/leteatvi/" class="menu-content"><img
+					src="${pageContext.request.contextPath}/resources/images/LetEatVi_logo.jpg"
+					style="width: 160px;"></a>
+			</div>
+			
+			<!-- 검색창 -->
+			<c:if test="${!empty member }">
+				<div class="search-wrapper loginchk">
+					<div class="input-holder">
+						<input type="text" class="search-input">
+						<button class="search-icon" onclick="searchToggle(this, event);">
+							<span id="conan"></span>
+						</button>
+					</div>
+					<span class="close" id="close" style="visibility: hidden;"
+						onclick="searchToggle(this, event);"></span>
+				</div>
+			</c:if>
+			<c:if test="${empty member }">
+				<div class="search-wrapper loginNone">
+					<div class="input-holder">
+						<input type="text" class="search-input">
+						<button class="search-icon" onclick="searchToggle(this, event);">
+							<span id="conan"></span>
+						</button>
+					</div>
+					<span class="close" id="close" style="visibility: hidden;"
+						onclick="searchToggle(this, event);"></span>
+				</div>
+			</c:if>
 
-            <!-- 검색창 -->
-            <div class="search-wrapper">
-                <div class="input-holder">
-                    <input type="text" class="search-input" />
-                    <button class="search-icon" onclick="searchToggle(this, event);"><span id="conan"></span></button>
-                </div>
-                <span class="close" id="close" style="visibility: hidden;" onclick="searchToggle(this, event);"></span>
-            </div>
-
-            <!-- 메뉴 -->
-            <ul class="navbar__menu">
-                <li><a href="" class="menu-content">스토어</a></li>
-                <li><a href="" class="menu-content">영양제</a></li>
-                <li><a href="" class="menu-content">이벤트</a></li>
-                <li><a href="${pageContext.request.contextPath}/story/goStory.do" class="menu-content">스토리</a></li>
-                <li><a href="" class="menu-content">장바구니</a></li>
-            </ul>
-        </nav>
-    </header>
-    <!-- header 끝 -->
-
+			<!-- 메뉴 -->
+			<ul class="navbar__menu">
+				<li><a
+					href="${pageContext.request.contextPath}/store/goStore.do"
+					class="menu-content">STORE</a></li>
+				<li><a href="" class="menu-content">SURVEY</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/story/goStory.do"
+					class="menu-content">STORY</a></li>
+				<li><a href="${pageContext.request.contextPath}/store/goCart.do?userId=${member.userId}" class="menu-content">CART</a></li>
+				<c:if test="${empty member}">
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberLogin.do"
+						class="menu-content">LOGIN</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberEnroll.do"
+						class="menu-content">JOIN</a></li>
+				</c:if>
+				<c:if test="${!empty member}">
+					<li><a
+						href="${pageContext.request.contextPath}/myPage/orderList.do"
+						class="menu-content">ORDER</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/myPage/myPageHome.do"
+						class="menu-content">MYPAGE</a></li>
+					<li><a
+						href="${pageContext.request.contextPath}/member/memberLogout.do"
+						class="menu-content">LOGOUT</a></li>
+				</c:if>
+			</ul>
+		</nav>
+	</header>
+	<!-- header 끝 -->
     <div class="whole">
         <div class="top-img">
             <p class="topwords" style="font-size: 63px;"><b style="font-size: 68px;">Let eat VI</b> story</p>
             <p class="topwords2" style="font-size: 13px;" id="text">읽다보면 나도 모르게 건강해질 것 같은 그런 기분</p>
             <div class="story-nav">
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goStory.do" style="color: #4B553A;">All</a>
+                    <a href="${pageContext.request.contextPath}/story/goStory.do">All</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goLife.do" style="color: #4B553A;">Life</a>
+                    <a href="${pageContext.request.contextPath}/story/goLife.do">Life</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goNutrition.do" style="color: #4B553A;">Nutrition</a>
+                    <a href="${pageContext.request.contextPath}/story/goNutrition.do">Nutrition</a>
                 </span>
                 <span class="navspan">
-                    <a href="${pageContext.request.contextPath}/story/goEvent.do" style="color: #4B553A;">Event</a>
+                    <a href="${pageContext.request.contextPath}/story/goEvent.do">Event</a>
                 </span>
             </div>
         </div>
@@ -127,21 +167,25 @@
  
 		<div id="roulettediv">
    
-			<img src="${pageContext.request.contextPath}/resources/images/roulettePan.png" id="letteboard">
+			<img src="${pageContext.request.contextPath}/resources/images/roulettepan1.png" id="letteboard">
 			<img src="${pageContext.request.contextPath}/resources/images/niddle.png" id="n_id">
 			<br />
 			<c:if test="${ couponStatus.equals('Y') }">
-				<input type='button' value='시작' id='start_btn'></input>
+				<input type='button' value='당신의 행운을 시험해볼까요?' id='start_btn' class="btn btn-outline-danger"></input>
 			</c:if><c:if test="${ couponStatus.equals('N')}">
-				<input type='button' value='시작' id='start_btn' disabled></input>
+				<input type='button' value='당신의 행운을 시험해볼까요?' id='start_btn' class="btn btn-outline-danger" disabled></input>
 			</c:if>
+			
+			<!-- 
 			<div id="result_id"></div>
 			<div id="result_id2"></div>
 			<div id="result_id3"></div>
+			 -->
+			 
 			<script>
 			window.onload = function(){
 				
-				var pArr = ["0:10,000원 할인쿠폰","1:다음 기회에","2:10% 할인쿠폰","3:무료배송 쿠폰","4:다음 기회에","5:무료배송 쿠폰","6:다음 기회에","7:5% 할인쿠폰"];
+				var pArr = ["0:15% 할인쿠폰","1:5% 할인쿠폰","2:10% 할인쿠폰","3:7% 할인쿠폰","4:5% 할인쿠폰","5:5% 할인쿠폰","6:7% 할인쿠폰","7:5% 할인쿠폰"];
 			
 				$('#start_btn').click(function(){
 					$('#start_btn').prop('disabled', true);
@@ -160,7 +204,7 @@
 								},
 					  duration:5000
 				   });
-				} // 고고씽
+				} 
 				
 				
 				// 룰렛이 끝나고 나서 아래 상품범위를 통하여 결과 뽑아내기
@@ -192,14 +236,17 @@
 				function sendRouletteData(couponType, userId){
 					console.log(couponType + ", " + userId);
 					$.ajax({
-						url : 'ooo.do',
+						type : "POST",
+						url : "/leteatvi/story/getCoupon.do",
 						data : {
 							couponType : couponType,
 							userId : userId
-						}, success : function(data){
-							
+						},
+						success : function(data){
+							console.log(data);
+							alert(couponType + " 을 획득하였습니다! ")
 						}, error : function(){
-							
+							alert("다시 시도해주세요");
 						}
 					});
 				}

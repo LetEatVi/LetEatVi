@@ -18,7 +18,6 @@
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.SalesChart" alias="SalesChart" />
 		<typeAlias type="com.kh.leteatvi.admin.model.vo.Message" alias="Message" />
 		<typeAlias alias="SurveyResult" type="com.kh.leteatvi.survey.model.vo.SurveyResult"/>
-
 		<typeAlias type="com.kh.leteatvi.story.model.vo.Coupon" alias="Coupon" />
 
 	</typeAliases>

@@ -2,12 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="roulette-mapper">
-
+	
+	
 <select id="intoRoulette" parameterType="string" resultType="string">
 	SELECT COUPONSTATUS
 	FROM MEMBER
 	WHERE USERID = #{ userId }
 </select>
+
+<select id="getCoupon" parameterType="string" resultType="Coupon">
+	SELECT *
+	FROM COUPON
+	WHERE CNAME = #{ cname }
+</select>
+
 
 
 

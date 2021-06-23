@@ -41,6 +41,18 @@
 		    #{userId, mode=IN, jdbcType=VARCHAR}, 
 		    #{result, mode=OUT, jdbcType=NUMERIC, javaType=integer} ) }
 	</select>
+	
+	
+	<update id="updateCoupon" parameterType="Member">
+		UPDATE MEMBER SET COUPONID = #{ couponId }
+		WHERE USERID = #{ userId }
+	</update>
+	
+	<update id="updateCouponSts" parameterType="Member">
+		UPDATE MEMBER SET COUPONSTATUS = 'N'
+		WHERE USERID = #{ userId }
+	</update>		
+		
 		
 	<!-- 
 		프로시저 작성 내용
