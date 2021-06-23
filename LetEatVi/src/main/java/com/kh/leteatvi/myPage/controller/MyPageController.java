@@ -42,7 +42,7 @@ public class MyPageController {
 //		model.addAttribute("orderList", orderList);
 //		model.addAttribute("oidList", oidList);
 		
-		return "myPage/orderList";
+		return "myPage/myPageHome";
 	}
 	
 	@RequestMapping("/myPage/myOrder.do")
