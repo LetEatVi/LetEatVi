@@ -8,7 +8,7 @@
 <li>CSS여왕 민지 - 메인 페이지 UI 및 검색 기능, FrontEnd 관리 </li><br>
 <li>열정 소연 - 마이 페이지 UI 및 기능 </li><br>
 <li>석사 철원 - 리뷰 페이지 UI 및 기능 </li><br>
-<li>머슴 다비 - 로그인, 회원가입 페이지 UI 및 기능, DATABASE, NOTION, GIT 관리 </li><br>
+<li>머슴 다비 - 로그인, 회원가입 페이지 UI 및 기능, 관리자 페이지 UI 및 기능, DATABASE, NOTION, GIT 관리 </li><br>
 
 
 # 데이터베이스 설계
